@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MANA-NA Logo Showcase</title>
 <link rel="shortcut icon" href="https://www.thedteam.in/assets/img/favicon.png" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <style>
     /* Base styles */
@@ -13,14 +14,14 @@ body {
     padding: 0;
     font-family: 'Georgia', serif; /* Use a classic serif font for professionalism */
     background-color: #f7f3ed; /* A warm, off-white, light beige background */
-    color: #333;
+    color: #2e6043;
     line-height: 1.6;
 }
 
 .showcase-container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -28,7 +29,7 @@ body {
 
 header, footer {
     text-align: center;
-    padding: 20px 0;
+    padding: 0px 0;
 }
 
 header h1 {
@@ -61,7 +62,7 @@ main {
 /* Logo display styles */
 .logo-display {
     position: relative;
-    max-width: 100%;
+    max-width: 80%;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Soft shadow for depth */
@@ -141,14 +142,61 @@ li {
         -o-user-drag: none;
         user-drag: none;
     }
+ul {
+  list-style-type: none; /* Ensures the bullets are completely disabled */
+  padding-left: 0;       /* This is the magic line that removes the hidden left space! */
+  padding: 0;            /* Clears any other default padding */
+  margin: 0;             /* Clears default top/bottom spacing */
+  width: 100%;           /* Ensures the list spans the full container */
+}
+
+/* =========================================
+   MOBILE SPECIFIC CSS (Screens 768px and under)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    .controls {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+/* Default state for the image to allow smooth transitions */
+#logoImage {
+    transition: filter 0.5s ease;
+}
+
+/* When the spotlight is turned on, darken the base image slightly */
+.spotlight-on #logoImage {
+    filter: brightness(1.0); /* Brighten the image slightly to enhance the spotlight effect */
+}
+
+/* The actual spotlight overlay focused directly on the center */
+.spotlight-on .logo-shadow {
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6) 0%, rgba(0, 0, 0, 0.1) 35%, rgba(0, 0, 0, 0.7) 100%);
+    mix-blend-mode: hard-light;
+    z-index: 2;
+}
 </style>
 <body oncontextmenu="return false;">
 
     <div class="showcase-container">
-        <header>
-            <h1>🌿MANA-NA Logo Concept</h1>
-            <p>Counselling & Wellbeing Space</p>
-        </header>
+        <header><b>
+
+            <p style="font-size: xx-large; font-style: normal;     color: #2e6043;">🌿MANA-NA </p>
+            <p style="font-size: medium; margin-top: -4%; font-style: normal; color: #2e6043;"> Counselling & Wellbeing Space</p> <br>
+        </header></b>
 
         <main>
             <div class="logo-display">
@@ -160,56 +208,89 @@ li {
                 <button id="toggleLighting">Toggle Spotlight</button>
                 <button id="zoomLogo">Zoom In/Out</button>
             </div>
+            <div class="logo-display">
+                <img src="mana-na_logo_combis.png" draggable="false" alt="MANA-NA Logo Carved in Stone" id="logoImage">
+                <div class="logo-shadow"></div>
+            </div>
         </main>
 <article class="logo-explanation">
   <header>
-    <h1>Logo Design Concept & Symbolic Explanation: 🌿MANA-NA</h1>
+    <h1>MANA-NA Logo Concept and Meaning Behind the Design</h1>
   </header>
   
-  <p style="text-align: center;">The logo for MANA-NA Counselling & Wellbeing Space represents a thoughtful integration of human connection, personal growth, and grounded support, crafted to convey professionalism, calmness, and hope. This bas-relief inspired design on a clean plaster texture evokes enduring strength, natural authenticity, and a foundational space for healing.</p>
+  <p style="text-align: center;">The MANA-NA logo is designed to visually communicate tranquility, personal growth, and holistic healing. It uses fluid imagery and calming colors to perfectly align with a "Counselling & Wellbeing Space."</p>
   
   <section class="symbolism-breakdown">
-    <h2 style="text-align: center;">Symbolic Breakdown of Key Elements</h2>
+    <h2 style="text-align: center;">Core Visual Elements</h2>
     
     <ul>
       <li>
-        <h3 style="text-align: center;">The Core Emblem: Human & Nature Integrated</h3>
-        <p style="text-align: center;">The powerful central symbol combines a woman's profile, delicately carved, within the trunk of a thriving tree. Her face looks forward, embodying human connection, personal reflection, and hope. Roots extend deep below her figure, and the trunk rises into a lush canopy of leaves, signifying growth, resilience, and vitality. This integration powerfully suggests that the individual's growth is nurtured from within, supported by a grounded foundation, and is an organic, flourishing process.</p>
+        <h3 style="text-align: center;">The Serene Profile:</h3>
+        <p style="text-align: center;">The focal point is the calm, silhouetted profile of a woman with her eyes closed and a gentle smile. This represents mindfulness, introspection, inner peace, and the focus on the individual's mental state. It invites clients to look inward and find comfort.</p>
       </li>
       <li>
-        <h3 style="text-align: center;">The Elements of Growth: Leaves & Branches</h3>
-        <p style="text-align: center;">The tree branches and the multitude of green leaves represent the abundance of life, the dynamic process of growth, and the varied stages or aspects of wellbeing. Different shades of green among the leaves might subtly suggest diverse clients, healing journeys, or services offered, reinforcing the concept of inclusivity and holistic support. The central cluster of distinct leaves could symbolize core values, new beginnings, or a focused approach to well-being.</p>
+        <h3 style="text-align: center;">The Blooming Lotus:</h3>
+        <p style="text-align: center;">The lotus flower is a universal symbol of resilience, rebirth, and self-actualization. Because a lotus roots in muddy water but blooms beautifully above the surface, it serves as a powerful metaphor for therapy—overcoming difficult circumstances to find clarity and flourish.</p>
       </li>
       <li>
-        <h3 style="text-align: center;">The Overall Form: Circular Frame</h3>
-        <p style="text-align: center;">Enclosing the entire emblem is a clean circular frame. Circles represent wholeness, unity, community, eternity, and containment &ndash; creating a safe, inclusive space where clients can feel secure, connected, and supported throughout their journey. It also suggests completion and integration.</p>
-      </li>
-      <li>
-        <h3 style="text-align: center;">Color Palette & Texture: Healing & Grounding</h3>
-        <p style="text-align: center;">The greens &ndash; from the dark forest green for "MANA-NA" to the lighter sage and various shades in the leaves and emblem &ndash; are synonymous with calming energy, healing, nature, balance, and positive growth. The subtle texture of the carved stone or plaster backdrop reinforces stability, permanence, authenticity, and foundational support, suggesting a space that is established and reliable yet gently elegant and natural.</p>
+        <h3 style="text-align: center;">Fluid Integration:</h3>
+        <p style="text-align: center;">The flowing, sweeping lines that form the hair seamlessly blend into the petals and leaves. This represents harmony between the mind and body, suggesting that mental wellbeing is a fluid, continuous journey rather than a rigid process.</p>
       </li>
     </ul>
   </section>
   
   <section class="name-tagline">
-    <h2 style="text-align: center;">Name & Tagline Symbolism</h2>
+    <h2 style="text-align: center;">Color Psychology</h2>
     
     <ul>
       <li>
-        <h3 style="text-align: center;">🌿MANA-NA</h3>
-        <p style="text-align: center;">While potentially referencing Polynesian concepts of life force or positive energy (mana), the name is crafted here to sound balanced, positive, and resonant. In this context, it symbolizes a focus on cultivating inner strength, positive energy, and holistic well-being, providing a unique and memorable identity for the service. The specific spelling with the hyphen can suggest a rhythm, reflection, or connection &ndash; a bridge between strength and space.</p>
-        <p style="text-align: center;">The small three-leaf motif to its left reinforces the organic theme and adds an elegant, foundational detail.</p>
+        <h3 style="text-align: center;">Calming Teal & Blue <br>(Face and Hair):</h3>
+        <p style="text-align: center;"> Blue tones are deeply associated with calmness, trust, emotional healing, and clarity. It creates a feeling of a safe, reliable space where clients can open up.</p>
       </li>
       <li>
-        <h3 style="text-align: center;">Counselling & Wellbeing Space</h3>
-        <p style="text-align: center;">Directly and clearly states the service's purpose, using clear, accessible language in a slightly lighter green and cleaner font for approachability. "Space" emphasizes openness and opportunity, complementing the circular frame's containment.</p>
+        <h3 style="text-align: center;">Nurturing Soft Pink <br>(Lotus and Background):</h3>
+        <p style="text-align: center;">Soft pink evokes feelings of compassion, warmth, empathy, and self-love. It highlights the nurturing environment of a counseling space.</p>
+      </li>
+    <li>
+        <h3 style="text-align: center;">Vital Green (Lower Leaves):</h3>
+        <p style="text-align: center;">Green is the color of nature, symbolizing growth, renewal, grounding, and vitality. It reinforces the "wellbeing" aspect of your tagline, suggesting a return to balance and health..</p>
+      </li>
+    <li>
+        <h3 style="text-align: center;">Deep Navy (Typography):</h3>
+        <p style="text-align: center;"> The dark blue text grounds the vibrant logo. It conveys professionalism, stability, and security, assuring clients that they are in capable hands.</p>
       </li>
     </ul>
   </section>
   
+    <section class="symbolism-breakdown">
+    <h2 style="text-align: center;">Typography and Layout</h2>
+    
+    <ul>
+      <li>
+        <h3 style="text-align: center;">Clean, Sans-Serif Font:</h3>
+        <p style="text-align: center;">The use of a modern, uncluttered font for "MANA-NA" ensures the logo remains legible and approachable. It balances the highly illustrative icon above it..</p>
+      </li>
+      <li>
+        <h3 style="text-align: center;">Structured Tagline:</h3>
+        <p style="text-align: center;"> The tagline is neatly tracked below the main name, providing clear context about the services offered without distracting from the primary brand identity.</p>
+      </li>
+    </ul>
+  </section>
+
+    <section class="symbolism-breakdown">
+    <h2 style="text-align: center;">Overall Message</h2>
+    <ul>
+      <li>
+        <h3 style="text-align: center;"></h3>
+        <p style="text-align: center;">
+"This is a nurturing and space where you can discover inner peace, experience healing, and grow naturally into your best self."</p>
+      </li>
+    </ul>
+  </section>
+
 </article>
         <footer>
-            <p>&copy; 2026 The 'D Team - Visual identity and logo concept showcase.</p>
+            <p>&copy; 2026 The 'D Team <br> Visual identity and logo concept showcase</p>
         </footer>
     </div>
 
