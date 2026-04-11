@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANA-NA Logo Showcase</title>
+<link rel="shortcut icon" href="https://www.thedteam.in/assets/img/favicon.png" type="image/x-icon">
+</head>
+<style>
+    /* Base styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif; /* Use a classic serif font for professionalism */
+    background-color: #f7f3ed; /* A warm, off-white, light beige background */
+    color: #333;
+    line-height: 1.6;
+}
+
+.showcase-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, footer {
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #2e6043; /* Match the dark green from the logo */
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #666;
+    font-style: italic;
+}
+
+footer p {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Main content area */
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Logo display styles */
+.logo-display {
+    position: relative;
+    max-width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Soft shadow for depth */
+    transition: transform 0.5s ease; /* Smooth zoom transition */
+}
+
+#logoImage {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 5px solid #fff; /* White border to make it pop */
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Shadow effect to create a carved look */
+.logo-shadow {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Button styles */
+.controls {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    background-color: #2e6043; /* Dark green button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3e7e58; /* Lighter green on hover */
+}
+
+/* Zoomed class */
+.logo-display.zoomed {
+    transform: scale(1.1); /* Zoom in effect */
+}
+/* To add a solid line directly below your headers */
+h1, h2{
+  border-bottom: 2px solid #2e6043;
+  padding-bottom: 10px;
+}
+/* To remove the dot (bullet) from list items and add a line below them */
+li {
+  list-style-type: none; 
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px; 
+  margin-bottom: 20px;
+}
+/* Disable text selection and copying */
+    body {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+
+    /* Disable image dragging globally via CSS */
+    img {
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+    }
+</style>
+<body oncontextmenu="return false;">
+
+    <div class="showcase-container">
+        <header>
+            <h1>🌿MANA-NA Logo Concept</h1>
+            <p>Counselling & Wellbeing Space</p>
+        </header>
+
+        <main>
+            <div class="logo-display">
+                <img src="mana-na_logo.png" draggable="false" alt="MANA-NA Logo Carved in Stone" id="logoImage">
+                <div class="logo-shadow"></div>
+            </div>
+            
+            <div class="controls">
+                <button id="toggleLighting">Toggle Spotlight</button>
+                <button id="zoomLogo">Zoom In/Out</button>
+            </div>
+        </main>
+<article class="logo-explanation">
+  <header>
+    <h1>Logo Design Concept & Symbolic Explanation: 🌿MANA-NA</h1>
+  </header>
+  
+  <p style="text-align: center;">The logo for MANA-NA Counselling & Wellbeing Space represents a thoughtful integration of human connection, personal growth, and grounded support, crafted to convey professionalism, calmness, and hope. This bas-relief inspired design on a clean plaster texture evokes enduring strength, natural authenticity, and a foundational space for healing.</p>
+  
+  <section class="symbolism-breakdown">
+    <h2 style="text-align: center;">Symbolic Breakdown of Key Elements</h2>
+    
+    <ul>
+      <li>
+        <h3 style="text-align: center;">The Core Emblem: Human & Nature Integrated</h3>
+        <p style="text-align: center;">The powerful central symbol combines a woman's profile, delicately carved, within the trunk of a thriving tree. Her face looks forward, embodying human connection, personal reflection, and hope. Roots extend deep below her figure, and the trunk rises into a lush canopy of leaves, signifying growth, resilience, and vitality. This integration powerfully suggests that the individual's growth is nurtured from within, supported by a grounded foundation, and is an organic, flourishing process.</p>
+      </li>
+      <li>
+        <h3 style="text-align: center;">The Elements of Growth: Leaves & Branches</h3>
+        <p style="text-align: center;">The tree branches and the multitude of green leaves represent the abundance of life, the dynamic process of growth, and the varied stages or aspects of wellbeing. Different shades of green among the leaves might subtly suggest diverse clients, healing journeys, or services offered, reinforcing the concept of inclusivity and holistic support. The central cluster of distinct leaves could symbolize core values, new beginnings, or a focused approach to well-being.</p>
+      </li>
+      <li>
+        <h3 style="text-align: center;">The Overall Form: Circular Frame</h3>
+        <p style="text-align: center;">Enclosing the entire emblem is a clean circular frame. Circles represent wholeness, unity, community, eternity, and containment &ndash; creating a safe, inclusive space where clients can feel secure, connected, and supported throughout their journey. It also suggests completion and integration.</p>
+      </li>
+      <li>
+        <h3 style="text-align: center;">Color Palette & Texture: Healing & Grounding</h3>
+        <p style="text-align: center;">The greens &ndash; from the dark forest green for "MANA-NA" to the lighter sage and various shades in the leaves and emblem &ndash; are synonymous with calming energy, healing, nature, balance, and positive growth. The subtle texture of the carved stone or plaster backdrop reinforces stability, permanence, authenticity, and foundational support, suggesting a space that is established and reliable yet gently elegant and natural.</p>
+      </li>
+    </ul>
+  </section>
+  
+  <section class="name-tagline">
+    <h2 style="text-align: center;">Name & Tagline Symbolism</h2>
+    
+    <ul>
+      <li>
+        <h3 style="text-align: center;">🌿MANA-NA</h3>
+        <p style="text-align: center;">While potentially referencing Polynesian concepts of life force or positive energy (mana), the name is crafted here to sound balanced, positive, and resonant. In this context, it symbolizes a focus on cultivating inner strength, positive energy, and holistic well-being, providing a unique and memorable identity for the service. The specific spelling with the hyphen can suggest a rhythm, reflection, or connection &ndash; a bridge between strength and space.</p>
+        <p style="text-align: center;">The small three-leaf 🌿c:\Users\deepa\Downloads\Gemini_Generated_Image_t1f3oit1f3oit1f3.png motif to its left reinforces the organic theme and adds an elegant, foundational detail.</p>
+      </li>
+      <li>
+        <h3 style="text-align: center;">Counselling & Wellbeing Space</h3>
+        <p style="text-align: center;">Directly and clearly states the service's purpose, using clear, accessible language in a slightly lighter green and cleaner font for approachability. "Space" emphasizes openness and opportunity, complementing the circular frame's containment.</p>
+      </li>
+    </ul>
+  </section>
+  
+</article>
+        <footer>
+            <p>&copy; 2026 The 'D Team - Visual identity and logo concept showcase.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const logoDisplay = document.querySelector('.logo-display');
+    const toggleLightingBtn = document.getElementById('toggleLighting');
+    const zoomLogoBtn = document.getElementById('zoomLogo');
+
+    // Toggle lighting effect (spotlight simulation)
+    toggleLightingBtn.addEventListener('click', () => {
+        logoDisplay.classList.toggle('spotlight-on');
+    });
+
+    // Zoom logo in/out
+    zoomLogoBtn.addEventListener('click', () => {
+        logoDisplay.classList.toggle('zoomed');
+        
+        // Update button text
+        if (logoDisplay.classList.contains('zoomed')) {
+            zoomLogoBtn.textContent = 'Zoom Out';
+        } else {
+            zoomLogoBtn.textContent = 'Zoom In';
+        }
+    });
+
+    // Simple spotlight effect CSS (could be enhanced for more realism)
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .spotlight-on .logo-shadow {
+            background: radial-gradient(circle at 70% 30%, rgba(255,255,220,0.15) 0%, rgba(0,0,0,0.2) 60%);
+            mix-blend-mode: hard-light;
+        }
+    `;
+    document.head.appendChild(style);
+});
+
+// Additional JavaScript fallback to prevent copy shortcuts (Ctrl+C / Cmd+C)
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+        });
+
+        // Additional JavaScript fallback to prevent dragging
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.nodeName.toUpperCase() === "IMG") {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
