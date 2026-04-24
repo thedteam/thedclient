@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JHL Draft Presentation</title>
+    <style>
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            font-family: sans-serif; background-color: #000; /* Black bg for zero-gap feel */
+            overflow: hidden;
+        }
+        .header {
+            background: #fff; padding: 10px; text-align: center;
+            border-bottom: 1px solid #ccc; height: 50px;
+        }
+        .presentation-box {
+            position: absolute; top: 70px; bottom: 10px;
+            left: 10px; right: 10px;
+            background: #000; border-radius: 8px; overflow: hidden;
+        }
+        iframe { width: 100%; height: 100%; border: none; }
+                .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+            background: #1a1a1a;
+            color: #888;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2 style="margin:0; font-size: 1.2rem;">JHL Draft Presentation</h2>
+        <p>Below is the JHL Draft Presentation:</p>
+    </div>
+
+    <div class="presentation-box" id="frame-container">
+        </div>
+<div class="footer">
+        &copy; 2026 The 'D Team. All rights reserved.
+    </div>
+    <script>
+        (function() {
+
+            var h = "68747470733a2f2f7777772e746865647465616d2e696e2f4a484c2f4a484c5f456e657267795f5050545f417072696c323032362e68746d6c";
+            
+            // Hex to String converter
+            var r = "";
+            for (var i = 0; i < h.length; i += 2) {
+                r += String.fromCharCode(parseInt(h.substr(i, 2), 16));
+            }
+
+            // Create the iframe element
+            var ifrm = document.createElement('iframe');
+            ifrm.setAttribute('src', r);
+            ifrm.setAttribute('allowfullscreen', 'true');
+            ifrm.setAttribute('frameborder', '0');
+            
+            // Append to container
+            var container = document.getElementById('frame-container');
+            if (container) {
+                container.appendChild(ifrm);
+            }
+        })();
+    </script>
+</body>
+</html>
