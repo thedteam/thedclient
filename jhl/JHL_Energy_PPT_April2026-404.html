@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Moved | Contact Admin</title>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: #0f0c29;
+            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden; /* Prevent horizontal scroll from orbs */
+            color: var(--text-color);
+            padding: 20px; /* Space for mobile edges */
+        }
+
+        /* Animated Background Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: -1;
+            animation: float 10s infinite alternate ease-in-out;
+        }
+
+        .orb-1 { width: 250px; height: 250px; background: #764ba2; top: 5%; left: 5%; }
+        .orb-2 { width: 300px; height: 300px; background: #667eea; bottom: 5%; right: 5%; animation-delay: -5s; }
+
+        @keyframes float {
+            from { transform: translate(0, 0); }
+            to { transform: translate(30px, 50px); }
+        }
+
+        /* Main Card */
+        .container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); /* Safari support */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+            transition: transform 0.2s ease-out;
+            perspective: 1000px;
+        }
+
+        .icon-box {
+            font-size: clamp(3rem, 10vw, 4rem); /* Fluid sizing */
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 8vw, 2.5rem); /* Fluid font size */
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #a5a5a5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .admin-contact {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            display: flex;
+            flex-direction: column; /* Stack on mobile */
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            text-decoration: none;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        footer {
+            margin-top: 2rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* Mobile Specific Adjustments */
+        @media (min-width: 480px) {
+            .admin-contact {
+                flex-direction: row; /* Side-by-side on larger screens */
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem; /* Less padding on small phones */
+            }
+            .orb {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="container" id="tiltCard">
+        <div class="icon-box">✨</div>
+        <h1>Page Displaced</h1>
+        <p>The content you are looking for has been moved to a new destination or retired from service.</p>
+        
+        <a href="tel:+917019043569" class="admin-contact">
+            <span>Contact Admin:</span>
+            <strong>+91 70190 43569</strong>
+        </a>
+
+        <footer>
+            &copy; 2026 The 'D Team. All rights reserved.
+        </footer>
+    </div>
+
+    <script>
+        const card = document.getElementById('tiltCard');
+        
+        // Only run tilt effect if it's not a touch device
+        if (window.matchMedia("(pointer: fine)").matches) {
+            document.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+
+            document.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+            });
+        }
+    </script>
+</body>
+</html>
