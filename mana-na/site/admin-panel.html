@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Slot Management | Mana-na</title>
+    
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="https://www.mana-na.in/favicon.png" type="image/x-icon">
+
+    <style>
+        /* --- CSS Variables & Theme --- */
+        :root {
+            --bg-color: #e8f6e9; 
+            --text-main: #2c3e35;
+            --text-header: #006738; 
+            --btn-bg: #006738;      
+            --btn-text: #ffffff;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(232, 246, 233, 0.95);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0d1710;
+            --text-main: #e8f6e9;
+            --text-header: #81c784; 
+            --btn-bg: #81c784;
+            --btn-text: #0d1710;
+            --card-bg: #152419;
+            --nav-bg: rgba(13, 23, 16, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4 { color: var(--text-header); font-weight: 600; margin-bottom: 1rem; }
+        p { margin-bottom: 1rem; }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo { color: var(--text-header); display: flex; align-items: center; gap: 10px; cursor: pointer; transition: var(--transition); text-decoration: none; }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .brand-name { font-size: 1.6rem; font-weight: 450; letter-spacing: 1px; display: flex; align-items: flex-end; }
+        .tagline { font-size: 0.75rem; font-weight: 500; opacity: 0.9; letter-spacing: 0.5px; }
+        .logo:hover { opacity: 0.8; }
+        .logo img { width: 90px; height: 90px; object-fit: contain; border-radius: 8px; }
+        .kannada-text { font-weight: 400; opacity: 0.9; }
+
+        .nav-controls { display: flex; align-items: center; gap: 2rem; }
+
+        .theme-toggle { background: none; border: none; cursor: pointer; color: var(--text-main); display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; }
+        .theme-toggle:hover { background-color: rgba(0, 103, 56, 0.1); }
+        .theme-toggle svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+        /* --- Page Header --- */
+        header.page-header { margin-top: 30px; padding: 6rem 5% 2rem; text-align: center; background: var(--bg-color); }
+        header.page-header h1 { font-size: 2.5rem; color: var(--text-header); margin-bottom: 1rem; }
+        header.page-header p { font-size: 1rem; max-width: 700px; margin: 0 auto; color: var(--text-main); opacity: 0.9; }
+
+        /* --- Layout --- */
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5% 5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .admin-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0, 103, 56, 0.05);
+        }
+
+        /* --- Form Elements --- */
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-header); }
+        .form-group input[id="blockDate"] {
+            width: 100%; padding: 1rem; border: 2px solid rgba(0, 103, 56, 0.1); border-radius: 12px;
+            background-color: var(--bg-color); color: var(--text-main); font-size: 1rem;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23006738" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 1.2rem center;
+            background-size: 20px;
+            position: relative;
+        }
+        .form-group input:focus { outline: none; border-color: var(--text-header); }
+        [data-theme="dark"] .form-group input[id="blockDate"] {
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%2381c784" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>');
+        }
+        .form-group input[id="blockDate"]::-webkit-calendar-picker-indicator {
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+        .form-group input[id="blockDate"]::-webkit-inner-spin-button,
+        .form-group input[id="blockDate"]::-webkit-clear-button {
+            display: none;
+            -webkit-appearance: none;
+        }
+
+        /* --- Slots Grid --- */
+        .slot-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            background: var(--bg-color);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 103, 56, 0.1);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .checkbox-wrapper:hover { border-color: var(--text-header); }
+        .checkbox-wrapper input { margin-right: 10px; width: 18px; height: 18px; accent-color: var(--btn-bg); cursor: pointer;}
+        
+        .whole-day-wrapper {
+            grid-column: span 2;
+            background: rgba(197, 48, 48, 0.1);
+            border-color: rgba(197, 48, 48, 0.3);
+            color: #c53030;
+        }
+        [data-theme="dark"] .whole-day-wrapper { color: #fc8181; }
+
+        .btn {
+            display: inline-block; background-color: var(--btn-bg); color: var(--btn-text);
+            padding: 0.8rem 2rem; border-radius: 30px; font-weight: 600; border: none; cursor: pointer; transition: var(--transition);
+            width: 100%; font-size: 1.1rem; margin-top: 1rem;
+        }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 103, 56, 0.2); }
+        
+        .btn-outline {
+            background-color: transparent; border: 2px solid var(--btn-bg); color: var(--text-header);
+        }
+        .btn-outline:hover { background-color: var(--btn-bg); color: var(--btn-text); }
+
+        .blocked-list {
+            margin-top: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .blocked-item {
+            display: flex; justify-content: space-between; align-items: center;
+            background: var(--bg-color); padding: 10px 15px; border-radius: 8px; margin-bottom: 8px;
+            border: 1px solid rgba(0, 103, 56, 0.1);
+        }
+        .remove-btn {
+            background: #c53030; color: white; border: none; border-radius: 6px;
+            padding: 5px 10px; cursor: pointer; font-size: 0.8rem; font-weight: bold;
+        }
+        .remove-btn:hover { background: #9b2c2c; }
+
+        /* --- Footer --- */
+        footer { background-color: var(--card-bg); padding: 5rem 5% 2rem; border-top: 1px solid rgba(0, 103, 56, 0.1); }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(0, 103, 56, 0.1); text-align: center; }
+        .footer-credit { font-size: 0.85rem; margin-top: 1rem; opacity: 0.7; }
+
+        @media (max-width: 768px) {
+            .admin-container { grid-template-columns: 1fr; gap: 1.5rem; padding: 1rem 5% 3rem; }
+            header.page-header { padding: 2rem 5% 1rem; margin-top: 70px; }
+            header.page-header h1 { font-size: 1.8rem; line-height: 1.3; }
+            .admin-card { padding: 1.5rem; border-radius: 16px; }
+            .slot-options { grid-template-columns: 1fr 1fr; }
+            .whole-day-wrapper { grid-column: span 2; }
+            .blocked-item { flex-direction: column; align-items: stretch; gap: 10px; text-align: center; }
+            .remove-btn { width: 100%; padding: 0.8rem; font-size: 1rem; border-radius: 8px; }
+            nav { padding: 0 5%; }
+            .logo { font-size: 1.3rem; }
+            .logo img { width: 60px; height: 60px; }
+            .brand-name { font-size: 1.2rem; }
+            .tagline { font-size: 0.65rem; }
+        }
+
+        /* --- Login Overlay --- */
+        body.locked { overflow: hidden; }
+        .login-overlay {
+            position: fixed; inset: 0; background-color: var(--bg-color);
+            z-index: 10000; display: flex; justify-content: center; align-items: center; padding: 20px;
+        }
+        .login-card {
+            background-color: var(--card-bg); padding: 3rem 2rem; border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; max-width: 400px; width: 100%;
+            border: 1px solid rgba(0, 103, 56, 0.1);
+        }
+        .login-card h2 { margin-bottom: 0.5rem; }
+        .login-card p { opacity: 0.8; margin-bottom: 2rem; font-size: 0.95rem; }
+        .login-card input {
+            width: 100%; padding: 1rem; border: 2px solid rgba(0, 103, 56, 0.1); border-radius: 12px;
+            background-color: var(--bg-color); color: var(--text-main); font-size: 1rem; margin-bottom: 1rem;
+        }
+        .login-card input:focus { outline: none; border-color: var(--text-header); }
+        #loginError { color: #c53030; display: none; margin-top: 1rem; margin-bottom: 0; font-weight: 500; }
+        [data-theme="dark"] #loginError { color: #fc8181; }
+
+    </style>
+</head>
+<body class="locked">
+
+    <!-- Login Overlay -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-card">
+            <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo" style="width: 80px; margin-bottom: 1rem; border-radius: 8px;">
+            <h2>Admin Access</h2>
+            <p>Please enter the secure password to manage slots.</p>
+            <input type="password" id="adminPwd" placeholder="Enter password" onkeypress="if(event.key === 'Enter') checkPwd()">
+            <button class="btn" onclick="checkPwd()" style="margin-top: 0;">Unlock Panel</button>
+            <p id="loginError">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+
+    <nav>
+        <a href="preview1.html#home" class="logo">
+            <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo">
+            <div class="logo-text">
+                <span class="brand-name">Mana-na<span class="kannada-text">&nbsp;ಮನ-ನ</span></span>
+                <span class="tagline">Admin Panel</span>
+            </div>
+        </a>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme"></button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Slot Availability Management</h1>
+        <p>Select a date and choose which slots to block from public view.</p>
+    </header>
+
+    <div class="admin-container">
+        
+        <!-- Control Panel -->
+        <div class="admin-card">
+            <h2>Manage Date</h2>
+            
+            <div class="form-group">
+                <label for="blockDate">Select Date</label>
+                <input type="text" id="blockDate" placeholder="dd-mm-yyyy" onmouseenter="(this.type='date')" ontouchstart="(this.type='date')" onfocus="(this.type='date')" onclick="if(this.showPicker) this.showPicker();" onblur="if(!this.value) this.type='text'" onkeydown="return false;">
+            </div>
+
+            <div class="form-group">
+                <label>Select Slots to Block</label>
+                <div class="slot-options" id="slotCheckboxes">
+                    <label class="checkbox-wrapper whole-day-wrapper">
+                        <input type="checkbox" id="blockWholeDay" value="ALL">
+                        <strong>Block Entire Day</strong>
+                    </label>
+                    <!-- Checkboxes generated by JS -->
+                </div>
+            </div>
+
+            <button class="btn" onclick="saveBlocks()">Save Date Blocks</button>
+        </div>
+
+        <!-- Output Panel -->
+        <div class="admin-card">
+            <h2>Current Blocked Dates</h2>
+            <p>These dates and times are currently hidden from the booking forms.</p>
+            
+            <div class="blocked-list" id="blockedList">
+                <!-- List generated by JS -->
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mana-na <br>Counselling & Wellbeing Space</p>
+            <p class="footer-credit">Designed by <a href="https://bit.ly/thedteam" target="_blank"> The 'D Team</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Security / Authentication ---
+        // The password is Base64 encoded to hide it from plain text in the source code.
+        // Default password is: ManaNaSecure2026!
+        const ENCODED_PWD = "TWFuYU5hU2VjdXJlMjAyNiE=";
+
+        // If you want to change the password, you can open your browser console (F12) and run this:
+        // btoa("YourNewPassword");
+
+        let inactivityTimer;
+        const INACTIVITY_LIMIT = 5 * 60 * 1000; // 5 minutes in milliseconds
+
+        function checkPwd() {
+            const input = document.getElementById('adminPwd').value.trim();
+            
+            // Encode user input to compare with the hidden password
+            if (btoa(input) === ENCODED_PWD) {
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.body.classList.remove('locked');
+                resetInactivityTimer();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        function logout() {
+            document.getElementById('loginOverlay').style.display = 'flex';
+            document.body.classList.add('locked');
+            document.getElementById('adminPwd').value = '';
+            document.getElementById('loginError').style.display = 'none';
+            clearTimeout(inactivityTimer);
+        }
+
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            if (!document.body.classList.contains('locked')) {
+                inactivityTimer = setTimeout(logout, INACTIVITY_LIMIT);
+            }
+        }
+
+        // Monitor user activity to prevent timeout while actively using the panel
+        ['mousemove', 'mousedown', 'keypress', 'touchstart', 'scroll'].forEach(evt => {
+            document.addEventListener(evt, resetInactivityTimer, true);
+        });
+
+        // The standard slots offered on the website
+        const STANDARD_SLOTS = [
+            '09:30 AM', '11:00 AM', '12:30 PM', 
+                '02:00 PM', '05:00 PM', '06:30 PM', '08:00 PM'
+        ];
+
+        // The current configuration state
+        let blockedData = {
+            /*'2026-05-12': 'ALL',
+            '2026-05-14': ['09:30 AM', '11:00 AM', '12:30 PM'],
+            '2026-05-15': ['09:30 AM', '11:00 AM', '12:30 PM']*/
+        };
+
+        // --- GLOBAL DATABASE CONFIGURATION (JSONBin.io Example) ---
+        // Get your Bin ID and Master Key from jsonbin.io and paste them below:
+        const JSONBIN_BIN_ID = '6a02063cc0954111d80a95cf';
+        const JSONBIN_MASTER_KEY = '$2a$10$KtpjUH.kUkperO4nhKPWCuBibauYH6WQC0czjv1uc1.2iAXoiJWzu';
+
+        const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+
+        async function loadGlobalData() {
+            try {
+                const response = await fetch(`${JSONBIN_URL}/latest`, {
+                    headers: { 'X-Master-Key': JSONBIN_MASTER_KEY }
+                });
+                const data = await response.json();
+                if (data.record) {
+                    blockedData = data.record;
+                    updateUI();
+                }
+            } catch (e) {
+                console.error("Failed to load live slots from server", e);
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCheckboxes();
+            loadGlobalData();
+            
+            // Set minimum date to today
+            const dateInput = document.getElementById('blockDate');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+            
+            // Load existing blocks when a date is selected
+            dateInput.addEventListener('change', loadExistingBlocks);
+            
+            // Toggle specific slots off if "Whole Day" is checked
+            document.getElementById('blockWholeDay').addEventListener('change', function() {
+                const checkboxes = document.querySelectorAll('.slot-chk');
+                checkboxes.forEach(cb => {
+                    cb.disabled = this.checked;
+                    if(this.checked) cb.checked = false;
+                });
+            });
+        });
+
+        // Generate the time slot checkboxes
+        function renderCheckboxes() {
+            const container = document.getElementById('slotCheckboxes');
+            STANDARD_SLOTS.forEach(slot => {
+                const label = document.createElement('label');
+                label.className = 'checkbox-wrapper';
+                label.innerHTML = `<input type="checkbox" class="slot-chk" value="${slot}"> ${slot}`;
+                container.appendChild(label);
+            });
+        }
+
+        // Load blocks into checkboxes when date changes
+        function loadExistingBlocks() {
+            const date = document.getElementById('blockDate').value;
+            const blocks = blockedData[date];
+            
+            const wholeDayChk = document.getElementById('blockWholeDay');
+            const slotChks = document.querySelectorAll('.slot-chk');
+            
+            // Reset all
+            wholeDayChk.checked = false;
+            slotChks.forEach(cb => {
+                cb.checked = false;
+                cb.disabled = false;
+            });
+            
+            if (!blocks) return;
+            
+            if (blocks === 'ALL') {
+                wholeDayChk.checked = true;
+                slotChks.forEach(cb => cb.disabled = true);
+            } else if (Array.isArray(blocks)) {
+                slotChks.forEach(cb => {
+                    if (blocks.includes(cb.value)) cb.checked = true;
+                });
+            }
+        }
+
+        // Save or update the selected date's blocks
+        function saveBlocks() {
+            const date = document.getElementById('blockDate').value;
+            if (!date) {
+                alert("Please select a date first.");
+                return;
+            }
+
+            const isWholeDay = document.getElementById('blockWholeDay').checked;
+            
+            if (isWholeDay) {
+                blockedData[date] = 'ALL';
+            } else {
+                const selectedSlots = Array.from(document.querySelectorAll('.slot-chk:checked')).map(cb => cb.value);
+                
+                if (selectedSlots.length === 0) {
+                    // If nothing is selected, remove the date from the block list
+                    delete blockedData[date];
+                } else if (selectedSlots.length === STANDARD_SLOTS.length) {
+                    // If they selected every single checkbox manually, just mark it as ALL
+                    blockedData[date] = 'ALL';
+                } else {
+                    blockedData[date] = selectedSlots;
+                }
+            }
+            
+            updateUI();
+            
+            saveGlobalData();
+        }
+
+        async function saveGlobalData() {
+            try {
+                await fetch(JSONBIN_URL, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_MASTER_KEY },
+                    body: JSON.stringify(blockedData)
+                });
+                alert("Configuration updated globally!");
+            } catch (error) {
+                console.error("Error saving globally:", error);
+                alert("Failed to save globally. Please check your connection.");
+            }
+        }
+
+        // Remove a date entirely
+        function removeDate(date) {
+            delete blockedData[date];
+            updateUI();
+            saveGlobalData();
+            if(document.getElementById('blockDate').value === date) {
+                loadExistingBlocks();
+            }
+        }
+
+        // Update the List UI
+        function updateUI() {
+            // Sort dates chronologically for cleaner output
+            const sortedDates = Object.keys(blockedData).sort();
+            
+            const listContainer = document.getElementById('blockedList');
+            listContainer.innerHTML = '';
+            
+            if (sortedDates.length === 0) {
+                listContainer.innerHTML = '<p style="opacity: 0.7; text-align: center;">No dates are currently blocked.</p>';
+                return;
+            }
+            
+            sortedDates.forEach(date => {
+                const val = blockedData[date];
+                const displayVal = (val === 'ALL') ? '<span style="color:#c53030;font-weight:bold;">Entire Day Blocked</span>' : `Blocked: ${val.join(', ')}`;
+                
+                const item = document.createElement('div');
+                item.className = 'blocked-item';
+                item.innerHTML = `
+                    <div>
+                        <strong>${date}</strong><br>
+                        <span style="font-size: 0.85rem; opacity: 0.8;">${displayVal}</span>
+                    </div>
+                    <button class="remove-btn" onclick="removeDate('${date}')">Clear</button>
+                `;
+                listContainer.appendChild(item);
+            });
+        }
+
+        // --- Theme Toggle ---
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const rootElement = document.documentElement;
+        const svgMoon = `<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+        const svgSun = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+
+        function updateThemeIcon(theme) {
+            themeToggleBtn.innerHTML = theme === 'dark' ? svgSun : svgMoon;
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        rootElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = rootElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            rootElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    </script>
+</body>
+</html>

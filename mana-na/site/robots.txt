@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /#home
+Allow: /#about
+Allow: /#approach
+Allow: /#areas-of-support
+Allow: /#self-reflection
+Allow: /#counsellor
+Allow: /#testimonials
+Allow: /#gallery
+Allow: /#faq
+Allow: /#contact
+Allow: /#resources
+
+Sitemap: https://www.mana-na.in/sitemap.xml

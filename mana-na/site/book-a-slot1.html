@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session | Mana-na</title>
+    <meta name="description" content="Mana-na | Book a Session - Schedule your initial consultation or ongoing therapy session with us.">
+    
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="https://www.mana-na.in/favicon.png" type="image/x-icon">
+
+    <style>
+        /* --- CSS Variables & Theme --- */
+        :root {
+            --bg-color: #e8f6e9; 
+            --text-main: #2c3e35;
+            --text-header: #006738; 
+            --btn-bg: #006738;      
+            --btn-text: #ffffff;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(232, 246, 233, 0.95);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0d1710;
+            --text-main: #e8f6e9;
+            --text-header: #81c784; 
+            --btn-bg: #81c784;
+            --btn-text: #0d1710;
+            --card-bg: #152419;
+            --nav-bg: rgba(13, 23, 16, 0.95);
+        }
+
+        /* --- Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-header);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        p { margin-bottom: 1rem; }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            color: var(--text-header);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 450;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            font-weight: 500;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--text-header);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-header);
+        }
+
+        /* Active Navigation Link Highlight */
+        .nav-links a.active {
+            color: var(--text-header);
+            font-weight: 700;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-header);
+            border-radius: 2px;
+        }
+
+        /* Nav Contact Button (Overrides active styles) */
+        .nav-links a.nav-contact-btn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 15px rgba(0, 103, 56, 0.2);
+        }
+
+        .nav-links a.nav-contact-btn::after {
+            display: none; /* No underline for the button */
+        }
+
+        .nav-links a.nav-contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 103, 56, 0.3);
+        }
+
+        .theme-toggle {
+            background: none; border: none; cursor: pointer; color: var(--text-main);
+            display: flex; align-items: center; justify-content: center; width: 45px; height: 45px;
+            border-radius: 50%; transition: background-color 0.3s ease;
+        }
+        .theme-toggle:hover { background-color: rgba(0, 103, 56, 0.1); }
+        .theme-toggle svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        .menu-toggle { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; background: transparent; border: none; cursor: pointer; z-index: 1001; }
+        .menu-toggle span { display: block; width: 100%; height: 2px; background-color: var(--text-header); transition: var(--transition); border-radius: 2px; }
+
+        /* --- Page Header --- */
+        header.page-header {
+            margin-top: 80px;
+            padding: 6rem 5% 2rem;
+            text-align: center;
+            background: var(--bg-color);
+        }
+        header.page-header h1 {
+            font-size: 3.5rem;
+            color: var(--text-header);
+            margin-bottom: 1rem;
+        }
+        header.page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-main);
+            opacity: 0.9;
+        }
+
+        /* --- Booking Form Section --- */
+        section { padding: 2rem 5% 5rem; max-width: 900px; margin: 0 auto; }
+        .section-card { background-color: var(--card-bg); padding: 4rem; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid rgba(0, 103, 56, 0.05); }
+        
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-header);
+            font-size: 0.95rem;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid rgba(0, 103, 56, 0.1);
+            border-radius: 12px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            resize: vertical;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--text-header);
+            background-color: var(--card-bg);
+            box-shadow: 0 0 0 4px rgba(0, 103, 56, 0.05);
+        }
+
+        /* Specific styling for the date/time selectors to look good in dark mode */
+        [data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+
+        /* --- Dynamic Slot Picker --- */
+        .slot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .slot-btn {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            border: 2px solid rgba(0, 103, 56, 0.1);
+            padding: 0.8rem 0.5rem;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.95rem;
+            user-select: none;
+        }
+
+        .slot-btn:hover:not(.blocked):not(.selected) {
+            border-color: var(--text-header);
+            background-color: var(--card-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 103, 56, 0.05);
+        }
+
+        .slot-btn.selected {
+            background-color: var(--text-header);
+            color: var(--btn-text);
+            border-color: var(--text-header);
+            box-shadow: 0 4px 15px rgba(0, 103, 56, 0.2);
+        }
+
+        .slot-btn.blocked {
+            opacity: 0.8;
+            cursor: not-allowed;
+            background-color: #fff5f5;
+            border: 2px dashed #ffcbcb;
+            text-decoration: line-through;
+            color: #c53030;
+        }
+
+        [data-theme="dark"] .slot-btn.blocked {
+            background-color: rgba(45, 18, 18, 0.4);
+            border-color: #ffcbcb;
+            color: #fc8181;
+        }
+
+        .slot-message {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            opacity: 0.8;
+            margin-top: 0.8rem;
+            font-style: italic;
+        }
+
+        .btn { display: inline-block; background-color: var(--btn-bg); color: var(--btn-text); padding: 1rem 2.5rem; border-radius: 30px; font-weight: 600; font-size: 1.1rem; border: none; cursor: pointer; transition: var(--transition); margin-top: 1rem; width: 100%;}
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 103, 56, 0.2); }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        #formMessage { margin-top: 1.5rem; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 500; display: none; }
+
+
+        /* --- Floating Buttons --- */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366; 
+            color: white;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .whatsapp-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .whatsapp-btn svg { width: 32px; height: 32px; fill: white; }
+
+        .back-top-btn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .back-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-top-btn svg { width: 28px; height: 28px; fill: var(--btn-text); }
+
+        .float-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--card-bg);
+            padding: 5rem 5% 2rem;
+            border-top: 1px solid rgba(0, 103, 56, 0.1);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            margin-top: 1.5rem;
+            max-width: 400px;
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        .footer-nav h4 {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .footer-nav-links a:hover {
+            color: var(--text-header);
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .footer-qr {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-qr h4 {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-qr img {
+            width: 130px;
+            height: 130px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin: 1rem;
+            padding: 12px;
+            background-color: #ffffff;
+        }
+
+        .footer-qr p {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 103, 56, 0.1);
+            text-align: center;
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            opacity: 0.7;
+        }
+
+    
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .section-card { padding: 3rem; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+            .footer-brand p { margin: 1.5rem auto 0; text-align: center; }
+            .footer-nav-links { align-items: center; justify-content: center; }
+            .footer-brand .logo { justify-content: center; }
+        }
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links { position: absolute; top: 80px; left: 0; width: 100%; background-color: var(--nav-bg); flex-direction: column; padding: 2rem 0; gap: 1.5rem; box-shadow: 0 10px 20px rgba(0,0,0,0.08); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: clip-path 0.4s ease-in-out; }
+            .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+            .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+            .nav-links a.nav-contact-btn { display: inline-block; width: max-content; margin: 0 auto; }
+            header.page-header h1 { font-size: 2.5rem; }
+            .section-card { padding: 2rem; margin: 0 1rem; }
+            .brand-name { font-size: 1.2rem; }
+            .tagline { font-size: 0.65rem; }
+            .booking-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="preview1.html#home" class="logo">
+            <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo">
+            <div class="logo-text">
+                <span class="brand-name">Mana-na<span class="kannada-text">&nbsp;ಮನ-ನ</span></span>
+                <span class="tagline">Counselling & Wellbeing Space</span>
+            </div>
+        </a>
+        <div class="nav-controls">
+            <div class="nav-links" id="navLinks">
+                <a href="preview1.html#home">Home</a>
+                <a href="preview1.html#about">About</a>
+                <a href="preview1.html#approach">Our Approach</a>
+                <a href="preview1.html#areas-of-support">Areas of Support</a>
+                <a href="preview1.html#counsellor">Meet the Counsellor</a>
+                <a href="preview1.html#faq">FAQs</a>
+                <a href="preview1.html#contact" class="nav-contact-btn">Contact</a>
+            </div>
+            
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme"></button>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Book a Session</h1>
+        <p>Take the first step towards clarity and resilience. Fill out the details below, and we will get back to you shortly to confirm your appointment.</p>
+    </header>
+
+    <section id="booking">
+        <div class="section-card">
+            
+            <form id="bookingForm" action="https://formsubmit.co/info@mana-na.in" method="POST">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="New Session Booking Request">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="booking-grid">
+                    
+                    <!-- First Name -->
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="First Name" required placeholder="First name">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="Last Name" required placeholder="Last name">
+                    </div>
+
+                    <!-- Age -->
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="Age" min="16" max="100" required placeholder="Your age">
+                    </div>
+
+                    <!-- Pronouns -->
+                    <div class="form-group">
+                        <label for="pronouns">Pronouns (Optional)</label>
+                        <input type="text" id="pronouns" name="Pronouns" placeholder="e.g., she/her, they/them">
+                    </div>
+
+                    <!-- Occupation -->
+                    <div class="form-group">
+                        <label for="occupation">Occupation / Student Status (Optional)</label>
+                        <input type="text" id="occupation" name="Occupation" placeholder="e.g., College Student, Engineer">
+                    </div>
+
+                    <!-- Country -->
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="Country" list="countryList" required placeholder="Select or type country">
+                        <datalist id="countryList">
+                            <option value="India"></option>
+                            <option value="United States"></option>
+                            <option value="United Kingdom"></option>
+                            <option value="Australia"></option>
+                            <option value="Canada"></option>
+                        </datalist>
+                    </div>
+
+                    <!-- State -->
+                    <div class="form-group">
+                        <label for="state">State / Province</label>
+                        <input type="text" id="state" name="State" list="stateList" required placeholder="Select or type state">
+                        <datalist id="stateList">
+                            <option value="Karnataka"></option>
+                            <option value="Maharashtra"></option>
+                            <option value="Delhi"></option>
+                            <option value="Tamil Nadu"></option>
+                            <option value="Kerala"></option>
+                            <option value="Telangana"></option>
+                        </datalist>
+                    </div>
+
+                    <!-- City -->
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="City" list="cityList" required placeholder="Select or type city">
+                        <datalist id="cityList">
+                            <option value="Bengaluru"></option>
+                            <option value="Chennai"></option>
+                            <option value="Delhi"></option>
+                            <option value="Hyderabad"></option>
+                            <option value="Mumbai"></option>
+                            <option value="Pune"></option>
+                        </datalist>
+                    </div>
+
+                    <!-- Address Text -->
+                    <div class="form-group full-width">
+                        <label for="address">Street Address</label>
+                        <input type="text" id="address" name="Address" required placeholder="House/Flat No., Street, Area">
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="Phone" required placeholder="+91 XXXXX XXXXX">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="Email" required placeholder="you@example.com">
+                    </div>
+
+                    <!-- Emergency Contact Name -->
+                    <div class="form-group">
+                        <label for="emergencyName">Emergency Contact Name</label>
+                        <input type="text" id="emergencyName" name="Emergency Contact Name" required placeholder="Name of a trusted person">
+                    </div>
+
+                    <!-- Emergency Contact Phone -->
+                    <div class="form-group">
+                        <label for="emergencyPhone">Emergency Contact Phone</label>
+                        <input type="tel" id="emergencyPhone" name="Emergency Contact Phone" required placeholder="+91 XXXXX XXXXX">
+                    </div>
+
+                    <!-- Referral -->
+                    <div class="form-group">
+                        <label for="referral">How did you hear about us?</label>
+                        <select id="referral" name="Referral Source">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Google Search">Google Search</option>
+                            <option value="Social Media">Social Media</option>
+                            <option value="Friend or Family">Friend or Family Referral</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Primary Concern -->
+                    <div class="form-group full-width">
+                        <label for="concern">Primary Area of Concern</label>
+                        <select id="concern" name="Primary Concern" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Anxiety & Stress">Anxiety & Stress</option>
+                            <option value="Depression / Low Mood">Depression / Low Mood</option>
+                            <option value="Relationship Issues">Relationship Issues</option>
+                            <option value="Academic / Work Pressure">Academic / Work Pressure</option>
+                            <option value="Life Transitions">Life Transitions</option>
+                            <option value="Grief & Loss">Grief & Loss</option>
+                            <option value="Trauma & Past Experiences">Trauma & Past Experiences</option>
+                            <option value="Self-Esteem & Confidence">Self-Esteem & Confidence</option>
+                            <option value="Anger Management">Anger Management</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Other Concern (Hidden by default) -->
+                    <div class="form-group full-width" id="otherConcernGroup" style="display: none;">
+                        <label for="otherConcern">Please specify your concern</label>
+                        <input type="text" id="otherConcern" name="Other Concern Specification" placeholder="Briefly describe your concern">
+                    </div>
+
+                    <!-- Previous Therapy -->
+                    <div class="form-group">
+                        <label for="previousTherapy">Have you attended therapy before?</label>
+                        <select id="previousTherapy" name="Previous Therapy" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                    <!-- Medication -->
+                    <div class="form-group">
+                        <label for="medication">Currently taking psychiatric medication?</label>
+                        <select id="medication" name="On Medication" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                    <!-- Physical Health -->
+                    <div class="form-group">
+                        <label for="physicalHealth">Any major physical health conditions?</label>
+                        <input type="text" id="physicalHealth" name="Physical Health" placeholder="Briefly specify or type 'None'">
+                    </div>
+
+                    <!-- Sleep Quality -->
+                    <div class="form-group">
+                        <label for="sleepQuality">Current Sleep Quality</label>
+                        <select id="sleepQuality" name="Sleep Quality">
+                            <option value="" disabled selected>Select</option>
+                            <option value="Good">Good</option>
+                            <option value="Fair">Fair</option>
+                            <option value="Poor">Poor</option>
+                            <option value="Variable">Variable / Irregular</option>
+                        </select>
+                    </div>
+
+                    <!-- Format -->
+                    <div class="form-group full-width">
+                    <div class="form-group">
+                        <label for="format">Preferred Format</label>
+                        <select id="format" name="Format" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Online Session (Video Call)">Online Session (Video Call)</option>
+                            <option value="In-Person Session (Clinic)">In-Person Session</option>
+                        </select>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="form-group full-width">
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="Preferred Date" required>
+                    </div>
+
+                    <!-- Dynamic Time Slots -->
+                    <div class="form-group full-width" id="timeSlotGroup" style="display: none;">
+                        <label>Available Time Slots</label>
+                        <div id="slotGrid" class="slot-grid"></div>
+                        <input type="hidden" id="time" name="Preferred Time" required>
+                        <p id="slotMessage" class="slot-message"></p>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="form-group full-width">
+                        <label for="reason">Briefly describe what brings you to therapy (Optional)</label>
+                        <textarea id="reason" name="Reason/Message" rows="4" placeholder="Any initial thoughts or concerns you'd like us to know about..."></textarea>
+                    </div>
+
+                    <!-- Consent Checkbox -->
+                    <div class="form-group full-width" style="display: flex; align-items: flex-start; gap: 12px; margin-top: 0.5rem;">
+                        <input type="checkbox" id="consent" name="Consent Given" value="Yes" required style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px; cursor: pointer; accent-color: #006738;">
+                        <label for="consent" style="font-weight: 400; font-size: 0.9rem; margin-bottom: 0; cursor: pointer;">I acknowledge that this form collects my personal and health-related information for the purpose of scheduling a therapy session. I agree to the <a href="#" target="_blank" style="color: var(--text-header); text-decoration: underline;">Privacy Policy & Consent terms</a>.</label>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn" id="submitBtn">Request Appointment</button>
+                <div id="formMessage"></div>
+            </form>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#home" class="logo">
+                    <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo">
+                    <div class="logo-text">
+                        <span class="brand-name">Mana-na<span class="kannada-text">&nbsp;ಮನ-ನ</span></span>
+                        <span class="tagline">Counselling & Wellbeing Space</span>
+                    </div>
+                </a>
+                <p>Supporting mental well-being and enhancing quality of life through awareness, understanding, and meaningful change. Rooted in care, guided by science.</p>
+            </div>
+            <div class="footer-nav">
+                <h4>Quick Links</h4>
+                <div class="footer-nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#approach">Our Approach</a>
+                    <a href="#areas-of-support">Areas of Support</a>
+                    <a href="#self-reflection">Self-Reflection</a>
+                    <a href="#counsellor">Meet the Counsellor</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#gallery">Gallery</a>
+                    <!--a href="#blogs">Blogs</a-->
+                    <a href="#faq">FAQs</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#emergency-support">24/7 Emergency Support</a>
+                </div>
+            </div>
+            <div class="footer-qr">
+                <h4>Scan to Visit</h4>
+                <img src="https://www.mana-na.in/Site-QR.png" alt="Mana-na QR Code">
+                <p>Access our site easily<br>on your mobile device</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mana-na <br>Counselling & Wellbeing Space</p>
+            <p class="footer-credit">Designed by <a href="https://bit.ly/thedteam" target="_blank"> The 'D Team</a></p>
+        </div>
+    </footer>
+
+    <div class="floating-buttons">
+        <a href="https://api.whatsapp.com/send/?phone=917349351920&text=Hi%20Mana-na%20-%20I'm%20interested%20in%20Counselling%20and%20Wellbeing%20Space!%20https://www.mana-na.in" target="_blank" class="float-btn whatsapp-btn" aria-label="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+        <button id="backToTop" class="float-btn back-top-btn" aria-label="Back to Top">
+            <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+        </button>
+    </div>
+
+   <script>
+       // Mobile Menu Toggle
+       const menuToggle = document.getElementById('menuToggle');
+       const navLinks = document.getElementById('navLinks');
+       
+       menuToggle.addEventListener('click', () => {
+           menuToggle.classList.toggle('active');
+           navLinks.classList.toggle('active');
+       });
+
+       // Prevent selecting past dates in the date picker
+       const dateInput = document.getElementById('date');
+       const today = new Date().toISOString().split('T')[0];
+       dateInput.setAttribute('min', today);
+
+       // --- Show/Hide "Other" Concern Field Logic ---
+       const concernSelect = document.getElementById('concern');
+       const otherConcernGroup = document.getElementById('otherConcernGroup');
+       const otherConcernInput = document.getElementById('otherConcern');
+
+       concernSelect.addEventListener('change', function() {
+           if (this.value === 'Other') {
+               otherConcernGroup.style.display = 'block';
+               otherConcernInput.setAttribute('required', 'true');
+           } else {
+               otherConcernGroup.style.display = 'none';
+               otherConcernInput.removeAttribute('required');
+               otherConcernInput.value = '';
+           }
+       });
+
+        // --- Dynamic Slot Picker Logic ---
+        const slotGrid = document.getElementById('slotGrid');
+        const hiddenTimeInput = document.getElementById('time');
+        const slotMessage = document.getElementById('slotMessage');
+        const timeSlotGroup = document.getElementById('timeSlotGroup');
+
+        // Config for available and blocked slots
+        const slotConfig = {
+            // Base slots generated for every available day
+            slots: [
+                '10:00 AM', '11:00 AM', '12:00 PM', 
+                '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM', '06:00 PM'
+            ],
+            // Manually block specific dates or times here (Format: YYYY-MM-DD)
+            blockedData: {
+                '2026-05-15': 'ALL',                  // Blocks the whole day
+                                // Example: '2026-05-16': ['10:00 AM', '02:00 PM'] // Blocks specific times
+                // --- EXAMPLES OF HOW TO BLOCK SLOTS ---
+                // '2026-12-25': 'ALL',                                      // Example 1: Blocks the entire day (e.g., Christmas)
+                // '2026-06-15': ['10:00 AM'],                               // Example 2: Blocks a single specific time slot
+                '2026-05-14': ['11:00 AM', '02:00 PM', '04:00 PM'],       // Example 3: Blocks multiple specific time slots
+                // '2026-08-01': 'ALL',                                      // Example 4: Blocks an entire day for vacation
+                // '2026-08-02': 'ALL'                                       // Example 5: Blocks the next consecutive day
+
+                /*// --- 2026 HOLIDAYS (INDIA & KARNATAKA) ---
+                '2026-01-14': 'ALL', // Makara Sankranti
+                '2026-02-15': 'ALL', // Maha Shivaratri (Sunday)
+                '2026-03-06': 'ALL', // Holi
+                '2026-03-21': 'ALL', // Ugadi (Saturday)
+                '2026-04-03': 'ALL', // Good Friday
+                '2026-04-20': 'ALL', // Eid-ul-Fitr
+                '2026-05-01': 'ALL', // May Day / Buddha Purnima
+                '2026-09-04': 'ALL', // Janmashtami
+                '2026-09-25': 'ALL', // Milad-un-Nabi
+                '2026-10-09': 'ALL', // Diwali
+                '2026-11-01': 'ALL', // Karnataka Rajyotsava (Sunday)
+                '2026-11-24': 'ALL', // Guru Nanak Jayanti
+                '2026-11-26': 'ALL', // Kanakadasa Jayanti
+                '2026-12-25': 'ALL', // Christmas Day */
+            },
+            blockWeekends: true // Automatically block Saturdays & Sundays
+        };
+
+        dateInput.addEventListener('change', function() {
+            const selectedDateStr = this.value;
+            
+            if (!selectedDateStr) {
+                timeSlotGroup.style.display = 'none';
+                hiddenTimeInput.value = '';
+                return;
+            }
+
+            timeSlotGroup.style.display = 'block';
+            slotGrid.innerHTML = '';
+            hiddenTimeInput.value = '';
+            slotMessage.textContent = '';
+            
+            const selectedDateObj = new Date(selectedDateStr);
+            const dayOfWeek = selectedDateObj.getDay();
+            const month = selectedDateObj.getMonth() + 1;
+            const day = selectedDateObj.getDate();
+            
+            // Auto-block fixed Indian National Holidays
+            const fixedHolidays = {
+                '1-26': 'Republic Day',
+                '8-15': 'Independence Day',
+                '9-4': 'Janmashtami',
+                '9-17': 'Ganesh Chaturthi',
+                '10-2': 'Gandhi Jayanti',
+                '10-9': 'Diwali',
+                '11-1': 'Karnataka Rajyotsava',
+                '11-24': 'Guru Nanak Jayanti',
+                '11-26': 'Kanakadasa Jayanti',
+                '12-25': 'Christmas Day,'
+            };
+            const holidayKey = `${month}-${day}`;
+            if (fixedHolidays[holidayKey]) {
+                slotMessage.textContent = `We are closed on ${fixedHolidays[holidayKey]}. Please select another day.`;
+                return;
+            }
+            
+            if (slotConfig.blockWeekends && (dayOfWeek === 0 || dayOfWeek === 6)) {
+                slotMessage.textContent = "We are currently closed on weekends. Please select a weekday.";
+                return;
+            }
+
+            const dateBlocks = slotConfig.blockedData[selectedDateStr];
+            if (dateBlocks === 'ALL') {
+                slotMessage.textContent = "All slots are fully booked on this date. Please select another day.";
+                return;
+            }
+
+            let availableCount = 0;
+            slotConfig.slots.forEach(slotTime => {
+                const btn = document.createElement('div');
+                btn.className = 'slot-btn';
+                btn.textContent = slotTime;
+                const isBlocked = Array.isArray(dateBlocks) && dateBlocks.includes(slotTime);
+
+                if (isBlocked) {
+                    btn.classList.add('blocked');
+                    /*btn.textContent += ' (Booked)';*/
+                } else {
+                    availableCount++;
+                    btn.addEventListener('click', function() {
+                        document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+                        this.classList.add('selected');
+                        hiddenTimeInput.value = slotTime;
+                    });
+                }
+                slotGrid.appendChild(btn);
+            });
+
+            if (availableCount === 0) {
+                slotMessage.textContent = "All slots are fully booked on this date.";
+            }
+        });
+
+       // --- Theme Toggle Logic ---
+       const themeToggleBtn = document.getElementById('themeToggle');
+       const rootElement = document.documentElement;
+       
+       const svgMoon = `<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+       const svgSun = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+
+       function updateThemeIcon(theme) {
+           themeToggleBtn.innerHTML = theme === 'dark' ? svgSun : svgMoon;
+       }
+
+       const savedTheme = localStorage.getItem('theme') || 'light';
+       rootElement.setAttribute('data-theme', savedTheme);
+       updateThemeIcon(savedTheme);
+
+       themeToggleBtn.addEventListener('click', () => {
+           const currentTheme = rootElement.getAttribute('data-theme');
+           const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+           rootElement.setAttribute('data-theme', newTheme);
+           localStorage.setItem('theme', newTheme);
+           updateThemeIcon(newTheme);
+       });
+
+       // --- Ajax Form Submission Logic ---
+       const bookingForm = document.getElementById('bookingForm');
+       const submitBtn = document.getElementById('submitBtn');
+       const formMessage = document.getElementById('formMessage');
+
+       bookingForm.addEventListener('submit', function(e) {
+           e.preventDefault();
+           
+           submitBtn.disabled = true;
+           submitBtn.textContent = 'Sending Request...';
+           
+           const formData = new FormData(bookingForm);
+           
+           fetch("https://formsubmit.co/ajax/info@mana-na.in", {
+               method: "POST",
+               body: formData,
+               headers: {
+                   'Accept': 'application/json'
+               }
+           })
+           .then(response => response.json())
+           .then(data => {
+               formMessage.textContent = '✓ Booking request sent successfully! We will contact you soon.';
+               formMessage.style.display = 'block';
+               formMessage.style.backgroundColor = '#d4edda';
+               formMessage.style.color = '#155724';
+               formMessage.style.border = '1px solid #c3e6cb';
+               
+               bookingForm.reset();
+               setTimeout(() => { formMessage.style.display = 'none'; }, 6000);
+           })
+           .catch(error => {
+               formMessage.textContent = '✗ Failed to send request. Please try again or contact us via WhatsApp.';
+               formMessage.style.display = 'block';
+               formMessage.style.backgroundColor = '#f8d7da';
+               formMessage.style.color = '#721c24';
+               formMessage.style.border = '1px solid #f5c6cb';
+           })
+           .finally(() => {
+               submitBtn.disabled = false;
+               submitBtn.textContent = 'Request Appointment';
+           });
+       });
+
+               // --- Back to Top & WhatsApp Button Logic ---
+        const backToTopBtn = document.getElementById('backToTop');
+        const whatsappBtn = document.querySelector('.whatsapp-btn');
+
+        window.addEventListener('scroll', () => {
+            // Calculate 20% of total scrollable height
+            const totalScrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercentage = (window.scrollY / totalScrollableHeight) * 100;
+
+            // Show WhatsApp button at 15% scroll
+            if (scrollPercentage > 0) {
+                whatsappBtn.classList.add('visible');
+            } else {
+                whatsappBtn.classList.remove('visible');
+            }
+
+            // Show Back to Top button at 300px scroll
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        
+   </script>
+</body>
+</html>

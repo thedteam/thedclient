@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mana-na | Counselling & Wellbeing Space</title>
+    <style>
+        /* --- CSS Variables & Theme --- */
+        :root {
+            --bg-color: #e8f6e9; 
+            --text-main: #2c3e35;
+            --text-header: #006738; 
+            --btn-bg: #006738;      
+            --btn-text: #ffffff;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(232, 246, 233, 0.95);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0d1710;
+            --text-main: #e8f6e9;
+            --text-header: #81c784; 
+            --btn-bg: #81c784;
+            --btn-text: #0d1710;
+            --card-bg: #152419;
+            --nav-bg: rgba(13, 23, 16, 0.95);
+        }
+
+        /* --- Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-header);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-header);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--text-header);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-header);
+        }
+
+        /* Active Navigation Link Highlight */
+        .nav-links a.active {
+            color: var(--text-header);
+            font-weight: 700;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-header);
+            border-radius: 2px;
+        }
+
+        /* Nav Contact Button (Overrides active styles) */
+        .nav-links a.nav-contact-btn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 15px rgba(0, 103, 56, 0.2);
+        }
+
+        .nav-links a.nav-contact-btn::after {
+            display: none; /* No underline for the button */
+        }
+
+        .nav-links a.nav-contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 103, 56, 0.3);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(0, 103, 56, 0.1);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-header);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        /* --- Awesome Cinematic Carousel --- */
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            z-index: 0;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .slide img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.1);
+            transition: transform 7s ease-out;
+            z-index: -2;
+        }
+
+        .slide.active img {
+            transform: scale(1);
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0, 103, 56, 0.9) 0%, rgba(15, 26, 18, 0.4) 60%, rgba(0,0,0,0.1) 100%);
+            z-index: -1;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+        }
+
+        [data-theme="dark"] .slide-overlay {
+            background: linear-gradient(90deg, rgba(13, 23, 16, 0.95) 0%, rgba(13, 23, 16, 0.6) 60%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .slide-content {
+            max-width: 700px;
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 1s ease-out;
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .slide-content {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .slide-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 550px;
+        }
+
+        .slide-content .btn {
+            background-color: #ffffff;
+            color: var(--text-header);
+            font-size: 1rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .slide-content .btn:hover {
+            background-color: #e8f6e9;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 50px;
+            left: 10%;
+            display: flex;
+            gap: 12px;
+            z-index: 2;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .indicator.active {
+            width: 40px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(255,255,255,0.4);
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 1.5rem 0%;
+            padding-bottom: 0rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-card {
+            background-color: var(--card-bg);
+            padding: 4rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0, 103, 56, 0.05);
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .approach-tile {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0, 103, 56, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .approach-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .approach-tile h3 {
+            color: var(--text-header);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .approach-tile p {
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .approach-journey-tile {
+            grid-column: span 1 / -1; /* Make this tile span across available columns */
+        }
+        
+        .approach-intro-card {
+            background-color: var(--card-bg);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0, 103, 56, 0.05);
+            padding: 4rem;
+            border-radius: 24px;
+            margin-bottom: 3rem;
+            text-align: center; /* Center align text */
+        }
+
+        .approach-intro-card h2 {
+            font-size: 2.8rem; /* Larger heading */
+            margin-bottom: 1rem;
+        }
+
+        .approach-intro-card p {
+            font-size: 1.1rem;
+            max-width: 800px; /* Constrain width for readability */
+            margin: 0 auto;
+        }
+
+        #about {
+            padding: 6rem 5%;
+            margin-bottom: 3rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 103, 56, 0.1);
+        }
+
+        #about h2 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #about p {
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .counselor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .counselor-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            object-fit: cover;
+            aspect-ratio: 4/5;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid rgba(0, 103, 56, 0.1);
+            border-radius: 12px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--text-header);
+            background-color: var(--card-bg);
+        }
+
+        /* --- Floating Buttons --- */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366; 
+            color: white;
+        }
+
+        .whatsapp-btn svg { width: 32px; height: 32px; fill: white; }
+
+        .back-top-btn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .back-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-top-btn svg { width: 28px; height: 28px; fill: var(--btn-text); }
+
+        .float-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(0, 103, 56, 0.1);
+            font-size: 0.95rem;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 1024px) {
+            .slide-content h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 900px) {
+            .counselor-grid, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .section-card { padding: 3rem; }
+            .carousel-indicators {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 30px;
+            }
+            .slide-overlay {
+                background: linear-gradient(to top, rgba(0, 103, 56, 0.95) 0%, rgba(15, 26, 18, 0.7) 50%, rgba(0,0,0,0.2) 100%);
+                padding: 0 5%;
+                justify-content: center;
+                align-items: flex-end;
+                padding-bottom: 12vh;
+            }
+            .slide-content {
+                text-align: center;
+                transform: translateY(30px);
+            }
+            .slide.active .slide-content {
+                transform: translateY(0);
+            }
+            .slide-content p { margin: 0 auto 2rem auto; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--nav-bg);
+                flex-direction: column;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s ease-in-out;
+            }
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+            
+            .nav-links a.nav-contact-btn {
+                display: inline-block;
+                width: max-content;
+                margin: 0 auto;
+            }
+            .slide-content h1 { font-size: 2.2rem; }
+            .section-card { padding: 2rem; }
+        }
+            .footer-credit {
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            Mana-na
+        </div>
+        
+        <div class="nav-controls">
+            <div class="nav-links" id="navLinks">
+                <a href="#home" data-target="home" class="active">Home</a>
+                <a href="#about" data-target="about">About</a>
+                <a href="#approach" data-target="approach">Our Approach</a>
+                <a href="#counselor" data-target="counselor">Meet Divya</a>
+                <a href="#contact" data-target="contact" class="nav-contact-btn">Contact</a>
+            </div>
+            
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme"></button>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header id="home" class="carousel-wrapper">
+        <div class="slide active">
+            <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=1920&q=80" alt="Calm Water">
+            <div class="slide-overlay">
+                <div class="slide-content">
+                    <h1>Rooted in Care.<br>Guided by Science.</h1>
+                    <p>Welcome to Mana-na. Mental well-being deeply connected to how we live, grow, and thrive.</p>
+                    <a href="#about" class="btn">Discover Mana-na</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1920&q=80" alt="Peaceful Nature">
+            <div class="slide-overlay">
+                <div class="slide-content">
+                    <h1>Awareness & Emotional Resilience</h1>
+                    <p>More than methods, we offer companionship on your journey to a fulfilling life.</p>
+                    <a href="#approach" class="btn">Our Approach</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=1920&q=80" alt="Warm Light">
+            <div class="slide-overlay">
+                <div class="slide-content">
+                    <h1>Navigate Your Story with Clarity</h1>
+                    <p>Making mental health support practical, accessible, and deeply personal.</p>
+                    <a href="#contact" class="btn">Start Your Journey</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="carousel-indicators">
+            <div class="indicator active" onclick="goToSlide(0)"></div>
+            <div class="indicator" onclick="goToSlide(1)"></div>
+            <div class="indicator" onclick="goToSlide(2)"></div>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2>Welcome to Mana‑na</h2>
+        <p><strong>Manana means reflective thinking</strong> — the process of understanding one’s thoughts with clarity. This timeless concept is the heartbeat of our practice, reminding us that mental well‑being is deeply connected to how we live, grow, and thrive.</p>
+    </section>
+
+    <section id="approach">
+        <div class="section-card approach-intro-card">
+            <h2>Our Approach</h2>
+            <p>At Mana‑na, we believe that awareness and emotional resilience are the foundations of a fulfilling life. More than methods, we offer companionship on your journey:</p>
+        </div>
+        <div class="approach-grid">
+            <div class="approach-tile">
+                <h3>Compassionate Care</h3>
+                <p>A safe, non‑judgmental space where you feel seen and valued.</p>
+            </div>
+            <div class="approach-tile">
+                <h3>Evidence‑Based Practice</h3>
+                <p>Proven scientific methods that empower your healing journey.</p>
+            </div>
+            <div class="approach-tile">
+                <h3>Practical Support</h3>
+                <p>Tools for personal growth you can apply in everyday life.</p>
+            </div>
+        </div>
+        <div class="section-card" style="margin-top: 3rem;">
+            <h3>Your Journey, Supported</h3>
+            <p>We are here to help you navigate your story with clarity and grace. Whether you are seeking guidance through a difficult phase or looking for the different perspective to flourish, Mana‑na walks alongside you.</p>
+            <p style="margin-top: 1rem;"><em>Our mission is simple: to make mental health support practical, accessible, and deeply personal.</em></p>
+        </div>
+    </section>
+
+    <section id="counselor">
+        <div class="section-card counselor-grid">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Divya Narayan - Counselling Psychologist" class="counselor-img">
+            <div>
+                <h2>Meet the Counselor</h2>
+                <h3 style="color: var(--text-main); font-weight: 500;">Hi, I am Divya Narayan</h3>
+                <p>I believe therapy should feel like a safe, supportive space where you can explore challenges and discover new ways forward. I am a counselling psychologist with a Master’s in Counselling Psychology and a Diploma in Counselling Skills, trained in CBT-informed, evidence-based approaches.</p>
+                <p>I work with adolescents and adults experiencing stress, anxiety, emotional concerns, relationship difficulties, and life transitions. Having spent years in high-pressure academic and leadership environments, I understand the stress and expectations that often come with them. I use those insights to help clients build practical coping strategies that fit their unique lives.</p>
+                <p>My approach is person-centered and evidence-based, drawing on Cognitive Behavioral Therapy (CBT) and Rational Emotive Behavior Therapy (REBT). Together, we’ll work to shift patterns of thought and behavior that no longer serve you, creating space for resilience, clarity, and growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-card">
+            <h2>Contact Us</h2>
+            <p style="margin-bottom: 3rem;">Ready to start your journey? Reach out to schedule a session or ask any questions.</p>
+            <form class="contact-grid" onsubmit="event.preventDefault();">
+                <div>
+                    <div class="form-group">
+                        <input type="text" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" required placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" required placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </div>
+                <div style="padding-left: 1rem;">
+                    <h3>Mana-na Wellbeing Space</h3>
+                    <p>Creating space for resilience, clarity, and growth.</p>
+                    <div style="margin-top: 2rem;">
+                        <p><strong>Email:</strong> connect@mana-na.com</p>
+                        <p style="margin-top: 0.5rem;"><strong>Available for:</strong> In-person and online consultations.</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Mana-na Counselling & Wellbeing Space. All rights reserved.</p>
+        <p class="footer-credit">Designed by The 'D Team</p>
+    </footer>
+
+    <div class="floating-buttons">
+        <a href="https://wa.me/YOUR_PHONE_NUMBER_HERE" target="_blank" class="float-btn whatsapp-btn" aria-label="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+        <button id="backToTop" class="float-btn back-top-btn" aria-label="Back to Top">
+            <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+        </button>
+    </div>
+
+    <script>
+// --- Navigation Scroll & Active Link Highlighting (Scroll Spy) ---
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navItems = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('section, header'); 
+        const navBar = document.querySelector('nav'); // Get the nav element
+
+        // Mobile Menu Toggle
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Click to Scroll with Exact Header Offset Calculation
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                if(this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    // Close mobile menu on click
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        // 1. Get the exact height of your navigation bar (approx 80px)
+                        const headerOffset = navBar.offsetHeight; 
+                        
+                        // 2. Calculate the section's distance from top of page
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        
+                        // 3. Subtract header height, minus another 20px for visual breathing room
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20;
+                        
+                        // 4. Scroll to that exact mathematical pixel
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                }
+            });
+        });
+
+        // Scroll Spy: Highlight active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            // Get the current scroll position, offset by the header height to trigger correctly
+            const scrollPosition = window.pageYOffset + navBar.offsetHeight + 50; 
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('data-target') === current) {
+                    if(!a.classList.contains('nav-contact-btn')){
+                        a.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // --- Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const rootElement = document.documentElement;
+        
+        const svgMoon = `<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+        const svgSun = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+
+        function updateThemeIcon(theme) {
+            themeToggleBtn.innerHTML = theme === 'dark' ? svgSun : svgMoon;
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        rootElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = rootElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            rootElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        // --- Cinematic Carousel Logic ---
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+            indicators.forEach((ind, index) => {
+                if (index === currentSlide) {
+                    ind.classList.add('active');
+                } else {
+                    ind.classList.remove('active');
+                }
+            });
+        }
+
+        window.goToSlide = function(index) {
+            currentSlide = index;
+            updateCarousel();
+        };
+
+        const track = document.getElementById('home');
+        let startX = 0;
+        let endX = 0;
+
+        track.addEventListener('touchstart', (e) => {
+            startX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (startX - endX > swipeThreshold) {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            } else if (endX - startX > swipeThreshold) {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+        }
+
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }, 7000);
+
+        // --- Back to Top Logic ---
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

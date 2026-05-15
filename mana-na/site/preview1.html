@@ -1,0 +1,3833 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mana-na</title>
+    <meta name="description" content="Mana-na | Counselling & Wellbeing Space - Rooted in Care, Guided by Science. Supporting mental well-being through awareness, understanding, and meaningful change.">
+    <meta property="og:url" content="https://www.mana-na.in/"/>
+    <meta property="og:site_name" content="Mana-na" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://www.mana-na.in/mana-na_logo.png" />
+    <meta name="google-site-verification" content="yW7IG-AH1RpOf2CSQDww_HuZbelVrrjI82FtT_MTp4M" />
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="https://www.mana-na.in/favicon.png" type="image/x-icon">
+
+    <!-- ANDROID/CHROME -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="white">
+
+    <!-- IOS APP ICON + MOBILE SAFARI -->
+    <link rel="apple-touch-icon" href="https://www.mana-na.in/icon-72x72.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Hello World">
+
+    <!-- WINDOWS -->
+    <meta name="msapplication-TileImage" content="https://www.mana-na.in/icon-72x72.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+    <style>
+        /* --- CSS Variables & Theme --- */
+        :root {
+            --bg-color: #e8f6e9; 
+            --text-main: #2c3e35;
+            --text-header: #006738; 
+            --btn-bg: #006738;      
+            --btn-text: #ffffff;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(232, 246, 233, 0.95);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0d1710;
+            --text-main: #e8f6e9;
+            --text-header: #81c784; 
+            --btn-bg: #81c784;
+            --btn-text: #0d1710;
+            --card-bg: #152419;
+            --nav-bg: rgba(13, 23, 16, 0.95);
+        }
+
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+        }
+
+        /* --- Page Loader --- */
+        #page-loader {
+            position: fixed;
+            inset: 0;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .loader-logo {
+            width: 180px;
+            height: auto;
+            animation: loaderPulse 2s ease-in-out infinite;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .loader-logo {
+            background-color: rgba(255, 255, 255, 0);
+            padding: 10px;
+            border-radius: 12px;
+        }
+
+        @keyframes loaderPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        /* Loader Utility Classes for JS */
+        .opacity-100 { opacity: 1; }
+        .opacity-0 { opacity: 0; }
+        .pointer-events-none { pointer-events: none; }
+        .hidden { display: none !important; }
+
+        /* --- Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-header);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        /* Bold & Bright Gradient Text for Section Headers */
+        section h2 {
+            background: linear-gradient(90deg, #006738 0%, #129e58 50%, #006738 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 500;
+            letter-spacing: 1px;
+            animation: gradientShift 8s ease infinite;
+            display: inline-block;
+            filter: brightness(1.15);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        [data-theme="dark"] section h2 {
+            background: linear-gradient(90deg, #81c784 0%, #a8d5a8 50%, #81c784 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 500;
+            animation: gradientShift 8s ease infinite;
+            filter: brightness(1.15);
+        }
+
+        /* --- Areas of Support Grid (Distinct Design) --- */
+        #areas-of-support .section-card {
+            text-align: center;
+        }
+
+        #areas-of-support h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+    #areas-of-support .section-subtitle {
+        font-size: 1.5rem;
+    }
+
+        #gallery .section-card {
+            text-align: center;
+        }
+
+        #gallery h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        #gallery p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        #faq .section-card {
+            text-align: center;
+        }
+
+        #faq h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        #book-appointment .section-card {
+            text-align: center;
+        }
+
+        #book-appointment h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        #emergency-support .section-card {
+            text-align: center;
+        }
+
+        #emergency-support h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        #testimonials .section-card {
+            text-align: center;
+        }
+
+        #testimonials h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        #blogs .section-card {
+            text-align: center;
+        }
+
+        #blogs h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 3rem !important;
+            opacity: 0.9;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        [data-theme="dark"] .support-item {
+            background-color: var(--card-bg);
+        }
+
+        .support-item {
+            background-color: #e9f6ea;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            border: 2px solid var(--text-header);
+            box-shadow: 0 6px 20px rgba(0, 103, 56, 0.06);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+        }
+
+        /* Colored borders for each support item 
+        .support-item:nth-child(1) { border-color: #E57373; }
+        .support-item:nth-child(2) { border-color: #64B5F6; }
+        .support-item:nth-child(3) { border-color: #81C784; }
+        .support-item:nth-child(4) { border-color: #FFD54F; }
+        .support-item:nth-child(5) { border-color: #BA68C8; }
+        .support-item:nth-child(6) { border-color: #FF8A65; }*/
+
+        .support-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.12; /* Kept very subtle for readability */
+            z-index: 0;
+            transition: transform 0.6s ease, opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .support-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 103, 56, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .support-item:hover {
+            transform: translateY(-12px) scale(1.08);
+            box-shadow: 0 18px 45px rgba(0, 103, 56, 0.18);
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(0, 103, 56, 0.03) 100%);
+        }
+
+        .support-item:hover .support-bg {
+            transform: scale(1.1);
+            opacity: 0.25; /* Slightly brightens on hover */
+        }
+
+        .support-item:hover::before {
+            opacity: 1;
+        }
+
+        .support-item h3 {
+            color: var(--text-header);
+            font-size: 1.4rem;
+            margin: 0 0 1rem 0;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.3px;
+            transition: all 0.4s ease;
+        }
+
+        .support-description {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .support-item:hover .support-description {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 200px;
+        }
+
+        /* --- FAQ Section --- */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(0, 103, 56, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-header);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: rgba(0, 103, 56, 0.05);
+        }
+
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            padding: 0 1.5rem;
+            color: var(--text-main);
+            opacity: 0.9;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem 1.5rem;
+        }
+
+        /* --- Blogs Section --- */
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: left;
+        }
+
+        .blog-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 103, 56, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 103, 56, 0.1);
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            color: var(--text-header);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .blog-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Blog Modal --- */
+        .blog-modal {
+            position: fixed;
+            inset: 0;
+            background-color: var(--bg-color);
+            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+            backdrop-filter: blur(5px); /* Blur effect */
+            -webkit-backdrop-filter: blur(5px); /* Safari support */
+            z-index: 3000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            overflow-y: auto;
+            padding: 80px 5% 40px;
+        }
+
+        .blog-modal.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .blog-modal-content {
+            max-width: 1900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 3.5rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .blog-modal-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--text-header);
+            line-height: 1;
+            transition: var(--transition);
+        }
+
+        .blog-modal-close:hover {
+            transform: scale(1.1);
+        }
+
+        .blog-modal-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            text-align: left;
+        }
+
+        .blog-main-content img {
+            width: 85%;
+            max-width: 350px;
+            height: 200px;
+            display: block;
+            margin-bottom: 2.5rem;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .blog-main-content h2 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .blog-main-content .blog-date {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-body {
+            font-size: 1.15rem;
+            line-height: 1.9;
+        }
+
+        .blog-sidebar {
+            border-left: 1px solid rgba(0, 103, 56, 0.1);
+            padding-left: 2.5rem;
+        }
+
+        .sidebar-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--text-header);
+        }
+
+        .jump-link-item {
+            cursor: pointer;
+            padding: 1.2rem;
+            border-radius: 16px;
+            background-color: var(--bg-color);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .jump-link-item:hover {
+            background-color: var(--card-bg);
+            border-color: var(--text-header);
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0, 103, 56, 0.05);
+        }
+
+        .jump-link-item h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .jump-link-item .blog-date {
+            font-size: 0.8rem;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 900px) {
+            .blog-modal-layout { grid-template-columns: 1fr; }
+            .blog-sidebar {
+                border-left: none;
+                padding-left: 0;
+                margin-top: 3rem;
+                padding-top: 3rem;
+                border-top: 1px solid rgba(0, 103, 56, 0.1);
+            }
+            .blog-modal {
+                padding: 60px 15px 20px;
+            }
+            .blog-modal-content { 
+                padding: 1.5rem; 
+                border-radius: 16px;
+            }
+            .blog-main-content h2 { font-size: 2.2rem; }
+            .blog-main-content img {
+                width: 100%;
+                height: auto;
+                max-height: 500px;
+            }
+            .blog-modal-close {
+                top: 0px;
+                right: 6px;
+                font-size: 2rem;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            color: var(--text-header);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 450;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            font-weight: 500;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--text-header);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-header);
+        }
+
+        /* Active Navigation Link Highlight */
+        .nav-links a.active {
+            color: var(--text-header);
+            font-weight: 700;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-header);
+            border-radius: 2px;
+        }
+
+        /* Nav Contact Button (Overrides active styles) */
+        .nav-links a.nav-contact-btn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 15px rgba(0, 103, 56, 0.2);
+            text-align: center;
+        }
+
+        #contactBtnText {
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a.nav-contact-btn::after {
+            display: none; /* No underline for the button */
+        }
+
+        .nav-links a.nav-contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 103, 56, 0.3);
+        }
+
+        /* --- Nav Contact Dropdown --- */
+        .nav-contact-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-contact-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: transparent;
+        }
+
+        .nav-contact-wrapper .dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 50%;
+            transform: translateX(50%) translateY(10px);
+            background-color: var(--card-bg);
+            min-width: max-content;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            border: 1px solid rgba(0, 103, 56, 0.1);
+            margin-top: 15px;
+        }
+
+        .nav-contact-wrapper:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(50%) translateY(0);
+        }
+
+        .dropdown-content a {
+            color: var(--text-main) !important;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 500 !important;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            text-align: center;
+        }
+        .dropdown-content a svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }        
+
+        .dropdown-content a:hover {
+            background-color: rgba(0, 103, 56, 0.05);
+            color: var(--text-header) !important;
+        }
+        
+        .dropdown-content a::after {
+            display: none !important;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(0, 103, 56, 0.1);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-header);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        /* --- Awesome Cinematic Carousel --- */
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            z-index: 0;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .slide img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.1);
+            transition: transform 7s ease-out;
+            z-index: -2;
+        }
+
+        .slide.active img {
+            transform: scale(1);
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 26, 18, 0.4);
+            z-index: -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+        }
+
+        [data-theme="dark"] .slide-overlay {
+            background: rgba(13, 23, 16, 0.6);
+        }
+
+        .slide-content {
+            max-width: 800px;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .slide-content h1, 
+        .slide-content p, 
+        .slide-content .btn {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 1.2s ease-out;
+        }
+
+        .slide.active .slide-content h1 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .slide-content p {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+        .slide.active .slide-content .btn {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.8s;
+        }
+
+        .slide-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 auto 2.5rem auto;
+            font-weight: 300;
+            max-width: 550px;
+        }
+
+        .slide-content .btn {
+            background-color: #ffffff;
+            color: var(--text-header);
+            font-size: 1rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        [data-theme="dark"] .slide-content .btn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+        }
+
+        .slide-content .btn:hover {
+            background-color: #e8f6e9;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 2;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .indicator.active {
+            width: 40px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(255,255,255,0.4);
+        }
+
+        /* Carousel Navigation Buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev { left: 30px; }
+        .carousel-btn.next { right: 30px; }
+
+        .carousel-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        @media (max-width: 900px) {
+            .carousel-btn { display: none; }
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 1.5rem 0%;
+            padding-bottom: 0rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            scroll-margin-top: 100px; /* Offsets the fixed navbar on direct link navigation */
+        }
+
+        .section-card {
+            background-color: var(--card-bg);
+            padding: 4rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0, 103, 56, 0.05);
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .approach-tile {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0, 103, 56, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .approach-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .approach-tile h3 {
+            color: var(--text-header);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .approach-tile p {
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .approach-journey-tile {
+            grid-column: span 1 / -1; /* Make this tile span across available columns */
+        }
+        
+        .approach-intro-card {
+            background-color: var(--card-bg);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0, 103, 56, 0.05);
+            padding: 4rem;
+            border-radius: 24px;
+            margin-bottom: 3rem;
+            text-align: center; /* Center align text */
+        }
+
+        .approach-intro-card h2 {
+            font-size: 2rem; /* Larger heading */
+            margin-bottom: 1rem;
+        }
+
+        .approach-intro-card p {
+            font-size: 1.1rem;
+            max-width: 800px; /* Constrain width for readability */
+            margin: 0 auto;
+        }
+
+        #about {
+            padding: 8rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #about::after {
+            content: "Mana-na";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            font-size: 12rem;
+            font-weight: 800;
+            color: var(--text-header);
+            opacity: 0.04;
+            z-index: -1;
+            white-space: nowrap;
+            pointer-events: none;
+            animation: moveText 10s linear infinite;
+        }
+
+        @keyframes moveText {
+            0% { transform: translateY(-50%) translateX(-100%); }
+            100% { transform: translateY(-50%) translateX(100%); }
+        }
+
+        #about h2 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 0;
+            text-align: left;
+        }
+
+        #about p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 0;
+            text-align: left;
+            padding-left: 3rem;
+            border-left: 4px solid var(--text-header);
+        }
+
+        @media (max-width: 900px) {
+            #about {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 5rem 5%;
+                text-align: center;
+            }
+            #about h2 {
+                font-size: 3rem;
+                text-align: center;
+            }
+            #about p {
+                text-align: center;
+                padding-left: 0;
+                border-left: none;
+                border-top: 2px solid var(--text-header);
+                padding-top: 2rem;
+            }
+            #about::after {
+                font-size: 8rem;
+                top: 10%;
+            }
+            section {
+                text-align: center;
+            }
+            .section-card {
+                margin-left: 2rem;
+                margin-right: 2rem;
+                text-align: center;
+            }
+            section h2 {
+                justify-content: center;
+                display: flex;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .counsellor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .counsellor-img {
+            width: 100%;
+            height: 600px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            object-fit: cover;
+            aspect-ratio: 4/5;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid rgba(0, 103, 56, 0.1);
+            border-radius: 12px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: inherit;
+            transition: var(--transition);
+            font-size: 1rem;
+            resize: vertical;
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--text-header);
+            background-color: var(--card-bg);
+            box-shadow: 0 0 0 4px rgba(0, 103, 56, 0.05);
+        }
+
+        /* --- Booking Form Modal Styles --- */
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-header);
+            font-size: 0.95rem;
+            text-align: left;
+        }
+        
+        [data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+
+        /* Custom styling for date input to ensure consistent appearance across devices */
+        .form-group input[id="date"] {
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23006738" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 1.2rem center;
+            background-size: 20px;
+            position: relative;
+        }
+        [data-theme="dark"] .form-group input[id="date"] {
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%2381c784" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>');
+        }
+        .form-group input[id="date"]::-webkit-calendar-picker-indicator {
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+        .form-group input[id="date"]::-webkit-inner-spin-button,
+        .form-group input[id="date"]::-webkit-clear-button {
+            display: none;
+            -webkit-appearance: none;
+        }
+
+        .slot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .slot-btn {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            border: 2px solid rgba(0, 103, 56, 0.1);
+            padding: 0.8rem 0.5rem;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.95rem;
+            user-select: none;
+        }
+
+        .slot-btn:hover:not(.blocked):not(.selected) {
+            border-color: var(--text-header);
+            background-color: var(--card-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 103, 56, 0.05);
+        }
+
+        .slot-btn.selected {
+            background-color: var(--text-header);
+            color: var(--btn-text);
+            border-color: var(--text-header);
+            box-shadow: 0 4px 15px rgba(0, 103, 56, 0.2);
+        }
+
+        .slot-btn.blocked {
+            opacity: 0.8;
+            cursor: not-allowed;
+            background-color: #fff5f5;
+            border: 2px dashed #ffcbcb;
+            text-decoration: line-through;
+            color: #c53030;
+        }
+
+        [data-theme="dark"] .slot-btn.blocked {
+            background-color: rgba(45, 18, 18, 0.4);
+            border-color: #ffcbcb;
+            color: #fc8181;
+        }
+
+        .slot-message {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin-top: 0.8rem;
+            text-align: left;
+        }
+
+        .slot-message.is-error {
+            color: #c53030;
+        }
+
+        [data-theme="dark"] .slot-message,
+        [data-theme="dark"] .slot-message.is-error {
+            color: #fc8181;
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 103, 57, 0.125);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text-header);
+            font-size: 0.95rem;
+        }
+        
+        /* --- Gallery Section --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            box-shadow: 0 10px 30px rgba(0, 103, 56, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 103, 56, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        [data-theme="dark"] .gallery-overlay {
+            background: rgba(13, 23, 16, 0.6);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay svg {
+            width: 40px;
+            height: 40px;
+            fill: #ffffff;
+            transform: scale(0.5);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .gallery-item:hover .gallery-overlay svg {
+            transform: scale(1);
+        }
+
+        /* --- Lightbox --- */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox.active {
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #ffffff;
+            font-size: 3.5rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .lightbox-close:hover {
+            color: #81c784;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: none;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 2001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 1;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev { left: 30px; }
+        .lightbox-next { right: 30px; }
+
+        /* --- Floating Buttons --- */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366; 
+            color: white;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .whatsapp-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .whatsapp-btn svg { width: 32px; height: 32px; fill: white; }
+
+        .back-top-btn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .back-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-top-btn svg { width: 28px; height: 28px; fill: var(--btn-text); }
+
+        .float-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        /* --- Newsletter Section --- */
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(0, 103, 56, 0.1);
+            border-radius: 30px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            outline: none;
+            transition: var(--transition);
+        }
+        .newsletter-form input:focus {
+            border-color: var(--text-header);
+            background-color: var(--card-bg);
+        }
+
+        .footer-newsletter {
+            margin-top: 2.5rem;
+        }
+        .footer-newsletter .newsletter-form {
+            margin: 0;
+            max-width: 400px;
+        }
+
+        /* --- Footer Social Icons --- */
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 2.5rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(0, 103, 56, 0.1);
+            color: var(--text-header);
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .footer-social a {
+            background-color: rgba(129, 199, 132, 0.1);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--text-header);
+            color: var(--btn-text);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 103, 56, 0.2);
+        }
+        
+        [data-theme="dark"] .footer-social a:hover {
+            color: var(--card-bg);
+            box-shadow: 0 5px 15px rgba(129, 199, 132, 0.2);
+        }
+
+        .footer-social a svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            padding: 5rem 5% 2rem;
+            border-top: 1px solid rgba(0, 103, 56, 0.1);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            margin-top: 1.5rem;
+            max-width: 400px;
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        .footer-nav h4 {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .footer-nav-links a:hover {
+            color: var(--text-header);
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .footer-qr {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-qr h4 {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-qr img {
+            width: 130px;
+            height: 130px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin: 1rem;
+            padding: 12px;
+            background-color: #ffffff;
+        }
+
+        .footer-qr p {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 103, 56, 0.1);
+            text-align: center;
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            opacity: 0.7;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 1024px) {
+            .slide-content h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 900px) {
+            .support-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            .counsellor-grid, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .counsellor-img {
+                width: 80%;
+                height: 400px;
+                margin: 0 auto;
+            }
+            .section-card { padding: 3rem; }
+            .carousel-indicators {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 70px;
+            }
+            .slide-overlay {
+                background: linear-gradient(to top, #81c784 0%, rgba(15, 26, 18, 0.7) 50%, rgba(0,0,0,0.2) 100%);
+                padding: 0 5%;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 0;
+            }
+            .slide-content {
+                text-align: center;
+                transform: translateY(0);
+            }
+            .slide.active .slide-content {
+                transform: translateY(0);
+            }
+            .slide-content p { margin: 0 auto 2rem auto; }
+
+            /* Footer Mobile Styles */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+                padding: 0 1rem;
+            }
+            .footer-brand p {
+                margin: 1.5rem auto 0;
+                text-align: center;
+            }
+            .footer-nav-links {
+                align-items: center;
+                justify-content: center;
+            }
+            .footer-newsletter .newsletter-form {
+                margin: 0 auto;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            .footer-brand .logo {
+                justify-content: center;
+            }
+
+            .footer-qr {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .nav-links a.nav-contact-btn {
+                min-width: 146px; /* Prevents layout shifting when text changes */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .support-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .support-item {
+                padding: 2.5rem 2rem;
+                min-height: 160px;
+            }
+            .support-item h3 {
+                font-size: 1.2rem;
+            }
+            .nav-links {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--nav-bg);
+                flex-direction: column;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s ease-in-out;
+            }
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+            
+            .booking-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .slot-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links a.nav-contact-btn {
+                display: inline-block;
+                width: max-content;
+                margin: 0 auto;
+            }
+            .nav-contact-wrapper {
+                flex-direction: column;
+            }
+            .nav-contact-wrapper .dropdown-content {
+                position: static;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                border: none;
+                background: transparent;
+                margin-top: 10px;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+            .nav-contact-wrapper:hover .dropdown-content {
+                transform: none;
+            }
+            .nav-contact-wrapper::after {
+                display: none;
+            }
+            .slide-content h1 { font-size: 2.2rem; }
+            .section-card { 
+                padding: 2rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+        #areas-of-support h2 {
+            white-space: nowrap;
+            font-size: 1.5rem;
+        }
+    #areas-of-support .section-subtitle {
+        font-size: 1.1rem;
+    }
+        .approach-intro-card h2 {
+            font-size: 1.5rem;
+        }
+            .counsellor-img {
+                width: 70%;
+                height: 300px;
+                margin: 0 auto;
+            }
+            .newsletter-form {
+                flex-direction: column;
+            }
+            .newsletter-form input {
+                text-align: center;
+            }
+            .brand-name {
+                font-size: 1.2rem;
+            }
+            .tagline {
+                font-size: 0.65rem;
+            }
+            .lightbox-nav {
+                display: flex;
+                background: transparent !important;
+                border: none !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                width: auto;
+                height: auto;
+                font-size: 2rem;
+                padding: 0;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                -webkit-tap-highlight-color: transparent;
+                outline: none;
+            }
+            .lightbox-nav:hover, .lightbox-nav:active {
+                background: transparent !important;
+            }
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+        }
+            .footer-credit {
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            opacity: 0.7;
+        }
+        .protected-asset {
+    /* Prevent dragging */
+    -webkit-user-drag: none;
+    
+    /* Prevent highlighting/selecting */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    /* Optional: Completely disables all mouse interactions */
+    /* pointer-events: none; */ 
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.kannada-text {
+    font-weight: 400;
+    opacity: 0.9;
+}
+.kannada-title {
+    font-weight: 400;
+}
+
+        /* --- Validation Errors --- */
+        .validation-error {
+            color: #c53030;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+            text-align: left;
+        }
+        .was-validated input:invalid,
+        .was-validated select:invalid,
+        .was-validated textarea:invalid {
+            border-color: #c53030 !important;
+            background-color: #fff5f5 !important;
+        }
+        .was-validated input:invalid ~ .validation-error,
+        .was-validated select:invalid ~ .validation-error,
+        .was-validated textarea:invalid ~ .validation-error {
+            display: block;
+        }
+        [data-theme="dark"] .was-validated input:invalid,
+        [data-theme="dark"] .was-validated select:invalid,
+        [data-theme="dark"] .was-validated textarea:invalid {
+            background-color: rgba(45, 18, 18, 0.4) !important;
+            border-color: #ffcbcb !important;
+        }
+        [data-theme="dark"] .validation-error {
+            color: #fc8181;
+        }
+
+@media (max-width: 768px) {
+    #gallery h2 {
+        white-space: nowrap;
+        font-size: 1.5rem;
+    }
+
+    #gallery p {
+
+        font-size: 1rem;
+    }
+
+    .blogs-grid, .blog-info {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    #blogs h2 {
+        white-space: nowrap;
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #testimonials h2 {
+        white-space: nowrap;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #emergency-support h2 {
+        white-space: nowrap;
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #book-appointment h2 {
+        white-space: nowrap;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #faq h2 {
+        white-space: normal;
+        max-width: 280px;
+        margin: 0 auto 1rem;
+        font-size: 1.5rem;
+    }
+    .faq-container, .faq-answer {
+        text-align: center;
+    }
+    .faq-question {
+        justify-content: center;
+        text-align: center;
+        gap: 1rem;
+    }
+}
+
+        /* --- Self-Assessment Section --- */
+        .assessment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .assessment-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .assessment-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background-color: var(--bg-color);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .assessment-item:hover {
+            border-color: var(--text-header);
+            transform: translateX(10px);
+        }
+
+        .assessment-item.selected {
+            background-color: var(--card-bg);
+            border-color: var(--text-header);
+            box-shadow: 0 4px 15px rgba(0, 103, 56, 0.1);
+        }
+
+        .checkbox-custom {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--text-header);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .assessment-item.selected .checkbox-custom {
+            background-color: var(--text-header);
+        }
+
+        .checkbox-custom svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--btn-text);
+            display: none;
+        }
+
+        .assessment-item.selected .checkbox-custom svg {
+            display: block;
+        }
+
+        .assessment-feedback {
+            margin-top: 2.5rem;
+            padding: 2.5rem;
+            background-color: rgba(0, 103, 56, 0.05);
+            border-radius: 20px;
+            text-align: center;
+            display: none;
+            animation: fadeInSelf 0.5s ease;
+            border: 1px dashed var(--text-header);
+        }
+
+        .assessment-feedback p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .assessment-item p {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+            flex-grow: 1;
+            color: var(--text-main);
+        }
+
+        @keyframes fadeInSelf {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #self-reflection .section-card {
+            text-align: center;
+        }
+
+        #self-reflection h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+        #self-reflection h2 {
+        white-space: nowrap;
+        font-size: 1.5rem;
+    }
+}
+
+        /* --- Crisis Support Section --- */
+        .crisis-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+            border: 2px dashed #ffcbcb;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-top: 0rem;
+            text-align: center;
+        }
+        [data-theme="dark"] .crisis-box {
+            background: linear-gradient(135deg, #2d121224 0%, #1a1a1a 100%);
+            border-color: #ffcbcb;
+        }
+        .crisis-box h3 { color: #c53030; margin-bottom: 1rem; }
+        [data-theme="dark"] .crisis-box h3 { color: #fc8181; }
+        .helpline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .helpline-item {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!--div id="page-loader" class="opacity-100">
+        <div class="loader-content">
+            <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo" class="loader-logo">
+        </div>
+    </div-->
+
+    <nav>
+        <a href="#home" class="logo">
+            <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo">
+            <div class="logo-text">
+                <span class="brand-name">Mana-na<span class="kannada-text">&nbsp;ಮನ-ನ</span></span>
+                <span class="tagline">Counselling & Wellbeing Space</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" data-target="home" class="active">Home</a>
+                <a href="#about" data-target="about">About</a>
+                <a href="#approach" data-target="approach">Our Approach</a>
+                <a href="#areas-of-support" data-target="areas-of-support">Areas of Support</a>
+                <!--a href="#self-reflection" data-target="self-reflection">Self-Reflection</a-->
+                <a href="#counsellor" data-target="counsellor">Meet the Counsellor</a>
+                <!---a href="#gallery" data-target="gallery">Gallery</a-->
+                <!--a href="#blogs" data-target="blogs">Blogs</a-->
+                <a href="#faq" data-target="faq">FAQs</a>
+                <div class="nav-contact-wrapper">
+                    <a href="#contact" data-target="contact" class="nav-contact-btn"><span id="contactBtnText">Contact</span></a>
+                    <div class="dropdown-content">
+                        <a href="#contact">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            Message Us
+                        </a>
+                        <a href="https://api.whatsapp.com/send/?phone=917349351920&text=Hi%20Mana-na%20-%20I%27m%20interested%20in%20Counselling%20and%20Wellbeing%20Space!%20https://www.mana-na.in" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                            WhatsApp Us
+                        </a>
+                        <a href="javascript:void(0);" onclick="openBookingModal();">
+                            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                            Book an Appointment
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme"></button>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header id="home" class="carousel-wrapper">
+        <div class="slide active">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2000&auto=format&fit=crop" alt="Calm Water">
+            <div class="slide-overlay">
+                <div class="slide-content">
+                    <h1><br>Rooted in Care.<br>Guided by Science.</h1>
+                    <p style="font-size: 1.5rem;">Supporting mental well-being and enhance quality of life through awareness, understanding, and meaningful change.</p>
+                    <a href="#about" class="btn">Discover Mana-na</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://plus.unsplash.com/premium_photo-1733306436096-080018552c70?auto=format&fit=crop&w=1920&q=80" alt="Peaceful Nature">
+            <div class="slide-overlay">
+                <div class="slide-content">
+                    <h1><br>Your Journey, Supported</h1>
+                    <!--h1><br>Awareness & Emotional Resilience</h1-->
+                    <p style="font-size: 1.5rem;">Whether you are in a difficult moment or seeking a new way of seeing things, Mana-na supports you with care and understanding.</p>
+                    <!--p>A safe, non‑judgmental space where you feel seen and valued.</p-->
+                    <a href="#approach" class="btn">Our Approach</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=1920&q=80" alt="Warm Light">
+            <div class="slide-overlay">
+                <div class="slide-content">
+                    <h1><br>Navigate Your Story with Clarity</h1>
+                    <p style="font-size: 1.5rem;">Making mental health support practical, accessible, and deeply personal.</p>
+                    <a href="#contact" class="btn">Start Your Journey</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="carousel-indicators">
+            <div class="indicator active" onclick="goToSlide(0)"></div>
+            <div class="indicator" onclick="goToSlide(1)"></div>
+            <div class="indicator" onclick="goToSlide(2)"></div>
+        </div>
+
+        <button class="carousel-btn prev" onclick="prevSlide()" aria-label="Previous Slide">
+            <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <button class="carousel-btn next" onclick="nextSlide()" aria-label="Next Slide">
+            <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </button>
+    </header>
+
+    <section id="about">
+        <h2>Welcome to Mana‑na</h2>
+        <p><strong>Manana refers to reflective thinking —</strong> <br> the quiet process of examining one’s thoughts and experiences with depth and intention. <br> We provide practical Support tools for personal growth you can apply in everyday life for developing  emotional balance.</p>
+    </section>
+
+    <section id="approach">
+        <div class="section-card approach-intro-card">
+            <h2>Our Approach</h2>
+            <p>Structured through reflective conversations and evidence-based practices, we help you make sense of your experiences and find clarity in your next steps.</p>
+        </div>
+
+        <!--div class="section-card" style="margin-top: 3rem; text-align: center;">
+            <h3>Your Journey, Supported</h3>
+            <p>A safe and supportive space to explore what you’re going through at your own pace. Whether you are in a difficult moment or seeking a new way of seeing things, Mana-na supports you with care and understanding.</p>
+            <p style="margin-top: 1rem; font-size: 1.5rem; font-weight: bold;"><em id="typing-mission"></em></p>
+        </div-->
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const text = "Our mission is simple: to make mental health support practical and accessible.";
+                const element = document.getElementById('typing-mission');
+                let i = 0;
+                
+                function type() {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(type, 50);
+                    }
+                }
+                
+                // Start typing when the section is in view
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            type();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(element.parentElement);
+            });
+        </script>
+    </section>
+
+    <section id="areas-of-support">
+        <div class="section-card">
+            <h2>Areas of Support</h2>
+            <p class="section-subtitle">Supporting teens and adults through life's challenges.</p>
+            <div class="support-grid">
+                <div class="support-item">
+                    <!--img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80" alt="Anxiety & Stress" class="support-bg"-->
+                    <h3>Anxiety & Stress</h3>
+                    <p class="support-description">Manage worry and stress with evidence-based coping strategies tailored to your needs.</p>
+                </div>
+                <div class="support-item">
+                    <!--img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80" alt="Academic Pressure" class="support-bg"-->
+                    <h3>Academic Pressure</h3>
+                    <p class="support-description">Develop study skills and resilience to thrive in academic challenges.</p>
+                </div>
+                <div class="support-item">
+                    <!--img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80" alt="Work-Life Balance" class="support-bg"-->
+                    <h3>Work-Life Balance</h3>
+                    <p class="support-description">Create meaningful boundaries and find harmony between work and personal well-being.</p>
+                </div>
+                <div class="support-item">
+                    <!--img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&w=600&q=80" alt="Emotional Difficulties" class="support-bg"-->
+                    <h3>Emotional Difficulties</h3>
+                    <p class="support-description">Explore and process complex emotions with compassionate, non-judgmental support.</p>
+                </div>
+                <div class="support-item">
+                    <!--img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80" alt="Relationship Concerns" class="support-bg"-->
+                    <h3>Relationship Concerns</h3>
+                    <p class="support-description">Strengthen connections and navigate relational challenges with clarity and care.</p>
+                </div>
+                <div class="support-item">
+                    <!--img src="https://images.unsplash.com/photo-1460533893735-45cea2212645?auto=format&fit=crop&w=600&q=80" alt="Life Transitions" class="support-bg"-->
+                    <h3>Life Transitions</h3>
+                    <p class="support-description">Navigate change with confidence and find stability during life's pivotal moments.</p>
+                </div>
+                <div class="support-item">
+                    <h3>Parenting & Teen Behavior Support</h3>
+                    <p class="support-description">Foster understanding, improve family communication, and navigate the complexities of adolescence with practical guidance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="self-reflection">
+        <div class="section-card">
+            <h2>Is Therapy for Me?</h2>
+            <p class="section-subtitle">Take a moment to reflect on these questions. If any resonate with you, it might be time to reach out.</p>
+            
+            <div class="assessment-container">
+                <div class="assessment-list">
+                    <div class="assessment-item" onclick="toggleAssessment(this)">
+                        <div class="checkbox-custom">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                        </div>
+                        <p>Do you often feel overwhelmed by stress or daily expectations?</p>
+                    </div>
+                    <div class="assessment-item" onclick="toggleAssessment(this)">
+                        <div class="checkbox-custom">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                        </div>
+                        <p> Do you find yourself Overthinking or worrying a lot?</p>
+                    </div>
+                    <div class="assessment-item" onclick="toggleAssessment(this)">
+                        <div class="checkbox-custom">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                        </div>
+                        <p> Are you finding it hard to focus or stay motivated?</p>
+                    </div>
+                    <div class="assessment-item" onclick="toggleAssessment(this)">
+                        <div class="checkbox-custom">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                        </div>
+                        <p>Are you seeking a dedicated space to understand yourself better?</p>
+                    </div>
+                    <div class="assessment-item" onclick="toggleAssessment(this)">
+                        <div class="checkbox-custom">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                        </div>
+                        <p> Do you feel low, anxious or not like yourself lately?</p>
+                    </div>
+                    <div class="assessment-item" onclick="toggleAssessment(this)">
+                        <div class="checkbox-custom">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                        </div>
+                        <p> Are studies and exams causing you stress or pressure?</p>
+                    </div>
+                </div>
+
+                <div id="assessmentFeedback" class="assessment-feedback">
+                    <p>It sounds like you're carrying a lot right now. You don't have to navigate this journey alone.</p>
+                    <a href="#contact" class="btn">Let's start a conversation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="counsellor">
+        <div class="section-card counsellor-grid">
+            <img src="https://www.mana-na.in/mtc_image.jpeg" alt="Divya Narayan - Counselling Psychologist" class="counsellor-img">
+            <div>
+                <h2>Meet the Counsellor</h2>
+                <h3 id="counsellor-greeting" style="color: var(--text-main); font-weight: 500;">Hi, I’m Divya Narayan.</h3>
+                <p id="counsellor-p1"> &nbsp;I offer a safe, supportive space to explore your thoughts and experiences with openness and without judgment.</p>
+                <p id="counsellor-p2"> I am a <b>Counselling Psychologist</b> with a Master’s in Counselling Psychology and a Diploma in Counselling Skills, trained in CBT-informed, evidence-based approaches.
+ Beyond my clinical training, my experience as a <b>former School Principal</b> has given me deep insight into the challenges faced by students and families alike. </p>
+                <p id="counsellor-p3">I have worked with adolescents and adults across private practice, online platforms, and institutional settings, supporting concerns such as stress, anxiety, relationship difficulties, and life transitions.</p>
+            </div>
+        </div>
+    </section>
+
+   <!-- <section id="gallery">
+        <div class="section-card">
+            <h2>Gallery</h2>
+            <p class="section-subtitle">A glimpse into our calm, welcoming, and safe environment.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox('https://www.mana-na.in/mtc_image-1.jpeg')">
+                    <img src="https://www.mana-na.in/mtc_image-1.jpeg" alt="Calm office space">
+                    <div class="gallery-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://www.mana-na.in/mtc_image-2.jpeg')">
+                    <img src="https://www.mana-na.in/mtc_image-2.jpeg" alt="Calm office space">
+                    <div class="gallery-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://www.mana-na.in/mtc_image-3.jpeg')">
+                    <img src="https://www.mana-na.in/mtc_image-3.jpeg" alt="Calm office space">
+                    <div class="gallery-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://www.mana-na.in/mtc_image-4.jpeg')">
+                    <img src="https://www.mana-na.in/mtc_image-4.jpeg" alt="Calm office space">
+                    <div class="gallery-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Calm office space">
+                    <div class="gallery-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=600&q=80" alt="Cozy seating area">
+                    <div class="gallery-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80" alt="Relaxing nature views">
+                    <div class="gallery-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80" alt="Journaling and desk setup">
+                    <div class="gallery-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80" alt="Peaceful nature walk">
+                    <div class="gallery-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Calm water abstract">
+                    <div class="gallery-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!--section id="blogs">
+        <div class="section-card">
+            <h2>Blogs</h2>
+            <p class="section-subtitle">Insights, stories, and practical tips for your mental well-being.</p>
+            
+            <div class="blogs-grid">
+                <article class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=600&q=80" alt="Mindfulness" class="blog-img">
+                    <div class="blog-info">
+                        <span class="blog-date">May 01, 2026</span>
+                        <h3 class="blog-title">The Art of Mindful Living</h3>
+                        <p class="blog-excerpt">Discover how incorporating small mindfulness practices into your daily routine can significantly reduce stress and improve your focus.</p>
+                        <button class="btn" style="padding: 0.6rem 1.5rem; font-size: 0.85rem;" onclick="openBlogModal(0)">Read More</button>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Anxiety" class="blog-img">
+                    <div class="blog-info">
+                        <span class="blog-date">May 01, 2026</span>
+                        <h3 class="blog-title">Navigating Anxiety Today</h3>
+                        <p class="blog-excerpt">In an increasingly fast-paced world, understanding the roots of your anxiety is the first step toward finding a sustainable sense of calm.</p>
+                        <button class="btn" style="padding: 0.6rem 1.5rem; font-size: 0.85rem;" onclick="openBlogModal(1)">Read More</button>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80" alt="Self Care" class="blog-img">
+                    <div class="blog-info">
+                        <span class="blog-date">May 01, 2026</span>
+                        <h3 class="blog-title">Why Self-Care Isn't Selfish</h3>
+                        <p class="blog-excerpt">Self-care is a vital component of mental health maintenance. Learn why prioritizing yourself allows you to be more present for others.</p>
+                        <button class="btn" style="padding: 0.6rem 1.5rem; font-size: 0.85rem;" onclick="openBlogModal(2)">Read More</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section-->
+
+    <section id="testimonials">
+        <div class="section-card">
+            <h2>Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I felt really comfortable opening up here. There was no judgment, just calm listening and support. It helped me understand my thoughts better."</p>
+                    <p class="testimonial-author">- Krishna.R</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Talking with Divya made things feel lighter from the first session, It gave me clarity during a confusing time."</p>
+                    <p class="testimonial-author">- Vidisha Ram</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I was going through a tough phase and didn’t know where to start. The sessions helped me feel more in control and a little more hopeful."</p>
+                    <p class="testimonial-author">- Deepa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="gallery"> 
+    <div class="section-card">
+    <h2>Gallery</h2>
+    <p>Community-based group sessions conducted through MANA-NA, <br>supporting women and students in building emotional awareness</p>
+    <img src="https://www.mana-na.in/mtc_image-5.png" alt="counselling space" style="width: 100%; border-radius: 8px;">
+    </div>
+</section>
+    
+    <section id="faq">
+        <div class="section-card">
+            <h2>Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find answers to common questions about our services.</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What can I expect in the first session?</span>
+                        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The first session is an initial consultation where we discuss your concerns, goals, and background. It's an opportunity for us to get to know each other and see if we're a good fit for working together.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long are the sessions?</span>
+                        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standard counselling sessions typically last 50 to 60 minutes. The frequency of sessions is usually once a week, but this can be adjusted based on your specific needs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is therapy confidential?</span>
+                        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, confidentiality is a cornerstone of therapy. Everything discussed in our sessions remains private, with a few legal and ethical exceptions (such as immediate risk of harm to yourself or others).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer online sessions?</span>
+                        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we provide both in-person and online consultations via secure video platforms, allowing you to access support from the comfort of your own space.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I book an appointment?</span>
+                        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can book an appointment or by reaching out to us via the contact form on this website, emailing us directly, or sending a message on WhatsApp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="book-appointment">
+        <div class="section-card" style="text-align: center;">
+            <h2>Book an Appointment</h2>
+            <p class="section-subtitle">Take the first step towards clarity and resilience. Schedule your session with us today.</p>
+            <button class="btn" onclick="openBookingModal()" style="padding: 1rem 3rem; font-size: 1.1rem;">Book a Session</button>
+        </div>
+    </section>
+        
+    <section id="contact">
+        <div class="section-card">
+            <h2>Contact Us</h2>
+            <p style="margin-bottom: 3rem;">Accessing support at the right time can make a meaningful difference. <br>It is never too late to seek professional's help. <br>Reach out to schedule a session or ask any questions.</p>
+             <form class="contact-grid" id="contactForm" action="https://formsubmit.co/info@mana-na.in" method="POST">
+                <div>
+                    <div class="form-group">
+                        <input type="text" id="senderName" name="sender_name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="senderEmail" name="sender_email" required placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" id="message" name="message" required placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="submitBtn">Send Message</button>
+                    <div id="formMessage" style="margin-top: 1rem; padding: 1rem; border-radius: 8px; display: none;"></div>
+                </div>
+                <div style="padding-left: 1rem;">
+                    <h3>Mana-na Counselling & Wellbeing Space</h3>
+                    <p>Creating space for resilience, clarity, and growth.</p>
+                    <div style="margin-top: 2rem;">
+                        <p>Phone: <strong><a href="tel:+917349351920">+91 73493 51920</a></strong></p>
+                        <p>Email: <strong><a href="mailto:info@mana-na.in">info@mana-na.in</a></strong></p>
+                        <p style="margin-top: 0.5rem;"><strong>Available for: In-person and online consultations.</strong></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+
+<section id="emergency-support">
+        <div class="section-card">
+            <!--h2>Resources & Support</h2>
+            <p class="section-subtitle">Important contacts for immediate assistance.</p-->
+            <div class="crisis-box">
+                <h3 style="font-size: 1.5rem;">24/7 Emergency Support</h3>
+                <p>If you or someone you know is in immediate danger or experiencing a mental health crisis, please contact these 24/7 helplines:</p>
+                <div class="helpline-grid">
+                    <div class="helpline-item" style="font-size: 1rem;">Tele MANAS: &nbsp;<a href="tel:14416">14416</a></div>
+                    <div class="helpline-item" style="font-size: 1rem;">KIRAN:  &nbsp;<a href="tel:1800-599-0019">1800-599-0019</a></div>
+                    <div class="helpline-item" style="font-size: 1rem;">NIMHANS:  &nbsp;<a href="tel:08046110007">080 4611 0007</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--section id="newsletter">
+        <div class="section-card" style="text-align: center;">
+            <h2>Stay Connected</h2>
+            <p class="section-subtitle">Subscribe to the Mana-na Wellbeing Newsletter for monthly insights, wellness tips, and updates directly to your inbox.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" id="newsletterEmail" name="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn" id="newsletterBtn">Subscribe</button>
+            </form>
+            <div id="newsletterMessage" style="margin-top: 1rem; padding: 1rem; border-radius: 8px; display: none; max-width: 500px; margin-left: auto; margin-right: auto;"></div>
+        </div>
+    </section-->
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#home" class="logo">
+                    <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo">
+                    <div class="logo-text">
+                        <span class="brand-name">Mana-na<span class="kannada-text">&nbsp;ಮನ-ನ</span></span>
+                        <span class="tagline">Counselling & Wellbeing Space</span>
+                    </div>
+                </a>
+                <p>Supporting mental well-being and enhancing quality of life through awareness, understanding, and meaningful change. Rooted in care, guided by science.</p>
+                <div class="footer-newsletter">
+                    <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-header);">Stay Connected</h4>
+                    <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 1.5rem; max-width: 400px;">Subscribe to our newsletter for insights and wellness tips.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" id="newsletterEmail" name="email" placeholder="Email address" required style="padding: 0.8rem 1.2rem; font-size: 0.95rem;">
+                        <button type="submit" class="btn" id="newsletterBtn" style="padding: 0.8rem 1.5rem; font-size: 0.95rem;">Subscribe</button>
+                    </form>
+                    <div id="newsletterMessage" style="margin-top: 1rem; padding: 0.8rem; border-radius: 8px; display: none; font-size: 0.85rem; max-width: 400px;"></div>
+                </div>
+                <div class="footer-social">
+                    <a href="https://api.whatsapp.com/send/?phone=917349351920&text=Hi%20Mana-na%20-%20I%27m%20interested%20in%20Counselling%20and%20Wellbeing%20Space!%20https://www.mana-na.in" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+                    <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg></a>
+                    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25zM12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg></a>
+                    <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/></svg></a>
+                    <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <h4>Quick Links</h4>
+                <div class="footer-nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#approach">Our Approach</a>
+                    <a href="#areas-of-support">Areas of Support</a>
+                    <a href="#self-reflection">Self-Reflection</a>
+                    <a href="#counsellor">Meet the Counsellor</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#gallery">Gallery</a>
+                    <!--a href="#blogs">Blogs</a-->
+                    <a href="#faq">FAQs</a>
+                    <a href="#book-appointment">Book an Appointment</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#emergency-support">24/7 Emergency Support</a>
+                    <a href="https://www.mana-na.in/privacy-policy.html" target="_blank">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-qr">
+                <h4>Scan to Visit</h4>
+                <img src="https://www.mana-na.in/Site-QR.png" alt="Mana-na QR Code">
+                <p>Access our site easily<br>on your mobile device</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mana-na <br>Counselling & Wellbeing Space</p>
+            <p class="footer-credit">Designed by <a href="https://bit.ly/thedteam" target="_blank"> The 'D Team</a></p>
+        </div>
+    </footer>
+
+    <!-- Blog Modal -->
+    <div id="blogModal" class="blog-modal">
+        <div class="blog-modal-content">
+            <span class="blog-modal-close" onclick="closeBlogModal()">&times;</span>
+            <div class="blog-modal-layout">
+                <div class="blog-main-content" id="blogMainContent">
+                    <!-- Content injected by JS -->
+                </div>
+                <div class="blog-sidebar" id="blogSidebar">
+                    <!-- Sidebar injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="blog-modal">
+        <div class="blog-modal-content" style="max-width: 900px; padding: 2rem;">
+            <span class="blog-modal-close" onclick="closeBookingModal()">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 1rem; font-size: 2rem;">Book a Session</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Fill out the details below, and we will get back to you shortly to confirm your appointment.</p>
+            
+            <form id="bookingForm" action="https://formsubmit.co/info@mana-na.in" method="POST" novalidate>
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="New Session Booking Request">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="booking-grid">
+                    
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="Full Name" required placeholder="Your full name" pattern="^[^0-9]+$" title="Numbers are not allowed" oninput="this.value = this.value.replace(/[0-9]/g, '')">
+                        <div class="validation-error">Please enter your full name.</div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="bookingEmail">Email Address</label>
+                        <input type="email" id="bookingEmail" name="Email" required placeholder="you@example.com">
+                        <div class="validation-error">Please enter a valid email address.</div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <input type="text" value="+91" readonly tabindex="-1" style="width: 70px; flex-shrink: 0; text-align: center; padding-left: 0; padding-right: 0; background-color: rgba(0, 103, 56, 0.03); cursor: default; user-select: none;">
+                            <input type="tel" id="phone" name="Phone" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number" title="Please enter exactly 10 digits" oninput="this.value = this.value.replace(/[^0-9]/g, '')" style="flex: 1;">
+                            <div class="validation-error" style="width: 100%;">Please enter a valid 10-digit phone number.</div>
+                        </div>
+                    </div>
+
+                    <!-- Age -->
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="Age" min="16" max="100" required placeholder="Your age">
+                        <div class="validation-error">Please enter a valid age (16-100).</div>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="Gender" required>
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                        <div class="validation-error">Please select your gender.</div>
+                    </div>
+
+                    <!-- Primary Concern -->
+                    <div class="form-group">
+                        <label for="concern">Primary Area of Concern</label>
+                        <select id="concern" name="Primary Concern" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Anxiety & Stress">Anxiety & Stress</option>
+                            <option value="Depression / Low Mood">Depression / Low Mood</option>
+                            <option value="Relationship Issues">Relationship Issues</option>
+                            <option value="Academic / Work Pressure">Academic / Work Pressure</option>
+                            <option value="Life Transitions">Life Transitions</option>
+                            <option value="Grief & Loss">Grief & Loss</option>
+                            <option value="Trauma & Past Experiences">Trauma & Past Experiences</option>
+                            <option value="Self-Esteem & Confidence">Self-Esteem & Confidence</option>
+                            <option value="Anger Management">Anger Management</option>
+                            <option value="Parenting & Teen Behavior Support">Parenting & Teen Behavior Support</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="validation-error">Please select a primary area of concern.</div>
+                    </div>
+
+                    <!-- Other Concern (Hidden by default) -->
+                    <div class="form-group" id="otherConcernGroup" style="display: none;">
+                        <label for="otherConcern">Please specify your concern (Optional)</label>
+                        <input type="text" id="otherConcern" name="Other Concern Specification" placeholder="Briefly describe your concern">
+                    </div>
+
+                    <!-- Format -->
+                    <div class="form-group">
+                        <label for="format">Preferred Format</label>
+                        <select id="format" name="Format" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Online Session (Video Call)">Online Session (Video Call)</option>
+                            <option value="In-Person Session (Clinic)">In-Person Session</option>
+                        </select>
+                        <div class="validation-error">Please select your preferred format.</div>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="text" id="date" name="Preferred Date" placeholder="dd-mm-yyyy" required onmouseenter="(this.type='date')" ontouchstart="(this.type='date')" onfocus="(this.type='date')" onclick="if(this.showPicker) this.showPicker();" onblur="if(!this.value) this.type='text'" onkeydown="return false;">
+                        <div class="validation-error">Please select a preferred date.</div>
+                    </div>
+
+                    <!-- Dynamic Time Slots -->
+                    <div class="form-group full-width" id="timeSlotGroup" style="display: none;">
+                        <label>Available Time Slots</label>
+                        <div id="slotGrid" class="slot-grid"></div>
+                        <input type="hidden" id="time" name="Preferred Time" required>
+                        <p id="slotMessage" class="slot-message"></p>
+                    </div>
+
+                    <!-- Consent Checkbox -->
+                    <div class="form-group full-width" style="display: flex; align-items: flex-start; gap: 12px; margin-top: 0.5rem; flex-wrap: wrap;">
+                        <input type="checkbox" id="consent" name="Consent Given" value="Yes" required style="width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px; cursor: pointer; accent-color: #006738;">
+                        <label for="consent" style="font-weight: 400; font-size: 0.9rem; margin-bottom: 0; cursor: pointer; text-align: left; flex: 1;">I acknowledge that this form collects my personal and health-related information for the purpose of scheduling a therapy session. I agree to the <a href="privacy-policy.html" target="_blank" style="color: var(--text-header); text-decoration: underline;">Privacy Policy & Consent terms</a>.</label>
+                        <div class="validation-error" style="width: 100%; margin-top: 0;">Please agree to the privacy policy and consent terms.</div>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn" id="submitBookingBtn" style="width: 100%; margin-top: 1rem;">Request Appointment</button>
+                <div id="bookingFormMessage" style="margin-top: 1.5rem; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 500; display: none;"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lightbox Container -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <button class="lightbox-nav lightbox-prev" onclick="prevLightboxImage(event)" aria-label="Previous Image">&#10094;</button>
+        <img id="lightbox-img" src="" alt="Full Screen Image">
+        <button class="lightbox-nav lightbox-next" onclick="nextLightboxImage(event)" aria-label="Next Image">&#10095;</button>
+    </div>
+
+    <div class="floating-buttons">
+        <a href="https://api.whatsapp.com/send/?phone=917349351920&text=Hi%20Mana-na%20-%20I'm%20interested%20in%20Counselling%20and%20Wellbeing%20Space!%20https://www.mana-na.in" target="_blank" class="float-btn whatsapp-btn" aria-label="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+        <button id="backToTop" class="float-btn back-top-btn" aria-label="Back to Top">
+            <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+        </button>
+    </div>
+
+    <script>
+// --- Navigation Scroll & Active Link Highlighting (Scroll Spy) ---
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navItems = document.querySelectorAll('.nav-links a, .logo, .footer-nav-links a, .slide-content .btn, #self-reflection .btn');
+        const sections = document.querySelectorAll('section, header'); 
+        const navBar = document.querySelector('nav'); // Get the nav element
+
+        // Mobile Menu Toggle
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Click to Scroll with Exact Header Offset Calculation
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                if(this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    // Close mobile menu on click
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        // Update URL hash without jumping
+                        history.pushState(null, null, `#${targetId}`);
+
+                        // 1. Get the exact height of your navigation bar (approx 80px)
+                        const headerOffset = navBar.offsetHeight; 
+                        
+                        // 2. Calculate the section's distance from top of page
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        
+                        // 3. Subtract header height, minus another 20px for visual breathing room
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20;
+                        
+                        // 4. Scroll to that exact mathematical pixel
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                }
+            });
+        });
+
+        // Scroll Spy: Highlight active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            // Get the current scroll position, offset by the header height to trigger correctly
+            const scrollPosition = window.pageYOffset + navBar.offsetHeight + 50; 
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('data-target') === current) {
+                    if(!a.classList.contains('nav-contact-btn')){
+                        a.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // --- Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const rootElement = document.documentElement;
+        
+        const svgMoon = `<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+        const svgSun = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+
+        function updateThemeIcon(theme) {
+            themeToggleBtn.innerHTML = theme === 'dark' ? svgSun : svgMoon;
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        rootElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = rootElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            rootElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        // --- Cinematic Carousel Logic ---
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+            indicators.forEach((ind, index) => {
+                if (index === currentSlide) {
+                    ind.classList.add('active');
+                } else {
+                    ind.classList.remove('active');
+                }
+            });
+        }
+
+        window.goToSlide = function(index) {
+            currentSlide = index;
+            updateCarousel();
+        };
+
+        window.nextSlide = function() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        };
+
+        window.prevSlide = function() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        };
+
+        const track = document.getElementById('home');
+        let startX = 0;
+        let endX = 0;
+
+        track.addEventListener('touchstart', (e) => {
+            startX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (startX - endX > swipeThreshold) {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            } else if (endX - startX > swipeThreshold) {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+        }
+
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }, 7000);
+
+        // --- Back to Top & WhatsApp Button Logic ---
+        const backToTopBtn = document.getElementById('backToTop');
+        const whatsappBtn = document.querySelector('.whatsapp-btn');
+
+        window.addEventListener('scroll', () => {
+            // Calculate 20% of total scrollable height
+            const totalScrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercentage = (window.scrollY / totalScrollableHeight) * 100;
+
+            // Show WhatsApp button at 15% scroll
+            if (scrollPercentage > 0) {
+                whatsappBtn.classList.add('visible');
+            } else {
+                whatsappBtn.classList.remove('visible');
+            }
+
+            // Show Back to Top button at 300px scroll
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Prevent right-click on all images
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+
+        // --- Gallery Lightbox Logic ---
+        let currentLightboxIndex = 0;
+        let galleryImagesList = [];
+
+        // Automatically find all images in the gallery and setup indexing
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach((item, index) => {
+            const match = item.getAttribute('onclick')?.match(/'([^']+)'/);
+            if (match) {
+                galleryImagesList.push(match[1]);
+                item.removeAttribute('onclick');
+                item.addEventListener('click', () => openLightbox(index));
+            }
+        });
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightboxImage();
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'flex';
+            
+            // Slight delay to allow display:flex to apply before adding opacity
+            setTimeout(() => { lightbox.classList.add('active'); }, 10);
+        }
+
+        function updateLightboxImage() {
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = galleryImagesList[currentLightboxIndex];
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            setTimeout(() => { lightbox.style.display = 'none'; }, 300); // Wait for CSS fade out
+        }
+
+        function nextLightboxImage(e) {
+            if(e) e.stopPropagation();
+            currentLightboxIndex = (currentLightboxIndex + 1) % galleryImagesList.length;
+            updateLightboxImage();
+        }
+
+        function prevLightboxImage(e) {
+            if(e) e.stopPropagation();
+            currentLightboxIndex = (currentLightboxIndex - 1 + galleryImagesList.length) % galleryImagesList.length;
+            updateLightboxImage();
+        }
+
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        // Keyboard navigation for Lightbox
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox && lightbox.classList.contains('active')) {
+                if (e.key === 'ArrowRight') nextLightboxImage();
+                if (e.key === 'ArrowLeft') prevLightboxImage();
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        // Touch swipe for Lightbox
+        const lightboxElement = document.getElementById('lightbox');
+        let lbStartX = 0;
+        let lbEndX = 0;
+
+        lightboxElement.addEventListener('touchstart', (e) => {
+            lbStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightboxElement.addEventListener('touchend', (e) => {
+            lbEndX = e.changedTouches[0].screenX;
+            const swipeThreshold = 50;
+            if (lbStartX - lbEndX > swipeThreshold) nextLightboxImage();
+            if (lbEndX - lbStartX > swipeThreshold) prevLightboxImage();
+        }, { passive: true });
+
+        // --- FAQ Accordion Logic ---
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isOpen = item.classList.contains('active');
+                
+                // Close all other items
+                faqItems.forEach(otherItem => otherItem.classList.remove('active'));
+                
+                // Toggle current item
+                if (!isOpen) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // --- Blog Modal Logic ---
+        const blogPosts = [
+            {
+                title: "The Art of Mindful Living",
+                date: "May 01, 2026",
+                img: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=1200&q=80",
+                content: `
+                    <p>Mindfulness is more than just a buzzword; it's a transformative practice that allows us to be fully present in our lives. By focusing on the "here and now," we can break free from the cycles of worry about the future or regret about the past.</p>
+                    <p>Incorporating mindfulness doesn't require hours of meditation. It can be as simple as focusing on your breath for five minutes, truly tasting your morning coffee, or feeling the sun on your skin during a walk. These moments of presence help regulate our nervous system and foster a sense of inner peace.</p>
+                    <p>At Mana-na, we integrate mindful awareness into our therapeutic process, helping you build a deeper connection with yourself and the world around you.</p>
+                `
+            },
+            {
+                title: "Navigating Anxiety Today",
+                date: "May 01, 2026",
+                img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
+                content: `
+                    <p>Anxiety is a natural response to stress, but when it becomes overwhelming, it can interfere with our quality of life. Understanding that anxiety is often our mind's way of trying to protect us can be the first step in managing it.</p>
+                    <p>Modern life presents unique challenges—digital overload, social comparisons, and global uncertainties. These factors can keep our "fight or flight" response constantly active. Learning to recognize the physical signs of anxiety allows us to intervene early with grounding techniques.</p>
+                    <p>Through evidence-based approaches like CBT, we work together to challenge anxious thoughts and develop a toolkit of strategies that promote long-term emotional stability.</p>
+                `
+            },
+            {
+                title: "Why Self-Care Isn't Selfish",
+                date: "May 01, 2026",
+                img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80",
+                content: `
+                    <p>We often hear the phrase "you can't pour from an empty cup." This is the fundamental truth of self-care. It is not an indulgence or a luxury; it is a necessity for mental and emotional health.</p>
+                    <p>Self-care looks different for everyone. For some, it's setting boundaries at work; for others, it's making time for a hobby or ensuring they get enough sleep. The key is to identify what truly replenishes your energy and joy.</p>
+                    <p>When we prioritize our own well-being, we aren't taking away from others. Instead, we are ensuring that we have the capacity, patience, and clarity to be present for the people and responsibilities that matter most to us.</p>
+                `
+            }
+        ];
+
+        function openBlogModal(index) {
+            const post = blogPosts[index];
+            const modal = document.getElementById('blogModal');
+            const mainContent = document.getElementById('blogMainContent');
+            const sidebar = document.getElementById('blogSidebar');
+
+            // Populate Main Content
+            mainContent.innerHTML = `
+                <img src="${post.img}" alt="${post.title}">
+                <span class="blog-date">${post.date}</span>
+                <h2>${post.title}</h2>
+                <div class="blog-body">${post.content}</div>
+            `;
+
+            // Populate Sidebar (Jump Links)
+            let jumpLinksHtml = `<h3 class="sidebar-title">Explore More Blogs</h3><div class="jump-links-list">`;
+            blogPosts.forEach((otherPost, i) => {
+                if (i !== index) {
+                    jumpLinksHtml += `
+                        <div class="jump-link-item" onclick="openBlogModal(${i})">
+                            <h4>${otherPost.title}</h4>
+                            <span class="blog-date">${otherPost.date}</span>
+                        </div>
+                    `;
+                }
+            });
+            jumpLinksHtml += `</div>`;
+            sidebar.innerHTML = jumpLinksHtml;
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            setTimeout(() => { modal.classList.add('active'); }, 10);
+            
+            // Scroll modal to top
+            modal.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeBlogModal() {
+            const modal = document.getElementById('blogModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            setTimeout(() => { modal.style.display = 'none'; }, 400);
+        }
+
+        // Close modal when clicking outside content
+        document.getElementById('blogModal').addEventListener('click', function(e) {
+            if (e.target === this) closeBlogModal();
+        });
+
+        // Keyboard Escape to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeBlogModal();
+        });
+
+                // 3. Page Loader Logic
+        const loader = document.getElementById('page-loader');
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.remove('opacity-100');
+                loader.classList.add('opacity-0');
+                setTimeout(() => { loader.classList.add('pointer-events-none', 'hidden'); }, 500);
+            }, 3000); // Reduced delay for a better balance between cinematic feel and speed
+        });
+
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                loader.classList.remove('opacity-100');
+                loader.classList.add('opacity-0', 'pointer-events-none', 'hidden');
+            }
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetUrl = this.href;
+                // Ignore hash links so smooth scrolling works without triggering the loader
+                if (this.target === '_blank' || !targetUrl || targetUrl.includes('#') || targetUrl.startsWith('mailto:') || targetUrl.startsWith('tel:')) {
+                    return; 
+                }
+                e.preventDefault();
+                loader.classList.remove('hidden', 'pointer-events-none', 'opacity-0');
+                setTimeout(() => { loader.classList.add('opacity-100'); }, 10);
+                setTimeout(() => { window.location.href = targetUrl; }, 500); 
+            });
+        });
+
+                // --- Self-Assessment Logic ---
+        window.toggleAssessment = function(element) {
+            element.classList.toggle('selected');
+            const feedback = document.getElementById('assessmentFeedback');
+            const items = document.querySelectorAll('.assessment-item.selected');
+            
+            if (items.length > 0) {
+                feedback.style.display = 'block';
+                // Trigger a small scroll to feedback if it just appeared and is below view
+                if (items.length === 1) {
+                    setTimeout(() => {
+                        feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                }
+            } else {
+                feedback.style.display = 'none';
+            }
+        };
+
+        // --- Direct Link to Booking Modal ---
+        window.addEventListener('load', () => {
+            if (window.location.hash === '#book-session' || window.location.hash === '#bookingModal' || window.location.hash === '#book-a-slot') {
+                openBookingModal();
+            }
+        });
+        
+        // --- Booking Modal & Form Logic ---
+        function openBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; 
+            setTimeout(() => { modal.classList.add('active'); }, 10);
+            modal.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            setTimeout(() => { modal.style.display = 'none'; }, 400);
+        }
+
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) closeBookingModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeBookingModal();
+        });
+
+        const dateInput = document.getElementById('date');
+        const localNowInit = new Date();
+        const localTodayInitStr = localNowInit.getFullYear() + '-' + String(localNowInit.getMonth() + 1).padStart(2, '0') + '-' + String(localNowInit.getDate()).padStart(2, '0');
+        if (dateInput) dateInput.setAttribute('min', localTodayInitStr);
+
+        const concernSelect = document.getElementById('concern');
+        const otherConcernGroup = document.getElementById('otherConcernGroup');
+        const otherConcernInput = document.getElementById('otherConcern');
+
+        if (concernSelect) {
+            concernSelect.addEventListener('change', function() {
+                if (this.value === 'Other') {
+                    otherConcernGroup.style.display = 'block';
+                    /*otherConcernInput.setAttribute('required', 'true');*/
+                } else {
+                    otherConcernGroup.style.display = 'none';
+                    /*otherConcernInput.removeAttribute('required');*/
+                    otherConcernInput.value = '';
+                }
+            });
+        }
+
+        const slotGrid = document.getElementById('slotGrid');
+        const hiddenTimeInput = document.getElementById('time');
+        const slotMessage = document.getElementById('slotMessage');
+        const timeSlotGroup = document.getElementById('timeSlotGroup');
+
+        const slotConfig = {
+            slots: [
+                '09:30 AM', '11:00 AM', '12:30 PM', 
+                '02:00 PM', '05:00 PM', '06:30 PM', '08:00 PM'
+            ],
+            blockedData: {
+                /*'2026-05-12': 'ALL',
+                '2026-05-14': ['09:30 AM', '11:00 AM', '12:30 PM'],
+                '2026-05-15': ['09:30 AM', '11:00 AM', '12:30 PM'],
+                '2026-05-16': ['09:30 AM', '11:00 AM', '12:30 PM'],
+                '2026-05-17': ['09:30 AM', '11:00 AM', '12:30 PM'],*/
+            },
+            blockWeekends: true
+        };
+
+        // --- GLOBAL DATABASE CONFIGURATION ---
+        const JSONBIN_BIN_ID = '6a02063cc0954111d80a95cf';
+
+        async function fetchGlobalBlockedSlots() {
+            try {
+                const response = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}/latest`);
+                const data = await response.json();
+                if (data.record) slotConfig.blockedData = data.record;
+            } catch (e) {
+                console.error("Error loading live slots from server", e);
+            }
+        }
+        
+        fetchGlobalBlockedSlots();
+
+        if (dateInput) {
+            dateInput.addEventListener('change', function() {
+                const selectedDateStr = this.value;
+                submitBookingBtn.disabled = false;
+                slotMessage.classList.remove("is-error");
+                
+                if (!selectedDateStr) {
+                    timeSlotGroup.style.display = 'none';
+                    hiddenTimeInput.value = '';
+                    return;
+                }
+
+                timeSlotGroup.style.display = 'block';
+                slotGrid.innerHTML = '';
+                hiddenTimeInput.value = '';
+                slotMessage.textContent = '';
+                
+                const selectedDateObj = new Date(selectedDateStr);
+                const dayOfWeek = selectedDateObj.getDay();
+                const month = selectedDateObj.getMonth() + 1;
+                const day = selectedDateObj.getDate();
+                
+                const now = new Date();
+                const todayStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+                const isToday = selectedDateStr === todayStr;
+                const currentHour = now.getHours();
+                const currentMinute = now.getMinutes();
+
+                const fixedHolidays = {
+                    '1-26': 'Republic Day',
+                    '8-15': 'Independence Day',
+                    '9-4': 'Janmashtami',
+                    '9-17': 'Ganesh Chaturthi',
+                    '10-2': 'Gandhi Jayanti',
+                    '10-9': 'Diwali',
+                    '11-1': 'Karnataka Rajyotsava',
+                    '11-24': 'Guru Nanak Jayanti',
+                    '11-26': 'Kanakadasa Jayanti',
+                    '12-25': 'Christmas Day'
+                };
+                
+                const holidayKey = `${month}-${day}`;
+                if (fixedHolidays[holidayKey]) {
+                    slotMessage.textContent = `We are closed on ${fixedHolidays[holidayKey]}. Please select another day.`;
+                    submitBookingBtn.disabled = true;
+                    return;
+                }
+                
+                if (slotConfig.blockWeekends && dayOfWeek === 0) {
+                    slotMessage.textContent = "We are currently closed on Sundays. Please select another day.";
+                    submitBookingBtn.disabled = true;
+                    return;
+                }
+
+                const dateBlocks = slotConfig.blockedData[selectedDateStr];
+                if (dateBlocks === 'ALL') {
+                    slotMessage.textContent = "All slots are fully booked on this date. Please select another day.";
+                    submitBookingBtn.disabled = true;
+                    return;
+                }
+
+                let availableCount = 0;
+                slotConfig.slots.forEach(slotTime => {
+                    const btn = document.createElement('div');
+                    btn.className = 'slot-btn';
+                    btn.textContent = slotTime;
+                    
+                    let isPastTime = false;
+                    if (isToday) {
+                        const match = slotTime.match(/(\d+):(\d+)\s*(AM|PM)/i);
+                        if (match) {
+                            let hours = parseInt(match[1], 10);
+                            const minutes = parseInt(match[2], 10);
+                            const ampm = match[3].toUpperCase();
+                            if (ampm === 'PM' && hours < 12) hours += 12;
+                            if (ampm === 'AM' && hours === 12) hours = 0;
+                            if (hours < currentHour || (hours === currentHour && minutes <= currentMinute)) {
+                                isPastTime = true;
+                            }
+                        }
+                    }
+
+                    const isBlocked = (Array.isArray(dateBlocks) && dateBlocks.includes(slotTime)) || isPastTime;
+
+                    if (isBlocked) {
+                        btn.classList.add('blocked');
+                    } else {
+                        availableCount++;
+                        btn.addEventListener('click', function() {
+                            document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+                            this.classList.add('selected');
+                            hiddenTimeInput.value = slotTime;
+                            slotMessage.textContent = '';
+                            slotMessage.classList.remove("is-error");
+                        });
+                    }
+                    slotGrid.appendChild(btn);
+                });
+
+                if (availableCount === 0) {
+                    slotMessage.textContent = "No slots are available on this date. Please select another day.";
+                    submitBookingBtn.disabled = true;
+                }
+            });
+        }
+
+        const bookingForm = document.getElementById('bookingForm');
+        const submitBookingBtn = document.getElementById('submitBookingBtn');
+        const bookingFormMessage = document.getElementById('bookingFormMessage');
+
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                bookingForm.classList.add('was-validated');
+
+                let isTimeValid = true;
+                if (timeSlotGroup.style.display === 'block' && !hiddenTimeInput.value) {
+                    slotMessage.textContent = "Please select an available time slot to proceed.";
+                    slotMessage.classList.add("is-error");
+                    isTimeValid = false;
+                }
+
+                if (!bookingForm.checkValidity() || !isTimeValid) {
+                    const firstInvalid = bookingForm.querySelector(':invalid');
+                    if (firstInvalid) {
+                        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        firstInvalid.focus();
+                    } else if (!isTimeValid) {
+                        timeSlotGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    return;
+                }
+
+                submitBookingBtn.disabled = true;
+                submitBookingBtn.textContent = 'Sending Request...';
+                
+                const formData = new FormData(bookingForm);
+                const phoneVal = formData.get('Phone');
+                if (phoneVal && !phoneVal.startsWith('+91')) {
+                    formData.set('Phone', '+91 ' + phoneVal);
+                }
+
+                fetch("https://formsubmit.co/ajax/info@mana-na.in", {
+                    method: "POST",
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    bookingFormMessage.textContent = '✓ Booking request sent successfully! We will contact you soon.';
+                    bookingFormMessage.style.display = 'block';
+                    bookingFormMessage.style.backgroundColor = '#d4edda';
+                    bookingFormMessage.style.color = '#155724';
+                    bookingFormMessage.style.border = '1px solid #c3e6cb';
+                    
+                    bookingForm.reset();
+                    bookingForm.classList.remove('was-validated');
+                    setTimeout(() => { bookingFormMessage.style.display = 'none'; closeBookingModal(); }, 4000);
+                })
+                .catch(error => {
+                    bookingFormMessage.textContent = '✗ Failed to send request. Please try again or contact us via WhatsApp.';
+                    bookingFormMessage.style.display = 'block';
+                    bookingFormMessage.style.backgroundColor = '#f8d7da';
+                    bookingFormMessage.style.color = '#721c24';
+                    bookingFormMessage.style.border = '1px solid #f5c6cb';
+                })
+                .finally(() => {
+                    submitBookingBtn.disabled = false;
+                    submitBookingBtn.textContent = 'Request Appointment';
+                });
+            });
+        }
+
+        // --- Contact Form Submission (FormSubmit.co) ---
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const senderName = document.getElementById('senderName').value.trim();
+                const senderEmail = document.getElementById('senderEmail').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (!senderName || !senderEmail || !message) {
+                    showMessage('Please fill in all fields.', 'error');
+                    return;
+                }
+
+                let finalMessage = message;
+                const selectedAssessments = document.querySelectorAll('.assessment-item.selected p');
+                if (selectedAssessments.length > 0) {
+                    finalMessage += '\n\n--- Self-Reflection Selections ---\n';
+                    selectedAssessments.forEach(item => {
+                        finalMessage += '- ' + item.textContent.trim() + '\n';
+                    });
+                }
+
+                // Disable button and show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                // Using fetch for FormSubmit AJAX submission
+                fetch("https://formsubmit.co/ajax/info@mana-na.in", {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: senderName,
+                        email: senderEmail,
+                        message: finalMessage,
+                        _subject: "New Website Inquiry from " + senderName
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    showMessage('✓ Message sent successfully! We\'ll get back to you soon.', 'success');
+                    contactForm.reset();
+                    
+                    // Clear selected self-reflection items
+                    document.querySelectorAll('.assessment-item.selected').forEach(item => {
+                        item.classList.remove('selected');
+                    });
+                    document.getElementById('assessmentFeedback').style.display = 'none';
+                })
+                .catch(error => {
+                    showMessage('✗ Failed to send message. Please try again or contact us via WhatsApp.', 'error');
+                })
+                .finally(() => {
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                });
+            });
+        }
+
+        function showMessage(text, type) {
+            formMessage.textContent = text;
+            formMessage.style.display = 'block';
+            formMessage.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
+            formMessage.style.color = type === 'success' ? '#155724' : '#721c24';
+            formMessage.style.border = `1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'}`;
+            if (type === 'success') setTimeout(() => { formMessage.style.display = 'none'; }, 5000);
+        }
+
+        // --- Newsletter Form Submission ---
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterBtn = document.getElementById('newsletterBtn');
+        const newsletterMessage = document.getElementById('newsletterMessage');
+
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('newsletterEmail').value.trim();
+                if (!email) return;
+
+                newsletterBtn.disabled = true;
+                newsletterBtn.textContent = 'Subscribing...';
+
+                fetch("https://formsubmit.co/ajax/info@mana-na.in", {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        _subject: "New Newsletter Subscription from " + email
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    showNewsletterMessage('✓ Successfully subscribed to the newsletter!', 'success');
+                    newsletterForm.reset();
+                })
+                .catch(error => {
+                    showNewsletterMessage('✗ Failed to subscribe. Please try again.', 'error');
+                })
+                .finally(() => {
+                    newsletterBtn.textContent = 'Subscribe';
+                    newsletterBtn.disabled = false;
+                });
+            });
+        }
+
+        function showNewsletterMessage(text, type) {
+            newsletterMessage.textContent = text;
+            newsletterMessage.style.display = 'block';
+            newsletterMessage.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
+            newsletterMessage.style.color = type === 'success' ? '#155724' : '#721c24';
+            newsletterMessage.style.border = `1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'}`;
+            if (type === 'success') setTimeout(() => { newsletterMessage.style.display = 'none'; }, 5000);
+        }
+
+        // --- Nav Contact Button Text Rotator (Desktop Only) ---
+        const contactBtnText = document.getElementById('contactBtnText');
+        const contactBtn = contactBtnText ? contactBtnText.closest('a') : null;
+        
+        if (contactBtnText && contactBtn) {
+            const rotatingContent = [
+                { text: "Message Us", href: "#contact", target: "_self" },
+                { text: "WhatsApp Us", href: "https://api.whatsapp.com/send/?phone=917349351920&text=Hi%20Mana-na%20-%20I%27m%20interested%20in%20Counselling%20and%20Wellbeing%20Space!%20https://www.mana-na.in", target: "_blank" },
+                { text: "Book a Slot", href: "#book-appointment", target: "_self" },
+                { text: "Contact", href: "#contact", target: "_self" }
+            ];
+            let textIndex = 0;
+
+            setInterval(() => {
+                if (window.innerWidth > 768) {
+                    contactBtnText.style.opacity = '0';
+                    setTimeout(() => {
+                        const content = rotatingContent[textIndex];
+                        contactBtnText.textContent = content.text;
+                        contactBtn.href = content.href;
+                        contactBtn.target = content.target;
+                        contactBtnText.style.opacity = '1';
+                        textIndex = (textIndex + 1) % rotatingContent.length;
+                    }, 300); 
+                } else {
+                    if (contactBtnText.textContent !== "Contact") {
+                        contactBtnText.style.opacity = '0';
+                        setTimeout(() => {
+                            contactBtnText.textContent = "Contact";
+                            contactBtn.href = "#contact";
+                            contactBtn.target = "_self";
+                            contactBtnText.style.opacity = '1';
+                        }, 300);
+                    }
+                }
+            }, 3000); // Change text every 3 seconds
+        }
+    </script>
+</body>
+</html>

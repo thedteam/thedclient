@@ -1,0 +1,620 @@
+Uri: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@fortawesome\fontawesome-free@6.2.1\css\all.min.css
+Content Type: text/css
+
+Uri: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/webfonts/fa-brands-400.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@fortawesome\fontawesome-free@6.2.1\webfonts\fa-brands-400.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/webfonts/fa-brands-400.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@fortawesome\fontawesome-free@6.2.1\webfonts\fa-brands-400.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/webfonts/fa-regular-400.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@fortawesome\fontawesome-free@6.2.1\webfonts\fa-regular-400.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/webfonts/fa-regular-400.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@fortawesome\fontawesome-free@6.2.1\webfonts\fa-regular-400.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/webfonts/fa-solid-900.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@fortawesome\fontawesome-free@6.2.1\webfonts\fa-solid-900.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/webfonts/fa-solid-900.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@fortawesome\fontawesome-free@6.2.1\webfonts\fa-solid-900.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/webfonts/fa-v4compatibility.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@fortawesome\fontawesome-free@6.2.1\webfonts\fa-v4compatibility.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/webfonts/fa-v4compatibility.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@fortawesome\fontawesome-free@6.2.1\webfonts\fa-v4compatibility.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/css/line.css
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\css\line.css
+Content Type: text/css
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-0.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-0.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-0.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-0.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-0.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-0.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-0.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-0.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-0.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-0.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-1.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-1.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-1.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-1.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-1.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-1.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-1.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-1.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-10.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-10.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-10.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-10.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-10.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-10.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-10.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-10.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-10.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-10.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-11.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-11.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-11.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-11.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-11.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-11.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-11.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-11.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-11.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-11.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-12.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-12.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-12.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-12.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-12.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-12.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-12.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-12.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-12.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-12.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-13.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-13.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-13.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-13.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-13.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-13.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-13.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-13.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-13.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-13.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-14.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-14.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-14.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-14.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-14.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-14.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-14.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-14.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-15.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-15.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-15.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-15.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-15.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-15.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-15.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-15.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-15.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-15.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-16.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-16.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-16.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-16.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-16.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-16.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-16.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-16.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-16.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-16.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-17.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-17.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-17.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-17.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-17.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-17.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-17.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-17.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-17.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-17.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-18.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-18.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-18.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-18.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-18.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-18.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-18.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-18.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-18.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-18.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-19.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-19.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-19.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-19.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-19.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-19.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-19.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-19.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-19.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-19.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-2.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-2.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-2.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-2.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-2.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-2.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-2.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-2.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-2.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-2.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-20.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-20.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-20.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-20.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-20.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-20.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-20.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-20.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-20.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-20.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-3.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-3.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-3.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-3.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-3.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-3.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-3.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-3.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-3.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-3.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-4.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-4.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-4.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-4.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-4.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-4.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-4.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-4.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-4.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-4.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-5.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-5.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-5.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-5.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-5.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-5.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-5.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-5.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-5.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-5.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-6.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-6.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-6.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-6.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-6.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-6.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-6.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-6.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-6.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-6.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-7.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-7.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-7.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-7.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-7.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-7.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-7.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-7.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-7.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-7.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-8.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-8.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-8.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-8.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-8.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-8.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-8.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-8.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-8.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-8.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-9.eot
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-9.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-9.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-9.svg
+Content Type: image/svg+xml
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-9.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-9.ttf
+Content Type: font/ttf
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-9.woff
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-9.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.1/fonts/line/unicons-9.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\@iconscout\unicons@4.0.1\fonts\line\unicons-9.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\bootstrap-icons@1.10.3\font\bootstrap-icons.css
+Content Type: text/css
+
+Uri: https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/fonts/bootstrap-icons.woff2?24e3eb84d0bcaf83d77f904c78ac1f47
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\bootstrap-icons@1.10.3\font\fonts\bootstrap-icons.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/fonts/bootstrap-icons.woff?24e3eb84d0bcaf83d77f904c78ac1f47
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\bootstrap-icons@1.10.3\font\fonts\bootstrap-icons.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\bootstrap@5.1.3\dist\css\bootstrap.min.css
+Content Type: text/css
+
+Uri: https://cdn.jsdelivr.net/npm/flatpickr
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\flatpickr-1
+Content Type: application/javascript
+
+Uri: https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\npm\flatpickr\dist\flatpickr.min.css
+Content Type: text/css
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\ajax\libs\font-awesome\6.0.0-beta3\css\all.min.css
+Content Type: text/css
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-brands-400.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\ajax\libs\font-awesome\6.0.0-beta3\webfonts\fa-brands-400.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-brands-400.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\ajax\libs\font-awesome\6.0.0-beta3\webfonts\fa-brands-400.woff2
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-regular-400.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\ajax\libs\font-awesome\6.0.0-beta3\webfonts\fa-regular-400.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-regular-400.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\ajax\libs\font-awesome\6.0.0-beta3\webfonts\fa-regular-400.woff2
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-solid-900.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\ajax\libs\font-awesome\6.0.0-beta3\webfonts\fa-solid-900.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-solid-900.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\ajax\libs\font-awesome\6.0.0-beta3\webfonts\fa-solid-900.woff2
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-v4compatibility.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\ajax\libs\font-awesome\6.0.0-beta3\webfonts\fa-v4compatibility.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-v4compatibility.woff2
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\ajax\libs\font-awesome\6.0.0-beta3\webfonts\fa-v4compatibility.woff2
+Content Type: application/octet-stream
+
+Uri: https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\css2
+Content Type: text/css
+
+Uri: https://fonts.gstatic.com/s/roboto/v51/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWub2bWmT.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\s\roboto\v51\KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWub2bWmT.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/roboto/v51/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbWmT.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\s\roboto\v51\KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbWmT.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/roboto/v51/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuYjammT.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\s\roboto\v51\KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuYjammT.ttf
+Content Type: font/ttf
+
+Uri: https://www.leagueglobalschool.in/
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\index.htm
+Content Type: text/html
+
+Uri: https://www.leagueglobalschool.in/css/custom.css
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\css\custom.css
+Content Type: text/css
+
+Uri: https://www.leagueglobalschool.in/css/font-icons.css
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\css\font-icons.css
+Content Type: text/css
+
+Uri: https://www.leagueglobalschool.in/css/swiper.css
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\css\swiper.css
+Content Type: text/css
+
+Uri: https://www.leagueglobalschool.in/images/icon.jpg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\images\icon.jpg
+Content Type: image/jpeg
+
+Uri: https://www.leagueglobalschool.in/images/Logo.jpg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\images\Logo.jpg
+Content Type: image/jpeg
+
+Uri: https://www.leagueglobalschool.in/images/Photo 1.jpg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\images\Photo 1.jpg
+Content Type: image/jpeg
+
+Uri: https://www.leagueglobalschool.in/images/Photo 11.jpeg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\images\Photo 11.jpeg
+Content Type: image/jpeg
+
+Uri: https://www.leagueglobalschool.in/images/Photo 11.jpg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\images\Photo 11.jpg
+Content Type: image/jpeg
+
+Uri: https://www.leagueglobalschool.in/images/Photo 13.jpg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\images\Photo 13.jpg
+Content Type: image/jpeg
+
+Uri: https://www.leagueglobalschool.in/images/Photo 16.jpg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\images\Photo 16.jpg
+Content Type: image/jpeg
+
+Uri: https://www.leagueglobalschool.in/images/Photo 3.jpg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\images\Photo 3.jpg
+Content Type: image/jpeg
+
+Uri: https://www.leagueglobalschool.in/images/Photo 9.jpg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\images\Photo 9.jpg
+Content Type: image/jpeg
+
+Uri: https://www.leagueglobalschool.in/images/Photo2.jpg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\images\Photo2.jpg
+Content Type: image/jpeg
+
+Uri: https://www.leagueglobalschool.in/index.html
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\index.html
+Content Type: text/html
+
+Uri: https://www.leagueglobalschool.in/js/functions.js
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\js\functions.js
+Content Type: application/javascript
+
+Uri: https://www.leagueglobalschool.in/js/jquery.js
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\js\jquery.js
+Content Type: application/javascript
+
+Uri: https://www.leagueglobalschool.in/kindergarten/css/CuteAurora.ttf
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\kindergarten\css\CuteAurora.ttf
+Content Type: application/octet-stream
+
+Uri: https://www.leagueglobalschool.in/kindergarten/images/fish1.png
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\kindergarten\images\fish1.png
+Content Type: image/png
+
+Uri: https://www.leagueglobalschool.in/kindergarten/images/fish2.png
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\kindergarten\images\fish2.png
+Content Type: image/png
+
+Uri: https://www.leagueglobalschool.in/kindergarten/images/hero-bg-icons.svg
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\kindergarten\images\hero-bg-icons.svg
+Content Type: image/svg+xml
+
+Uri: https://www.leagueglobalschool.in/kindergarten/kindergarten.css
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\kindergarten\kindergarten.css
+Content Type: text/css
+
+Uri: https://www.leagueglobalschool.in/style.css
+File Name: C:\Downloaded Web Sites\www.leagueglobalschool.in\style.css
+Content Type: text/css
+
