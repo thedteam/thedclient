@@ -9,7 +9,7 @@
     <!-- Font Imports -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Core Style -->
@@ -20,7 +20,7 @@
 
     <!-- Plugins/Components CSS -->
     <link rel="stylesheet" href="css/swiper.css">
-    <link rel="stylesheet" href="npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <!-- Niche . -->
     <link rel="stylesheet" href="kindergarten/kindergarten.css">
@@ -30,9 +30,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Document Title -->
-    <link href="ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="npm/bootstrap%405.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="Icon" href="images/icon.jpg">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="Icon" href="images/icon.png">
     <title>League Global School</title>
 
     <style>
@@ -54,6 +54,17 @@
       body {
         font-family: 'Roboto', sans-serif !important;
         color: var(--text-light);
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+      }
+
+      img {
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
       }
 
       h1, h2, h3, h4, h5, h6, .heading {
@@ -64,6 +75,9 @@
       /* Ensure form inputs and placeholders use the correct font consistently */
       .form-control, .form-select {
         font-family: 'Roboto', sans-serif !important;
+        -webkit-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
       }
 
       /* Modern Navigation Bar */
@@ -534,7 +548,13 @@
       .modern-card:hover .icon-box i.fa-book-open,
       .modern-card:hover .icon-box i.fa-chalkboard-teacher,
       .modern-card:hover .icon-box i.fa-star,
-      .modern-card:hover .icon-box i.fa-file-alt {
+      .modern-card:hover .icon-box i.fa-file-alt,
+      .modern-card:hover .icon-box i.fa-running,      
+      .modern-card:hover .icon-box i.fa-palette,
+      .modern-card:hover .icon-box i.fa-music,
+      .modern-card:hover .icon-box i.fa-om,
+      .modern-card:hover .icon-box i.fa-school,
+      .modern-card:hover .icon-box i.fa-graduation-cap {
         animation: customPulse 1s ease-in-out infinite;
       }
       .modern-card:hover .icon-box i.fa-map-marker-alt {
@@ -604,8 +624,8 @@
             <div class="header-row">
               <!-- Logo -->
               <div id="logo" class="logo">
-                <a href="#">
-                  <img class="logo-default" src="images/Logo.jpg" alt="Logo">
+                <a href="index.html">
+                  <img class="logo-default" src="images/Logo.png" alt="Logo">
                   <div class="logo-text">
                     <h2 class="school-name">League Global School</h2>
                     <p class="tagline">Enabling Excellence & Inculcating Values</p>
@@ -629,17 +649,17 @@
                     </a>
                   </li>
                   <li class="menu-item d-lg-none">
-                    <a class="menu-link" href="#content">
+                    <a class="menu-link" href="#vision&mission">
                       <div>Vision & Mission</div>
                     </a>
                   </li>
-                  <li class="menu-item d-lg-none">
-                    <a class="menu-link" href="#principal-message">
+                  <!--li class="menu-item d-lg-none">
+                    <a class="menu-link" href="#founder's-message">
                       <div>Founder's Message</div>
                     </a>
-                  </li>
-                  <li class="menu-item d-lg-none">
-                    <a class="menu-link" href="#our_programs">
+                  </li-->
+                  <li class="menu-item">
+                    <a class="menu-link" href="#academics">
                       <div>Academics</div>
                     </a>
                   </li>
@@ -653,21 +673,21 @@
                       <div>Admissions</div>
                     </a>
                   </li>
-                  <li class="menu-item">
+                  <li class="menu-item d-lg-none">
                     <a class="menu-link" href="#news&events">
                       <div>News and Events</div>
                     </a>
                   </li>
-                  <li class="menu-item d-lg-none">
+                  <!--li class="menu-item d-lg-none">
                     <a class="menu-link" href="#testimonials">
                       <div>Testimonials</div>
                     </a>
-                  </li>
-                  <li class="menu-item d-lg-none">
+                  </li-->
+                  <!--li class="menu-item d-lg-none">
                     <a class="menu-link" href="#faq">
                       <div>FAQ</div>
                     </a>
-                  </li>
+                  </li-->
                   <li class="menu-item">
                     <a class="menu-link" href="#contacts">
                       <div>Contact Us</div>
@@ -791,18 +811,13 @@
                   Welcome to <br>League Global School, Bengaluru
                 </h1>
                 <p class="fw-normal text-muted fs-5 mb-4">
-                  League Global School is recognised by the Government of
-                  Karnataka to offer English medium education from nursery to
-                  10th standard. We believe that if students learn right, they will naturally become smart.
+                  <b>League Global School</b> is recognised by the <b>Government of Karnataka</b> to offer English medium education from nursery to 10<sup>th</sup> standard. We at League Global School believe,<b> if students learn right, they will naturally become smart</b>. Hence, we have created the infrastructure and environment at our School for learning. Our School is the place for students to fully explore their potential to grow.
                 </p>
                 <p class="mb-4">
-                  League Global School is a new age co-educational institution
-                  promoted by SevaGyan trust founded by Dr. G P Naik, who is a
-                  teacher by profession. Our aim is to provide high quality education for all-round development, giving individual attention to the learning needs of each student.
+                  <b>League Global School</b> is a new age co-educational institution promoted by <b>SevaGyan</b> trust founded by <b>Dr. G P Naik</b>, who is a teacher by profession. Our aim is to provide high quality education for the all-round development of students to become better citizens by accomplishing their life goals. We give importance to all the subjects of learning along with emphasis on <b>sports, yoga, arts, literature, social service as well as life skills training</b>. We strive to give individual attention to the learning needs of each and every student. We emphasise the learning of critical subjects like <b>Science, Mathematics, English and Computer Science</b>.
                 </p>
                 <p class="mb-0">
-                  Goutam Buddha says “Words have the power both to destroy and
-                  heal. When words are true and kind they can change our world”. We ensure students not only learn better but talk smart and walk right.
+                  <b>Goutam Buddha</b> says <b>“Words have the power both to destroy and heal. When words are true and kind they can change our world”</b>. Hence we give individual attention to the learning needs of each and every student admitted to our School, so that they not only learn better but they talk smart and walk right. Please do visit our School to explore, how we can facilitate learning in every student.
                 </p>
 
               </div>
@@ -819,7 +834,7 @@
 
       <!-- Content
 		============================================= -->
-      <section id="content">
+      <section id="vision&mission">
         <div class="content-wrap position-relative py-6" style="z-index: 10;">
           <div class="container">
             <div class="row text-center mb-5">
@@ -841,7 +856,7 @@
                     <i class="fas fa-eye"></i>
                   </div>
                   <h3 class="heading h4 mb-3">Our Vision</h3>
-                  <p class="text-muted mb-0">To serve the society by promoting academic excellence and nurturing responsible global citizens.</p>
+                  <p class="text-muted mb-0">Serve the society by promoting academic excellence.</p>
                 </div>
               </div>
 
@@ -856,10 +871,10 @@
                   </div>
                   <h3 class="heading h4 mb-3">Our Mission</h3>
                   <ul class="list-unstyled list-icon-check text-muted mb-0">
-                    <li>Provide high-quality education for learning.</li>
-                    <li>Embed practical skills for personal growth.</li>
-                    <li>Focus on all-round development.</li>
-                    <li>Encourage empathetic responsibility.</li>
+                    <li>Provide high-quality education for enhanced learning.</li>
+                    <li>Embed practical skills for personal growth and interpersonal effectiveness.</li>
+                    <li>Focus on the all-round development of students through co-curricular activities.</li>
+                    <li>Encourage students to become empathetically responsible citizens.</li>
                   </ul>
                 </div>
               </div>
@@ -877,15 +892,15 @@
                   <ul class="list-unstyled list-icon-check text-muted mb-0">
                     <li>Respecting individual dignity.</li>
                     <li>Promoting human excellence.</li>
-                    <li>Caring for nature & creatures.</li>
-                    <li>Continuous improvement.</li>
+                    <li>Caring for nature and other living creatures.</li>
+                    <li>Continuous for nature and other living creatures.</li>
                   </ul>
                 </div>
               </div>
             </div>
 
             <div class="row g-4 mt-2">
-              <div class="col-lg-6">
+              <!--div class="col-lg-6">
                 <div class="modern-card h-100 d-flex flex-column flex-sm-row align-items-start gap-4 border-top border-4 border-info position-relative overflow-hidden">
                   <div class="position-absolute top-0 end-0 p-3 bg-icon-wrap" style="opacity: 0.03;">
                     <i class="fas fa-child fa-8x text-info"></i>
@@ -905,8 +920,8 @@
                   </p>
                   </div>
                 </div>
-              </div>
-              <div class="col-lg-6">
+              </div-->
+              <div class="col-12">
                 <div class="modern-card h-100 d-flex flex-column flex-sm-row align-items-start gap-4 border-top border-4 border-danger position-relative overflow-hidden">
                   <div class="position-absolute top-0 end-0 p-3 bg-icon-wrap" style="opacity: 0.03;">
                     <i class="fas fa-map-marker-alt fa-8x text-danger"></i>
@@ -933,7 +948,7 @@
       </section>
 
             <!-- Principal's Message -->
-      <section id="principal-message" class="py-6 bg-light m-0">
+      <!--section id="founder's-message" class="py-6 bg-light m-0">
         <div class="container position-relative z-3">
           <div class="row align-items-center g-5">
             <div class="col-lg-5 text-center">
@@ -954,9 +969,9 @@
             </div>
           </div>
         </div>
-      </section>
+      </section-->
 
-      <section id="our_programs">
+      <section id="academics">
         <div class="section py-6 m-0" style="background-color: var(--bg-light)">
           <div class="shape-divider" data-shape="wave-5" data-height="50"></div>
           
@@ -975,10 +990,7 @@
                   <h4 class="h5 fw-bold mb-0 heading">Academics</h4>
                 </div>
                 <p class="text-muted mb-0">
-                    Learning activities get utmost importance in our school. We focus
-                    on quality in each and every aspect of our educational curriculum.
-                    Academic performance of our students is monitored by continuous
-                    assessment.
+                    Learning activities get utmost importance in our school.  We focus on quality in each and every aspect of our educational curriculum. Academic performance of our students is monitored by continuous assessment of the learning outcome. Students are given additional coaching to overcome the learning difficulties.  
                   </p>
                 </div>
                 <div class="modern-card position-relative overflow-hidden border-top border-4 border-info text-start">
@@ -992,8 +1004,7 @@
                   <h4 class="h5 fw-bold mb-0 heading">Our Teachers</h4>
                 </div>
                 <p class="text-muted mb-0">
-                    We have a carefully chosen team of teachers led by an eminent Principal.
-                    They undergo mandatory training from time to time to upgrade their subject knowledge, teaching skills, and behavior.
+                    We at League Global School have got a carefully chosen team of teachers led by an eminent Principal with proven experience in their respective subjects to teach rightly. They are also trained to mentor the students needing learning assistance. All the teachers at our School undergo mandatory training from time to time to upgrade their subject knowledge, teaching skills and behaviour.
                   </p>
                 </div>
               </div>
@@ -1007,17 +1018,77 @@
                   <div class="icon-box shadow-sm mb-0 me-3" style="background: #198754; color: white; width: 60px; height: 60px; font-size: 24px;">
                     <i class="fas fa-star"></i>
                   </div>
-                  <h3 class="heading h3 mb-0">Top-Tier Facilities</h3>
+                  <h3 class="heading h3 mb-0">Facilities</h3>
                 </div>
+                <p>Outdoor and indoor sports, yoga, arts, literature, community service and other extracurricular activities for all-round development of students. </p>
                 <ul class="list-unstyled list-icon-check text-muted mb-0 lh-lg">
-                    <li>Outdoor and indoor sports, yoga, arts, and literature.</li>
-                    <li>Well-stocked Library, Science lab, and Computer Lab.</li>
-                    <li>Experienced teachers led by an eminent Principal.</li>
+                    <li>Well stacked Library, Science lab, Computer Lab and internet connectivity for study and practice.</li>
+                    <li>Spacious classrooms for effective learning.</li>
+                    <li>Experienced teachers led by eminent Principal to teach and mentor the students.</li>
                     <li>Free tutorials to learn difficult subjects.</li>
-                    <li>Comprehensive Life skills training.</li>
-                    <li>Reliable transportation facility.</li>
-                    <li>Spacious playground for outdoor sports.</li>
+                    <li>Life skills training.</li>
+                    <li>Transportation facility.</li>
+                    <li>Playground for sports and games.</li>
+                    <li>Field visits and outward-bound learning.</li>
                   </ul>
+                </div>
+              </div>
+
+              
+            </div>
+
+            <div class="row g-4 mt-4">
+              <!-- Kindergarten Box -->
+              <div class="col-md-4">
+                <div class="modern-card position-relative overflow-hidden h-100 border-top border-4 border-primary text-start">
+                  <div class="position-absolute top-0 end-0 p-3 bg-icon-wrap" style="opacity: 0.03;">
+                    <i class="fas fa-child fa-6x text-primary"></i>
+                  </div>
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box shadow-sm mb-0 me-3" style="background: var(--primary-color); color: white; width: 50px; height: 50px; font-size: 20px;">
+                      <i class="fas fa-child"></i>
+                    </div>
+                    <h4 class="h5 fw-bold mb-0 heading">Kindergarten</h4>
+                  </div>
+                  <p class="text-muted mb-0">
+                    We have the most vibrant and engaging Kindergarten at League Global School. Our Kindergarten is fully equipped with qualified teachers, modern learning aids and toys to promote new age learning. Kindergarten classes are conducted in spacious classrooms with lot of space for activity-based learning.  
+                  </p>
+                </div>
+              </div>
+
+              <!-- Primary School Box -->
+              <div class="col-md-4">
+                <div class="modern-card position-relative overflow-hidden h-100 border-top border-4 border-danger text-start">
+                  <div class="position-absolute top-0 end-0 p-3 bg-icon-wrap" style="opacity: 0.03;">
+                    <i class="fas fa-school fa-6x text-danger"></i>
+                  </div>
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box shadow-sm mb-0 me-3" style="background: #dc3545; color: white; width: 50px; height: 50px; font-size: 20px;">
+                      <i class="fas fa-school"></i>
+                    </div>
+                    <h4 class="h5 fw-bold mb-0 heading">Primary School</h4>
+                  </div>
+                  <p class="text-muted mb-0">
+                    Our primary school is abuzz with variety of learning activities  like classroom teaching, field visits, activity-based learning, laboratory experiments, library sessions, yoga, sports, cultural activities, field trips, public speaking sessions along with strong emphasis on mathematics, science and languages. 
+                  </p>
+                </div>
+              </div>
+
+              <!-- High School Box -->
+              <div class="col-md-4">
+                <div class="modern-card position-relative overflow-hidden h-100 border-top border-4 text-start" style="border-color: var(--secondary-color) !important;">
+                  <div class="position-absolute top-0 end-0 p-3 bg-icon-wrap" style="opacity: 0.03;">
+                    <i class="fas fa-graduation-cap fa-6x" style="color: var(--secondary-color);"></i>
+                  </div>
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box shadow-sm mb-0 me-3" style="background: var(--secondary-color); color: white; width: 50px; height: 50px; font-size: 20px;">
+                      <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="h5 fw-bold mb-0 heading">High School</h4>
+                  </div>
+                  <p class="text-muted mb-0">
+                    On entering the High School, students will be sensitised about the need for high degree of effort coupled with continuous motivation to learn all the six subjects. Accelerated learning, revision of lessons, special classes, practice sessions, and simulation tests are some of the hallmarks of our success story. Our school has the reputation of getting 100% results right since inception.     
+                  </p>
                 </div>
               </div>
             </div>
@@ -1074,7 +1145,7 @@
               <div class="col-lg-8">
                 <h2 class="text-white h1 fw-bold mb-3">Admission Procedure</h2>
                 <p class="lead text-white-50">
-                  Admissions are open for students from Nursery to 10th standard. <br>Join our vibrant learning community today.
+                  Admissions are open for students from Nursery to 10<sup>th</sup> standard. Those who want admission may visit our school or contact us by email <a href="mailto:leagueglobalschool@gmail.com" style="color: #ffffff80;">leagueglobalschool@gmail.com</a> or by phone <a href="tel:7975638721" style="color: #ffffff80;">7975638721</a> / <a href="tel:9243470110" style="color: #ffffff80;">9243470110</a> / <a href="tel:7892580571" style="color: #ffffff80;">7892580571</a>.
                 </p>
                 <div class="d-inline-flex gap-3 justify-content-center mt-3">
                   <a href="tel:7975638721" class="btn btn-outline-light btn-lg rounded-pill px-4"><i class="fas fa-phone me-2"></i> Call Us</a>
@@ -1099,9 +1170,9 @@
                     <li>3 years for Nursery</li>
                     <li>4 years for LKG</li>
                     <li>5 years for UKG</li>
-                    <li>6 years for 1st Standard</li>
+                    <li>6 years for First Standard as on 31<sup>st</sup> May</li>
                   </ul>
-                <div class="mt-4 text-muted fst-italic"><i class="fas fa-info-circle me-2 text-warning"></i>Higher classes require previous school TC.</div>
+                <div class="mt-4 text-muted fst-italic"><i class="fas fa-info-circle me-2 text-warning"></i>Admission for other classes will be based on Transfer Certificate (TC) issued by the previous school.  </div>
                 </div>
               </div>
               <div class="col-md-5">
@@ -1122,6 +1193,7 @@
                     <li>Aadhar card of parents</li>
                     <li>Original TC (For 2nd standard & above)</li>
                   </ul>
+                  <div class="mt-4 text-muted fst-italic"><i class="fas fa-info-circle me-2 text-warning"></i>Feel free to contact us for any clarification. </div>
                 </div>
               </div>
             </div>
@@ -1237,7 +1309,7 @@
       </section>
 
       <!-- Testimonials -->
-      <section id="testimonials" class="py-6 m-0" style="background-color: var(--bg-alt);">
+      <!--section id="testimonials" class="py-6 m-0" style="background-color: var(--bg-alt);">
         <div class="container z-3 position-relative">
           <div class="text-center mb-5">
             <span class="badge bg-success text-white text-uppercase px-3 py-2 rounded-pill mb-2">Testimonials</span>
@@ -1295,10 +1367,10 @@
             </div>
           </div>
         </div>
-      </section>
+      </section-->
 
       <!-- FAQ -->
-      <section id="faq" class="py-6 m-0 bg-light">
+      <!--section id="faq" class="py-6 m-0 bg-light">
         <div class="container z-3 position-relative">
           <div class="row align-items-center g-5">
             <div class="col-lg-5">
@@ -1361,7 +1433,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section-->
 
       <!-- Footer
 		============================================= -->
@@ -1543,7 +1615,7 @@
           <div class="row mt-5 pt-5 border-top text-start">
             <div class="col-md-6 mb-4 mb-md-0">
               <a href="#" class="d-inline-flex align-items-center text-decoration-none gap-2 mb-3">
-                <img src="images/Logo.jpg" alt="Logo" style="height: 55px; width: auto;">
+                <img src="images/Logo.png" alt="Logo" style="height: 55px; width: auto;">
                 <div class="d-flex flex-column justify-content-center text-start">
                   <h2 class="mb-0" style="font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 900; text-transform: uppercase; color: var(--primary-color); line-height: 1;">League Global School</h2>
                   <p class="mb-0" style="font-family: 'Roboto', sans-serif; font-size: 12px; color: #008000; font-weight: 600;">Enabling Excellence & Inculcating Values</p>
@@ -1557,22 +1629,22 @@
                 <div class="col-6">
                   <ul class="list-unstyled mb-0">
                     <li class="mb-2"><a href="#about" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> About Us</a></li>
+                    <li class="mb-2"><a href="#academics" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> Academics</a></li>
                     <li class="mb-2"><a href="#admission" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> Admissions</a></li>
-                    <li class="mb-2"><a href="#content" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> Vision & Mission</a></li>
-                    <li class="mb-2"><a href="#principal-message" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> Founder's Message</a></li>
-                    <li class="mb-2"><a href="#our_programs" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> Academics</a></li>
+                    <li class="mb-2"><a href="#vision&mission" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> Vision & Mission</a></li>
+                    <!--li class="mb-2"><a href="#founder's-message" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> Founder's Message</a></li-->
                     <li class="mb-2"><a href="#activities" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> Activities</a></li>
-                  </ul>
-                </div>
-                <div class="col-6">
-                  <ul class="list-unstyled mb-0">
-                    <li class="mb-2"><a href="#admission" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> Admissions</a></li>
                     <li class="mb-2"><a href="#news&events" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> News and Events</a></li>
-                    <li class="mb-2"><a href="#testimonials" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> Testimonials</a></li>
-                    <li class="mb-2"><a href="#faq" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> FAQ</a></li>
                     <li class="mb-2"><a href="#contacts" class="text-decoration-none text-muted footer-link"><i class="fas fa-chevron-right text-primary me-2" style="font-size: 10px;"></i> Contact Us</a></li>
                   </ul>
                 </div>
+              <!-- Footer QR Code (Desktop Only) -->
+                  <div class="col-6 d-none d-lg-flex flex-column align-items-start justify-content-start">
+                    <div class="d-flex flex-column align-items-center text-center">
+                      <h6 class="text-muted mb-2 fw-bold" style="font-size: 13px;">Scan to Visit on Mobile</h6>
+                      <img src="images/site-qr.png" alt="Website QR Code" class="img-fluid rounded shadow-sm bg-white p-1" style="max-width: 100px;">
+                    </div>
+                  </div>
               </div>
             </div>
           </div>
@@ -1601,7 +1673,7 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
       <!-- Include Date Range Picker -->
-      <script src="npm/flatpickr-1"></script>
+      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
       <script>
         let carousels = jQuery(
@@ -1785,6 +1857,13 @@
               icon.classList.add('fa-bars');
             }
           });
+        });
+
+        // Disable right-click on all images
+        document.addEventListener('contextmenu', function(e) {
+          if (e.target.nodeName === 'IMG') {
+            e.preventDefault();
+          }
         });
       </script>
     </div>
