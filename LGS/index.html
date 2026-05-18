@@ -151,6 +151,7 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
+            flex-wrap: nowrap !important;
         }
         .primary-menu {
           flex-grow: 1;
@@ -162,9 +163,27 @@
           list-style: none;
           margin: 0;
           padding: 0;
-          gap: 20px;
+            gap: 12px;
         }
       }
+
+        /* Adjust sizes for smaller laptops/tablets to prevent nav wrapping */
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+          .menu-link {
+            padding: 8px 10px;
+            font-size: 13px;
+          }
+          .school-name {
+            font-size: 18px !important;
+          }
+          #logo img {
+            height: 45px !important;
+          }
+          .header-misc .btn {
+            padding: 0.375rem 0.75rem !important;
+            font-size: 13px !important;
+          }
+        }
 
       /* Mobile Header Adjustments */
       @media (max-width: 991.98px) {
@@ -274,7 +293,8 @@
         background-color: #000;
         border-radius: 16px;
         box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        aspect-ratio: 21 / 9; /* Enforce consistent aspect ratio for desktop */
+        aspect-ratio: 21 / 9; 
+        
       }
 
       @media (max-width: 768px) {
@@ -839,7 +859,7 @@
           <!-- Slide 2 -->
           <div class="slides">
             <img src="images/Photo%203.jpg" alt="School Photo 3">
-            <div class="slide-text">Art & Crafts</div>
+            <div class="slide-text">Arts & Crafts</div>
           </div>
 
           <!-- Slide 3 -->
@@ -1125,7 +1145,7 @@
                   <div class="icon-box shadow-sm mb-0 me-3" style="background: #198754; color: white; width: 60px; height: 60px; font-size: 24px;">
                     <i class="fas fa-star"></i>
                   </div>
-                  <h3 class="heading h3 mb-0">Facilities</h3>
+                  <h4 class="h5 fw-bold mb-0 heading">Facilities</h4>
                 </div>
                 <p>Outdoor and indoor sports, yoga, arts, literature, community service and other extracurricular activities for all-round development of students. </p>
                 <ul class="list-unstyled list-icon-check text-muted mb-0 lh-lg">
@@ -1222,7 +1242,7 @@
             <div class="col-md-3 col-sm-6">
               <div class="modern-card p-4 border-top border-4 border-warning">
                 <div class="icon-box shadow-sm mx-auto mb-3" style="background: #ffc107; color: white;"><i class="fas fa-palette"></i></div>
-                <h4 class="heading h5 mb-2">Art & Craft</h4>
+                <h4 class="heading h5 mb-2">Arts & Crafts</h4>
                 <p class="text-muted fs-6 mb-0">Unleashing imagination through drawing, painting, and craft.</p>
               </div>
             </div>
@@ -1660,35 +1680,30 @@
                   <p class="text-muted">We would love to hear from you! Fill out the form below and we'll get back to you shortly.</p>
                 </div>
                 
-                <form id="contactForm" action="https://formsubmit.co/" method="POST" class="row g-4">
-                  <!-- FormSubmit hidden configurations -->
-                  <input type="hidden" name="_subject" value="New Admission Inquiry / Contact from Website">
-                  <input type="hidden" name="_captcha" value="false">
-                  <input type="hidden" name="_template" value="table">
-                  
+                <form id="contactForm" action="contact.php" method="POST" class="row g-4">
                   <div class="col-md-6">
                     <label for="parentName" class="form-label fw-bold text-dark mb-1">Parent/Guardian Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="parentName" name="Parent Name" placeholder="Enter your full name" required>
+                    <input type="text" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="parentName" name="parent_name" placeholder="Enter your full name" required>
                   </div>
                   <div class="col-md-6">
                     <label for="studentName" class="form-label fw-bold text-dark mb-1">Student's Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="studentName" name="Student Name" placeholder="Enter child's name" required>
+                    <input type="text" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="studentName" name="student_name" placeholder="Enter child's name" required>
                   </div>
                   <div class="col-md-6">
                     <label for="emailAddress" class="form-label fw-bold text-dark mb-1">Email Address <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="emailAddress" name="Email" placeholder="Enter your email" required>
+                    <input type="email" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="emailAddress" name="email" placeholder="Enter your email" required>
                   </div>
                   <div class="col-md-6">
                     <label for="phoneNumber" class="form-label fw-bold text-dark mb-1">Phone Number <span class="text-danger">*</span></label>
-                    <input type="tel" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="phoneNumber" name="Phone" placeholder="Enter your phone number" required>
+                    <input type="tel" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="phoneNumber" name="phone" placeholder="Enter your phone number" required>
                   </div>
                   <div class="col-md-6">
                     <label for="dob" class="form-label fw-bold text-dark mb-1">Student's Date of Birth</label>
-                    <input type="date" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="dob" name="Student's Date of Birth">
+                    <input type="date" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="dob" name="dob">
                   </div>
                   <div class="col-md-6">
                     <label for="gradeApplying" class="form-label fw-bold text-dark mb-1">Grade Applying For</label>
-                    <select class="form-select bg-light border-0 py-2 px-3 rounded-3" id="gradeApplying" name="Grade Applying For">
+                    <select class="form-select bg-light border-0 py-2 px-3 rounded-3" id="gradeApplying" name="grade">
                       <option value="" selected disabled>Select Grade...</option>
                       <option value="Nursery">Nursery</option>
                       <option value="LKG">LKG</option>
@@ -1700,7 +1715,7 @@
                   </div>
                   <div class="col-12">
                     <label for="message" class="form-label fw-bold text-dark mb-1">Your Message <span class="text-danger">*</span></label>
-                    <textarea class="form-control bg-light border-0 py-2 px-3 rounded-3" id="message" name="Message" rows="4" placeholder="How can we help you?" required></textarea>
+                    <textarea class="form-control bg-light border-0 py-2 px-3 rounded-3" id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
                   </div>
                   <div class="col-12 text-center mt-4">
                     <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow-sm" style="background-color: var(--primary-color); border-color: var(--primary-color);">
@@ -1887,29 +1902,40 @@
           btn.disabled = true;
           msgBox.style.display = 'none';
           
-          // Submit using FormSubmit's AJAX endpoint
-          fetch("https://formsubmit.co/ajax/", {
-            method: "POST",
-            headers: { 'Accept': 'application/json' },
-            body: new FormData(form)
-          })
-          .then(response => response.json())
-          .then(data => {
-            if(data.success === "true" || data.success === true) {
-              msgBox.innerHTML = '<span class="text-success"><i class="fas fa-check-circle me-1"></i> Your message has been sent successfully!</span>';
-              form.reset(); // Clear the form
-            } else {
-              msgBox.innerHTML = '<span class="text-danger"><i class="fas fa-exclamation-circle me-1"></i> Oops! Something went wrong. Please try again.</span>';
+          // Check if running via double-click instead of a web server
+          if (window.location.protocol === 'file:') {
+            msgBox.innerHTML = '<span class="text-danger"><i class="fas fa-exclamation-triangle me-1"></i> <b>Action Blocked:</b> You cannot test PHP forms by double-clicking the HTML file. You must run this site through XAMPP (http://localhost/...).</span>';
+            msgBox.style.display = 'block';
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            return;
+          }
+
+          // Submit using jQuery AJAX
+          jQuery.ajax({
+            url: form.action,
+            type: "POST",
+            data: jQuery(form).serialize(),
+            dataType: "json",
+            success: function(data) {
+              if(data.success) {
+                msgBox.innerHTML = '<span class="text-success"><i class="fas fa-check-circle me-1"></i> Your message has been sent successfully!</span>';
+                form.reset();
+              } else {
+                msgBox.innerHTML = '<span class="text-danger"><i class="fas fa-exclamation-circle me-1"></i> Error: Could not send email.</span>';
+              }
+              msgBox.style.display = 'block';
+              btn.innerHTML = originalText;
+              btn.disabled = false;
+            },
+            error: function(xhr, status, error) {
+              console.error("AJAX Error:", status, error, xhr.responseText);
+              var errorMsg = xhr.status === 404 ? "contact.php file is missing." : "PHP Error! Are you sure XAMPP is running?";
+              msgBox.innerHTML = '<span class="text-danger"><i class="fas fa-exclamation-triangle me-1"></i> ' + errorMsg + '</span>';
+              msgBox.style.display = 'block';
+              btn.innerHTML = originalText;
+              btn.disabled = false;
             }
-            msgBox.style.display = 'block';
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-          })
-          .catch(error => {
-            msgBox.innerHTML = '<span class="text-danger"><i class="fas fa-wifi me-1"></i> Network error. Please check your connection and try again.</span>';
-            msgBox.style.display = 'block';
-            btn.innerHTML = originalText;
-            btn.disabled = false;
           });
         });
 
