@@ -1105,7 +1105,10 @@
           <div class="container position-relative py-5" style="z-index: 10;">
             <div class="row align-items-center g-5">
               <div class="col-lg-6">
-              <h3 class="heading h2 mb-4 text-center text-lg-start">Academics & Teachers</h3>
+                <div class="text-center text-lg-start mb-4">
+                  <span class="badge bg-warning text-dark text-uppercase px-3 py-2 rounded-pill mb-2">Our Strengths</span>
+                  <h3 class="h1 fw-bold heading mb-0">Academics & Teachers</h3>
+                </div>
               <div class="modern-card position-relative overflow-hidden mb-4 border-top border-4 border-warning text-start">
                 <div class="position-absolute top-0 end-0 p-3 bg-icon-wrap" style="opacity: 0.03;">
                   <i class="fas fa-book-open fa-6x text-warning"></i>
@@ -1680,7 +1683,12 @@
                   <p class="text-muted">We would love to hear from you! Fill out the form below and we'll get back to you shortly.</p>
                 </div>
                 
-                <form id="contactForm" action="contact.php" method="POST" class="row g-4">
+                <form id="contactForm" action="https://formsubmit.co/leagueglobalschool@gmail.com" method="POST" class="row g-4">
+                  <!-- FormSubmit.co Hidden Fields for configuration -->
+                  <input type="hidden" name="_subject" value="New Admission Inquiry / Contact from Website">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="hidden" name="_template" value="table">
+
                   <div class="col-md-6">
                     <label for="parentName" class="form-label fw-bold text-dark mb-1">Parent/Guardian Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="parentName" name="parent_name" placeholder="Enter your full name" required>
@@ -1695,11 +1703,14 @@
                   </div>
                   <div class="col-md-6">
                     <label for="phoneNumber" class="form-label fw-bold text-dark mb-1">Phone Number <span class="text-danger">*</span></label>
-                    <input type="tel" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="phoneNumber" name="phone" placeholder="Enter your phone number" required>
+                     <div class="input-group input-group-rounded-3">
+                      <span class="input-group-text bg-light border-0">+91</span>
+                      <input type="tel" class="form-control bg-light border-0 py-2 px-3" id="phoneNumber" name="phone" placeholder="9876543210" required pattern="\d{10}" maxlength="10" title="Please enter a 10-digit phone number.">
+                    </div>
                   </div>
                   <div class="col-md-6">
-                    <label for="dob" class="form-label fw-bold text-dark mb-1">Student's Date of Birth</label>
-                    <input type="date" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="dob" name="dob">
+                    <label for="dob" class="form-label fw-bold text-dark mb-1">Student's Date of Birth <span class="text-danger">*</span></label>
+                    <input type="date" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="dob" name="dob" required>
                   </div>
                   <div class="col-md-6">
                     <label for="gradeApplying" class="form-label fw-bold text-dark mb-1">Grade Applying For</label>
@@ -1902,40 +1913,37 @@
           btn.disabled = true;
           msgBox.style.display = 'none';
           
-          // Check if running via double-click instead of a web server
-          if (window.location.protocol === 'file:') {
-            msgBox.innerHTML = '<span class="text-danger"><i class="fas fa-exclamation-triangle me-1"></i> <b>Action Blocked:</b> You cannot test PHP forms by double-clicking the HTML file. You must run this site through XAMPP (http://localhost/...).</span>';
+          // Submit using FormSubmit's AJAX endpoint
+          fetch("https://formsubmit.co/ajax/leagueglobalschool@gmail.com", {
+            method: "POST",
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            },
+          })
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            }
+            // If the server response is not ok, handle it as an error
+            throw new Error('Network response was not ok.');
+          })
+          .then(data => {
+            if (data.success === "true") {
+              msgBox.innerHTML = '<span class="text-success"><i class="fas fa-check-circle me-1"></i> Your message has been sent successfully! We will get back to you shortly.</span>';
+              form.reset();
+            } else {
+              msgBox.innerHTML = '<span class="text-danger"><i class="fas fa-exclamation-triangle me-1"></i> ' + (data.message || 'An error occurred. Please try again.') + '</span>';
+            }
+          })
+          .catch(error => {
+            console.error(error);
+            msgBox.innerHTML = '<span class="text-danger"><i class="fas fa-exclamation-triangle me-1"></i> Oops! Something went wrong. Please check your connection and try again.</span>';
+          })
+          .finally(() => {
             msgBox.style.display = 'block';
             btn.innerHTML = originalText;
             btn.disabled = false;
-            return;
-          }
-
-          // Submit using jQuery AJAX
-          jQuery.ajax({
-            url: form.action,
-            type: "POST",
-            data: jQuery(form).serialize(),
-            dataType: "json",
-            success: function(data) {
-              if(data.success) {
-                msgBox.innerHTML = '<span class="text-success"><i class="fas fa-check-circle me-1"></i> Your message has been sent successfully!</span>';
-                form.reset();
-              } else {
-                msgBox.innerHTML = '<span class="text-danger"><i class="fas fa-exclamation-circle me-1"></i> Error: Could not send email.</span>';
-              }
-              msgBox.style.display = 'block';
-              btn.innerHTML = originalText;
-              btn.disabled = false;
-            },
-            error: function(xhr, status, error) {
-              console.error("AJAX Error:", status, error, xhr.responseText);
-              var errorMsg = xhr.status === 404 ? "contact.php file is missing." : "PHP Error! Are you sure XAMPP is running?";
-              msgBox.innerHTML = '<span class="text-danger"><i class="fas fa-exclamation-triangle me-1"></i> ' + errorMsg + '</span>';
-              msgBox.style.display = 'block';
-              btn.innerHTML = originalText;
-              btn.disabled = false;
-            }
           });
         });
 
