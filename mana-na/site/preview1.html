@@ -2696,7 +2696,9 @@
         <div class="section-card">
             <h2>Contact Us</h2>
             <p style="margin-bottom: 3rem;">Accessing support at the right time can make a meaningful difference. <br>It is never too late to seek professional's help. <br>Reach out to schedule a session or ask any questions.</p>
-             <form class="contact-grid" id="contactForm" action="https://formsubmit.co/info@mana-na.in" method="POST">
+             <form class="contact-grid" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="a8b4289e-3d63-48bf-88da-4af7caeed487">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                 <div>
                     <div class="form-group">
                         <input type="text" id="senderName" name="sender_name" required placeholder="Your Name">
@@ -2834,11 +2836,11 @@
             <h2 style="text-align: center; margin-bottom: 1rem; font-size: 2rem;">Book a Session</h2>
             <p style="text-align: center; margin-bottom: 2rem;">Fill out the details below, and we will get back to you shortly to confirm your appointment.</p>
             
-            <form id="bookingForm" action="https://formsubmit.co/info@mana-na.in" method="POST" novalidate>
-                <!-- FormSubmit Configuration -->
-                <input type="hidden" name="_subject" value="New Session Booking Request">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
+            <form id="bookingForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+                <!-- Web3Forms Configuration -->
+                <input type="hidden" name="access_key" value="a8b4289e-3d63-48bf-88da-4af7caeed487">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                <input type="hidden" name="subject" value="New Session Booking Request">
 
                 <div class="booking-grid">
                     
@@ -3636,7 +3638,7 @@
                     formData.set('Phone', '+91 ' + phoneVal);
                 }
 
-                fetch("https://formsubmit.co/ajax/info@mana-na.in", {
+                fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     body: formData,
                     headers: { 'Accept': 'application/json' }
@@ -3698,18 +3700,19 @@
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Sending...';
 
-                // Using fetch for FormSubmit AJAX submission
-                fetch("https://formsubmit.co/ajax/info@mana-na.in", {
+                // Using fetch for Web3Forms AJAX submission
+                fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     headers: { 
                         "Content-Type": "application/json",
                         "Accept": "application/json"
                     },
                     body: JSON.stringify({
+                        access_key: "a8b4289e-3d63-48bf-88da-4af7caeed487",
                         name: senderName,
                         email: senderEmail,
                         message: finalMessage,
-                        _subject: "New Website Inquiry from " + senderName
+                        subject: "New Website Inquiry from " + senderName
                     })
                 })
                 .then(response => response.json())
@@ -3756,15 +3759,16 @@
                 newsletterBtn.disabled = true;
                 newsletterBtn.textContent = 'Subscribing...';
 
-                fetch("https://formsubmit.co/ajax/info@mana-na.in", {
+                fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     headers: { 
                         "Content-Type": "application/json",
                         "Accept": "application/json"
                     },
                     body: JSON.stringify({
+                        access_key: "a8b4289e-3d63-48bf-88da-4af7caeed487",
                         email: email,
-                        _subject: "New Newsletter Subscription from " + email
+                        subject: "New Newsletter Subscription from " + email
                     })
                 })
                 .then(response => response.json())
