@@ -571,6 +571,35 @@
             opacity: 0.9;
         }
     </style>
+        <!-- Global Protection: Disable Selection, Dragging, and Right-Click on Images -->
+    <style>
+        body {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+        }
+        input, textarea, select {
+            -webkit-user-select: auto !important;
+            -moz-user-select: auto !important;
+            -ms-user-select: auto !important;
+            user-select: auto !important;
+        }
+        img {
+            -webkit-user-drag: none !important;
+            -khtml-user-drag: none !important;
+            -moz-user-drag: none !important;
+            -o-user-drag: none !important;
+            pointer-events: none !important;
+        }
+    </style>
+    <script>
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+    </script>
 </head>
 <body>
 
@@ -608,7 +637,7 @@
             <h1>404</h1>
             <h2>Page Not Found</h2>
             <p>Oops! The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
-            <a href="index.html#home" class="btn">Go to Homepage</a>
+            <a href="index.html#home" class="btn">Go to Mana-na Homepage</a>
         </div>
     </main>
 

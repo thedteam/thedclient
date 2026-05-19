@@ -175,7 +175,7 @@
 
         .blocked-list {
             margin-top: 1rem;
-            max-height: 400px;
+            max-height: 600px;
             overflow-y: auto;
         }
 
@@ -233,6 +233,34 @@
         [data-theme="dark"] #loginError { color: #fc8181; }
 
     </style>
+        <!-- Global Protection: Disable Selection, Dragging, and Right-Click on Images -->
+    <style>
+        body {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+        }
+        input, textarea, select {
+            -webkit-user-select: auto !important;
+            -moz-user-select: auto !important;
+            -ms-user-select: auto !important;
+            user-select: auto !important;
+        }
+        img {
+            -webkit-user-drag: none !important;
+            -khtml-user-drag: none !important;
+            -moz-user-drag: none !important;
+            -o-user-drag: none !important;
+        }
+    </style>
+    <script>
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+    </script>
 </head>
 <body class="locked">
 
@@ -241,7 +269,7 @@
         <div class="login-card">
             <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo" style="width: 80px; margin-bottom: 1rem; border-radius: 8px;">
             <h2>Admin Access</h2>
-            <p>Please enter the secure password to manage slots.</p>
+            <p>Please enter the secure password to <br>manage slots.</p>
             <input type="password" id="adminPwd" placeholder="Enter password" onkeypress="if(event.key === 'Enter') checkPwd()">
             <button class="btn" onclick="checkPwd()" style="margin-top: 0;">Unlock Panel</button>
             <p id="loginError">Incorrect password. Please try again.</p>
@@ -249,7 +277,7 @@
     </div>
 
     <nav>
-        <a href="preview1.html#home" class="logo">
+        <a href="admin-panel.html" class="logo">
             <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo">
             <div class="logo-text">
                 <span class="brand-name">Mana-na<span class="kannada-text">&nbsp;ಮನ-ನ</span></span>
@@ -383,12 +411,29 @@
                 const data = await response.json();
                 if (data.record) {
                     blockedData = data.record;
+                cleanPastDates();
                     updateUI();
                 }
             } catch (e) {
                 console.error("Failed to load live slots from server", e);
             }
         }
+
+    function cleanPastDates() {
+        const today = new Date().toISOString().split('T')[0];
+        let hasChanges = false;
+        
+        for (const date in blockedData) {
+            if (date < today) {
+                delete blockedData[date];
+                hasChanges = true;
+            }
+        }
+        
+        if (hasChanges) {
+            saveGlobalData(true); // Save silently without alerting
+        }
+    }
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
@@ -482,17 +527,17 @@
             saveGlobalData();
         }
 
-        async function saveGlobalData() {
+    async function saveGlobalData(silent = false) {
             try {
                 await fetch(JSONBIN_URL, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_MASTER_KEY },
                     body: JSON.stringify(blockedData)
                 });
-                alert("Configuration updated globally!");
+            if (!silent) alert("Configuration updated globally!");
             } catch (error) {
                 console.error("Error saving globally:", error);
-                alert("Failed to save globally. Please check your connection.");
+            if (!silent) alert("Failed to save globally. Please check your connection.");
             }
         }
 
