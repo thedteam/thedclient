@@ -77,4 +77,6 @@
     }
 }
 
-
+.no-scroll {
+    overflow: hidden;
+}

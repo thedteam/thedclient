@@ -1135,10 +1135,12 @@ if (typeof jQuery !== 'undefined') {
 
 // Page Loader
 const loaderStartTime = performance.now(); // Capture time when script starts executing
-
 window.addEventListener('load', function() {
 	const pageLoader = document.getElementById('page-loader');
 	if (pageLoader) {
+		// Disable scrolling while the loader is active
+		document.body.classList.add('no-scroll');
+
 		const minDisplayTime = 3000; // Minimum display time in milliseconds (e.g., 1 second)
 		const elapsedTime = performance.now() - loaderStartTime;
 		const delay = Math.max(0, minDisplayTime - elapsedTime);
@@ -1146,6 +1148,8 @@ window.addEventListener('load', function() {
 		setTimeout(function() {
 			pageLoader.classList.add('fade-out');
 			pageLoader.addEventListener('transitionend', function() {
+				// Re-enable scrolling after the loader has faded out and is removed
+				document.body.classList.remove('no-scroll');
 				pageLoader.remove();
 			});
 		}, delay);
