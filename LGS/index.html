@@ -73,7 +73,7 @@
         -khtml-user-drag: none;
         -moz-user-drag: none;
         -o-user-drag: none;
-        user-drag: none;
+        -user-drag: none;
         -webkit-touch-callout: none; /* Disable iOS long-press save image menu */
       }
 
@@ -1671,75 +1671,6 @@
             </div>
           </div>
           
-          <!-- Contact Form -->
-          <div class="row justify-content-center mt-5 position-relative z-3">
-            <div class="col-12" style="max-width: 1290px;">
-              <div class="modern-card border-top border-4 border-success position-relative overflow-hidden text-start">
-                <div class="position-absolute top-0 end-0 p-3 bg-icon-wrap" style="opacity: 0.03;">
-                  <i class="fas fa-envelope-open-text fa-6x text-success"></i>
-                </div>
-                <div class="text-center mb-4">
-                  <h3 class="fw-bold heading h3 mb-2">Send Us a Message</h3>
-                  <p class="text-muted">We would love to hear from you! Fill out the form below and we'll get back to you shortly.</p>
-                </div>
-                
-                <form id="contactForm" action="https://formsubmit.co/leagueglobalschool@gmail.com" method="POST" class="row g-4">
-                  <!-- FormSubmit.co Hidden Fields for configuration -->
-                  <input type="hidden" name="_subject" value="New Admission Inquiry / Contact from Website">
-                  <input type="hidden" name="_captcha" value="false">
-                  <input type="hidden" name="_template" value="table">
-
-                  <div class="col-md-6">
-                    <label for="parentName" class="form-label fw-bold text-dark mb-1">Parent/Guardian Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="parentName" name="parent_name" placeholder="Enter your full name" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="studentName" class="form-label fw-bold text-dark mb-1">Student's Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="studentName" name="student_name" placeholder="Enter child's name" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="emailAddress" class="form-label fw-bold text-dark mb-1">Email Address <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="emailAddress" name="email" placeholder="Enter your email" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="phoneNumber" class="form-label fw-bold text-dark mb-1">Phone Number <span class="text-danger">*</span></label>
-                     <div class="input-group input-group-rounded-3">
-                      <span class="input-group-text bg-light border-0">+91</span>
-                      <input type="tel" class="form-control bg-light border-0 py-2 px-3" id="phoneNumber" name="phone" placeholder="9876543210" required pattern="\d{10}" maxlength="10" title="Please enter a 10-digit phone number.">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="dob" class="form-label fw-bold text-dark mb-1">Student's Date of Birth <span class="text-danger">*</span></label>
-                    <input type="date" class="form-control bg-light border-0 py-2 px-3 rounded-3" id="dob" name="dob" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="gradeApplying" class="form-label fw-bold text-dark mb-1">Grade Applying For</label>
-                    <select class="form-select bg-light border-0 py-2 px-3 rounded-3" id="gradeApplying" name="grade">
-                      <option value="" selected disabled>Select Grade...</option>
-                      <option value="Nursery">Nursery</option>
-                      <option value="LKG">LKG</option>
-                      <option value="UKG">UKG</option>
-                      <option value="1st Standard">1st Standard</option>
-                      <option value="2nd Standard">2nd to 5th Standard</option>
-                      <option value="6th Standard">6th to 10th Standard</option>
-                    </select>
-                  </div>
-                  <div class="col-12">
-                    <label for="message" class="form-label fw-bold text-dark mb-1">Your Message <span class="text-danger">*</span></label>
-                    <textarea class="form-control bg-light border-0 py-2 px-3 rounded-3" id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
-                  </div>
-                  <div class="col-12 text-center mt-4">
-                    <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow-sm" style="background-color: var(--primary-color); border-color: var(--primary-color);">
-                      <i class="fas fa-paper-plane me-2"></i> Send Message
-                    </button>
-                    <!-- Success/Error Message Container -->
-                    <div id="formMessage" class="mt-3 fw-bold fs-6" style="display: none;"></div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
           <!-- Map moved to footer for cleaner layout -->
           <div class="mt-5 text-center">
              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.8231133423233!2d77.60457957490249!3d12.789991087508938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6b226faa7059%3A0x304e24018959d97f!2sLeague%20Global%20School!5e0!3m2!1sen!2sin!4v1726052844008!5m2!1sen!2sin" width="100%" height="350" style="border: 0; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
@@ -1897,54 +1828,6 @@
         document.getElementById('backToTopBtn').addEventListener('click', function(e) {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Contact Form AJAX Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-          e.preventDefault(); // Prevent the default form redirection
-          
-          var form = this;
-          var btn = form.querySelector('button[type="submit"]');
-          var msgBox = document.getElementById('formMessage');
-          var originalText = btn.innerHTML;
-          
-          // Set loading state
-          btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
-          btn.disabled = true;
-          msgBox.style.display = 'none';
-          
-          // Submit using FormSubmit's AJAX endpoint
-          fetch("https://formsubmit.co/ajax/leagueglobalschool@gmail.com", {
-            method: "POST",
-            body: new FormData(form),
-            headers: {
-                'Accept': 'application/json'
-            },
-          })
-          .then(response => {
-            if (response.ok) {
-              return response.json();
-            }
-            // If the server response is not ok, handle it as an error
-            throw new Error('Network response was not ok.');
-          })
-          .then(data => {
-            if (data.success === "true") {
-              msgBox.innerHTML = '<span class="text-success"><i class="fas fa-check-circle me-1"></i> Your message has been sent successfully! We will get back to you shortly.</span>';
-              form.reset();
-            } else {
-              msgBox.innerHTML = '<span class="text-danger"><i class="fas fa-exclamation-triangle me-1"></i> ' + (data.message || 'An error occurred. Please try again.') + '</span>';
-            }
-          })
-          .catch(error => {
-            console.error(error);
-            msgBox.innerHTML = '<span class="text-danger"><i class="fas fa-exclamation-triangle me-1"></i> Oops! Something went wrong. Please check your connection and try again.</span>';
-          })
-          .finally(() => {
-            msgBox.style.display = 'block';
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-          });
         });
 
         // Navigation Highlight on Scroll (ScrollSpy)
