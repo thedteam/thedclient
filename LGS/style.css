@@ -20049,7 +20049,7 @@ body:not(.has-plugin-html5video) .video-wrap video {
 }
 
 .posts-md .entry-image + .entry-title {
-  margin-top: 0.875rem;
+  margin-bottom: 0.5rem;
 }
 
 .entry-title h2, .entry-title .h2,

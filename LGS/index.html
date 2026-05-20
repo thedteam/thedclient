@@ -27,6 +27,75 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <style>
+      /* GLightbox progress bar and control styles */
+      .gb-progress {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 4px;
+        background: rgba(255,255,255,0.12);
+        z-index: 9999;
+      }
+      .gb-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--secondary-color,#ff9f1c), var(--primary-color,#3b2b98));
+        transition: width 0.1s linear;
+      }
+      .gb-controls {
+        position: absolute;
+        top: 15px; /* Standard GLightbox close button top position */
+        right: 65px; /* Spaced to the left of the close button */
+        display: flex;
+        gap: 10px;
+        z-index: 10000;
+        align-items: center;
+        height: 35px; /* Match standard GLightbox button height */
+      }
+      .gb-playpause {
+        background: rgba(0,0,0,0.45);
+        color: #fff;
+        border: none;
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        cursor: pointer;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+      .gb-playpause:hover {
+        background: rgba(0,0,0,0.7);
+      }
+      .gb-playpause:hover { background: rgba(0,0,0,0.6); }
+
+      /* Custom GLightbox background blur effect */
+      .glightbox-container {
+        background-color: transparent !important; /* Override default black */
+      }
+      .glightbox-container .goverlay {
+        background: transparent !important;
+      }
+
+      .glightbox-container .gb-blur-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: blur(20px) brightness(0.7);
+        transform: scale(1.05); /* Prevent blur edges from showing */
+        z-index: -1;
+      }
+    </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Document Title -->
@@ -800,7 +869,7 @@
                       <div>Admissions</div>
                     </a>
                   </li>
-                  <li class="menu-item d-lg-none">
+                  <li class="menu-item">
                     <a class="menu-link" href="#news&events">
                       <div>News and Events</div>
                     </a>
@@ -1346,11 +1415,13 @@
                 <div class="posts-md modern-card p-3">
                   <div class="entry">
                     <div class="entry-image position-relative mb-md-4">
-                      <img src="images/Photo%2013.jpg" alt="Yoga Sessions" class="rounded-4 w-100 object-fit-cover" style="height:220px;">
+                      <a id="news-1" href="images/Photo%2013.jpg" class="glightbox" data-gallery="news" data-glightbox="title:Yoga Sessions">
+                        <img src="images/Photo%2013.jpg" alt="Yoga Sessions" class="rounded-4 w-100 object-fit-cover" style="height:220px;">
+                      </a>
                     </div>
                     <div class="entry-title text-center text-transform-none">
                       <h3>
-                        <a class="ls-0 h4 heading text-decoration-none">Yoga Sessions</a>
+                        <a href="#" class="ls-0 h4 heading text-decoration-none news-link" data-target="news-1">Yoga Sessions</a>
                       </h3>
                     </div>
                   </div>
@@ -1361,11 +1432,13 @@
                 <div class="posts-md modern-card p-3">
                   <div class="entry">
                     <div class="entry-image position-relative mb-md-4">
-                      <img src="images/Photo%209.jpg" alt="Scientific Experiments" class="rounded-4 w-100 object-fit-cover" style="height:220px;">
+                      <a id="news-2" href="images/Photo%209.jpg" class="glightbox" data-gallery="news" data-glightbox="title:Scientific Experiments">
+                        <img src="images/Photo%209.jpg" alt="Scientific Experiments" class="rounded-4 w-100 object-fit-cover" style="height:220px;">
+                      </a>
                     </div>
                     <div class="entry-title text-center text-transform-none">
                       <h3>
-                        <a class="ls-0 h4 heading text-decoration-none">Scientific Experiments</a>
+                        <a href="#" class="ls-0 h4 heading text-decoration-none news-link" data-target="news-2">Scientific Experiments</a>
                       </h3>
                     </div>
                   </div>
@@ -1376,11 +1449,13 @@
                 <div class="posts-md modern-card p-3">
                   <div class="entry">
                     <div class="entry-image position-relative mb-md-4">
-                      <img src="images/Photo%203.jpg" alt="Art and Crafts" class="rounded-4 w-100 object-fit-cover" style="height:220px;">
+                      <a id="news-3" href="images/Photo%203.jpg" class="glightbox" data-gallery="news" data-glightbox="title:Arts and Crafts">
+                        <img src="images/Photo%203.jpg" alt="Art and Crafts" class="rounded-4 w-100 object-fit-cover" style="height:220px;">
+                      </a>
                     </div>
                     <div class="entry-title text-center text-transform-none">
                       <h3>
-                        <a class="ls-0 h4 heading text-decoration-none">Arts and Crafts</a>
+                        <a href="#" class="ls-0 h4 heading text-decoration-none news-link" data-target="news-3">Arts and Crafts</a>
                       </h3>
                     </div>
                   </div>
@@ -1390,11 +1465,13 @@
                 <div class="posts-md modern-card p-3">
                   <div class="entry">
                     <div class="entry-image position-relative mb-md-4">
-                      <img src="images/Photo%2011.jpg" alt="Kindergarten" class="rounded-4 w-100 object-fit-cover" style="height:220px;">
+                      <a id="news-4" href="images/Photo%2011.jpg" class="glightbox" data-gallery="news" data-glightbox="title:Kindergarten">
+                        <img src="images/Photo%2011.jpg" alt="Kindergarten" class="rounded-4 w-100 object-fit-cover" style="height:220px;">
+                      </a>
                     </div>
                     <div class="entry-title text-center text-transform-none">
                       <h3>
-                        <a class="ls-0 h4 heading text-decoration-none">Kindergarten</a>
+                        <a href="#" class="ls-0 h4 heading text-decoration-none news-link" data-target="news-4">Kindergarten</a>
                       </h3>
                     </div>
                   </div>
@@ -1404,11 +1481,13 @@
                 <div class="posts-md modern-card p-3">
                   <div class="entry">
                     <div class="entry-image position-relative mb-md-4">
-                      <img src="images/Photo%2011.jpeg" alt="Yellow Day" class="rounded-4 w-100 object-fit-cover" style="height:220px;">
+                      <a id="news-5" href="images/Photo%2011.jpeg" class="glightbox" data-gallery="news" data-glightbox="title:Yellow Day">
+                        <img src="images/Photo%2011.jpeg" alt="Yellow Day" class="rounded-4 w-100 object-fit-cover" style="height:220px;">
+                      </a>
                     </div>
                     <div class="entry-title text-center text-transform-none">
                       <h3>
-                        <a class="ls-0 h4 heading text-decoration-none">Yellow Day</a>
+                        <a href="#" class="ls-0 h4 heading text-decoration-none news-link" data-target="news-5">Yellow Day</a>
                       </h3>
                     </div>
                   </div>
@@ -1418,11 +1497,13 @@
                 <div class="posts-md modern-card p-3">
                   <div class="entry">
                     <div class="entry-image position-relative mb-md-4">
-                      <img src="images/Photo%2016.jpg" alt="Krishna Janmashtami" class="rounded-4 w-100 object-fit-cover" style="height:220px;">
+                      <a id="news-6" href="images/Photo%2016.jpg" class="glightbox" data-gallery="news" data-glightbox="title:Krishna Janmashtami">
+                        <img src="images/Photo%2016.jpg" alt="Krishna Janmashtami" class="rounded-4 w-100 object-fit-cover" style="height:220px;">
+                      </a>
                     </div>
                     <div class="entry-title text-center text-transform-none">
                       <h3>
-                        <a class="ls-0 h4 heading text-decoration-none">Krishna Janmashtami</a>
+                        <a href="#" class="ls-0 h4 heading text-decoration-none news-link" data-target="news-6">Krishna Janmashtami</a>
                       </h3>
                     </div>
                   </div>
@@ -1575,6 +1656,9 @@
 <h2 class="h1 fw-bold heading mb-3 text-center">
               Contact Us
             </h2>
+            <p class="text-center text-muted mx-auto mb-5 pb-2" style="max-width: 700px;">
+              We'd love to hear from you! Reach out to us through any of the channels below or <br> visit us during working hours.
+            </p>
         <div class="container z-3 position-relative" style="padding-bottom: 80px">
           <div class="footer-widgets-wrap mt-5">
             <div class="row g-4">
@@ -1741,6 +1825,178 @@
       <!-- Include Date Range Picker -->
       <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+      <!-- GLightbox JS -->
+      <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+      <script>
+        // Initialize GLightbox for News & Events gallery
+        const newsLightbox = GLightbox({ selector: '.glightbox' });
+
+        // Forward title clicks to thumbnail anchors
+        document.addEventListener('DOMContentLoaded', function() {
+          document.querySelectorAll('.news-link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+              e.preventDefault();
+              const targetId = this.dataset.target;
+              if (!targetId) return;
+              const thumb = document.getElementById(targetId);
+              if (thumb) thumb.click();
+            });
+          });
+        });
+
+        // Autoplay + progress bar for GLightbox
+        (function() {
+          const AUTO_DURATION = 5000; // ms per slide
+          let rafId = null;
+          let startTs = null;
+          let running = true;
+
+          function setupControls(container) {
+            if (!container || container.querySelector('.gb-controls')) return;
+
+            // Progress bar
+            const progWrap = document.createElement('div');
+            progWrap.className = 'gb-progress';
+            const progBar = document.createElement('div');
+            progBar.className = 'gb-progress-bar';
+            progWrap.appendChild(progBar);
+            container.appendChild(progWrap);
+
+            // Controls container (place before close button if present)
+            const controls = document.createElement('div');
+            controls.className = 'gb-controls';
+
+            const playBtn = document.createElement('button');
+            playBtn.className = 'gb-playpause';
+            playBtn.type = 'button';
+            playBtn.title = 'Pause / Play';
+            playBtn.innerHTML = '⏸';
+            controls.appendChild(playBtn);
+
+            // Insert controls before close button if exists, else append
+            const closeBtn = container.querySelector('.gclose, .g-close, .glightbox-close');
+            if (closeBtn && closeBtn.parentNode) {
+              closeBtn.parentNode.insertBefore(controls, closeBtn);
+              
+              // Dynamically align with close button
+              const closeStyle = window.getComputedStyle(closeBtn);
+              controls.style.top = closeStyle.top;
+              const closeHeight = parseInt(closeStyle.height);
+              if (closeHeight > 0) {
+                playBtn.style.height = closeHeight + 'px';
+                playBtn.style.width = closeHeight + 'px';
+                playBtn.style.borderRadius = closeStyle.borderRadius;
+                playBtn.style.backgroundColor = closeStyle.backgroundColor;
+              }
+            } else {
+              container.appendChild(controls);
+            }
+
+            // Blurred background image
+            const blurBg = document.createElement('img');
+            blurBg.className = 'gb-blur-bg';
+            container.prepend(blurBg);
+
+            function updateBlurBackground() {
+              const currentSlide = newsLightbox.elements[newsLightbox.index];
+              if (currentSlide && currentSlide.node) {
+                const imgSrc = currentSlide.node.querySelector('img').src;
+                blurBg.src = imgSrc;
+              }
+            }
+            // Update on initial open
+            updateBlurBackground();
+            // Update on slide change
+            newsLightbox.on('slide_before_change', updateBlurBackground);
+
+            function stopAutoplay() {
+              running = false;
+              if (rafId) cancelAnimationFrame(rafId);
+              rafId = null;
+              playBtn.innerHTML = '▶';
+            }
+            function startAutoplay() {
+              running = true;
+              startTs = performance.now();
+              playBtn.innerHTML = '⏸';
+              if (!rafId) rafId = requestAnimationFrame(step);
+            }
+
+            function step(now) {
+              if (!startTs) startTs = now;
+              const elapsed = now - startTs;
+              const pct = Math.min(1, elapsed / AUTO_DURATION);
+              progBar.style.width = (pct * 100) + '%';
+              if (pct >= 1) {
+                // Check if we are on the last slide
+                const isLast = newsLightbox.index === (newsLightbox.elements.length - 1);
+                if (isLast) {
+                  stopAutoplay();
+                  return;
+                }
+                // advance to next slide
+                const nextBtn = container.querySelector('.gnext, .gnext, .g-arrow-next, .glightbox-next');
+                if (nextBtn) nextBtn.click();
+                startTs = performance.now();
+              }
+              if (running) rafId = requestAnimationFrame(step);
+            }
+
+            // Play/pause toggle — prevent propagation so GLightbox doesn't close
+            playBtn.addEventListener('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (running) {
+                stopAutoplay();
+              } else {
+                // If we are on the last slide and it finished, go back to the first one
+                const isLast = newsLightbox.index === (newsLightbox.elements.length - 1);
+                if (isLast && progBar.style.width === "100%") {
+                  newsLightbox.goToSlide(0);
+                }
+                startAutoplay();
+              }
+            });
+            // Also block pointer/touch events from bubbling up
+            ['mousedown','touchstart'].forEach(evt => {
+              playBtn.addEventListener(evt, function(e){ e.stopPropagation(); });
+            });
+
+            // Reset progress when navigating manually
+            ['.gnext', '.gnext', '.g-arrow-next', '.glightbox-next', '.gprev', '.gprev', '.g-arrow-prev', '.glightbox-prev'].forEach(sel => {
+              const el = container.querySelector(sel);
+              if (el) el.addEventListener('click', function() { startTs = performance.now(); });
+            });
+
+            // Stop when closing
+            const close = container.querySelector('.gclose, .g-close, .glightbox-close');
+            if (close) close.addEventListener('click', function() { stopAutoplay(); });
+
+            // Start autoplay by default
+            startAutoplay();
+          }
+
+          // MutationObserver to detect GLightbox container open
+          const mo = new MutationObserver(function(mutations) {
+            for (const m of mutations) {
+              for (const node of m.addedNodes) {
+                if (node.nodeType === 1 && node.classList && node.classList.contains('glightbox-container')) {
+                  setupControls(node);
+                }
+              }
+              for (const node of m.removedNodes) {
+                if (node.nodeType === 1 && node.classList && node.classList.contains('glightbox-container')) {
+                  // cancel any RAF if still running
+                  if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+                }
+              }
+            }
+          });
+          mo.observe(document.body, { childList: true, subtree: true });
+        })();
+      </script>
+
       <script>
         let carousels = jQuery(
           "#kindergarten-carousel-img, #kindergarten-carousel-text"
@@ -1831,6 +2087,7 @@
         });
 
         // Navigation Highlight on Scroll (ScrollSpy)
+        let currentSectionId = "";
         window.addEventListener('scroll', function() {
           let scrollPos = window.scrollY || document.documentElement.scrollTop;
           
@@ -1847,6 +2104,11 @@
               
               if (scrollPos >= offset && scrollPos < offset + height) {
                 link.classList.add('active-nav');
+
+                if (currentSectionId !== id) {
+                  currentSectionId = id;
+                  history.replaceState(null, null, '#' + id);
+                }
               }
             }
           });
