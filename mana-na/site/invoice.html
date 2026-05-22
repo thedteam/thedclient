@@ -236,6 +236,9 @@
             background-color: var(--bg-color); color: var(--text-main); font-size: 1rem; margin-bottom: 1rem;
         }
         .login-card input:focus { outline: none; border-color: var(--text-header); }
+        .login-card .btn {
+            width: 100%;
+        }
         #loginError { color: #c53030; display: none; margin-top: 1rem; margin-bottom: 0; font-weight: 500; }
         [data-theme="dark"] #loginError { color: #fc8181; }
 
@@ -390,7 +393,7 @@
                     <h3>Billed To:</h3>
                     <div class="address-content">
                         <strong class="editable" contenteditable="true" placeholder="Client Name">Client Name</strong>
-                        <span class="editable" contenteditable="true" placeholder="Client Address">Client Address</span>
+                        <!--span class="editable" contenteditable="true" placeholder="Client Address">Client Address</span-->
                         <span class="editable" contenteditable="true" placeholder="Client Phone">Client Phone</span>
                         <span class="editable" contenteditable="true" placeholder="Client Email">Client Email</span>
                     </div>
@@ -429,11 +432,11 @@
             <!-- Totals -->
             <div class="totals-section">
                 <div class="totals-grid">
-                    <span class="totals-label">Subtotal:</span>
-                    <span class="totals-value" id="subtotalAmount">₹1500.00</span>
+                    <!--span class="totals-label">Subtotal:</span>
+                    <span class="totals-value" id="subtotalAmount">₹1500.00</span-->
                     
-                    <span class="totals-label">Discount:</span>
-                    <span class="totals-value"><span class="editable" contenteditable="true" id="discountField" oninput="calculateTotals()">0</span></span>
+                    <!--span class="totals-label">Discount:</span>
+                    <span class="totals-value"><span class="editable" contenteditable="true" id="discountField" oninput="calculateTotals()">0</span></span-->
                     
                     <span class="totals-label grand-total">Total:</span>
                     <span class="grand-total-val" id="grandTotal">₹1500.00</span>
@@ -451,7 +454,7 @@
         <div class="invoice-actions">
             <button class="btn" onclick="downloadInvoiceAsImage()">Download as Image</button>
             <button class="btn" onclick="window.print()">Print / Save as PDF</button>
-            <button class="btn" onclick="shareInvoiceAsImage()">Share as Image</button>
+            <button class="btn" onclick="shareInvoiceAsImage()">Share via WA</button>
         </div>
 
     </div>
@@ -619,7 +622,7 @@
 
                 const downloadLink = document.createElement('a');
                 downloadLink.href = canvas.toDataURL('image/png');
-                downloadLink.download = `invoice-${invoiceId}.png`;
+                downloadLink.download = `Mana-na_Invoice-${invoiceId}.png`;
                 downloadLink.click();
 
             } catch (error) {
@@ -642,7 +645,7 @@
 
             const invoiceElement = document.getElementById('invoiceArea');
             const invoiceId = document.getElementById('invoiceNumber').innerText;
-            const shareCaption = `Hello, please find invoice attached with the Invoice ID: ${invoiceId}`;
+            const shareCaption = `Hello, please find invoice attached with the Invoice ID: Mana-na ${invoiceId}`;
             
             const shareBtn = document.querySelector('.invoice-actions .btn:last-child');
             const originalBtnText = shareBtn.textContent;
