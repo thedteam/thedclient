@@ -198,8 +198,8 @@
         .totals-grid { display: grid; grid-template-columns: 120px 120px; gap: 10px 20px; text-align: right; }
         .totals-label { font-weight: 600; color: var(--text-main); }
         .totals-value { font-family: monospace; font-size: 1.1rem; }
-        .grand-total { font-size: 1.3rem; color: var(--text-header); font-weight: bold; padding-top: 10px; border-top: 2px solid var(--border-color); }
-        .grand-total-val { font-size: 1.3rem; font-weight: bold; padding-top: 10px; border-top: 2px solid var(--border-color); font-family: monospace; }
+        .grand-total { font-size: 1.3rem; color: var(--text-header); font-weight: bold; }
+        .grand-total-val { font-size: 1.3rem; font-weight: bold; font-family: monospace; }
 
         /* --- Notes --- */
         .invoice-notes { padding-top: 2rem; border-top: 1px solid var(--border-color); }
@@ -432,12 +432,6 @@
             <!-- Totals -->
             <div class="totals-section">
                 <div class="totals-grid">
-                    <!--span class="totals-label">Subtotal:</span>
-                    <span class="totals-value" id="subtotalAmount">₹1500.00</span-->
-                    
-                    <!--span class="totals-label">Discount:</span>
-                    <span class="totals-value"><span class="editable" contenteditable="true" id="discountField" oninput="calculateTotals()">0</span></span-->
-                    
                     <span class="totals-label grand-total">Total:</span>
                     <span class="grand-total-val" id="grandTotal">₹1500.00</span>
                 </div>
@@ -561,16 +555,11 @@
 
         function calculateTotals() {
             const rowTotals = document.querySelectorAll('.row-total');
-            let subtotal = 0;
+            let total = 0;
             
             rowTotals.forEach(cell => {
-                subtotal += getNumericValue(cell.innerText);
+                total += getNumericValue(cell.innerText);
             });
-            
-            document.getElementById('subtotalAmount').innerText = '₹' + subtotal.toFixed(2);
-            
-            const discount = getNumericValue(document.getElementById('discountField').innerText);
-            const total = subtotal - discount;
             
             document.getElementById('grandTotal').innerText = '₹' + total.toFixed(2);
         }
