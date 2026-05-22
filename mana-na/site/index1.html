@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANA-NA | Counselling & Wellbeing Space</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.thedteam.in/assets/img/favicon.png" type="image/x-icon">
+</head>
+<style>
+    /* Custom CSS */
+:root {
+    --primary-color: #35807c;
+    --primary-dark: #265e5b;
+    --bg-color: #f7f3ed;
+    --text-dark: #2d3748;
+    --text-light: #4a5568;
+    --white: #ffffff;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Jost', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Utilities */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 40px 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+/* Navbar */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    color: var(--white);
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.kannada-text {
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background-color: var(--white);
+    color: var(--primary-color);
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: var(--transition);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Hero Carousel */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.carousel-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.kannada-title {
+    font-weight: 400;
+}
+
+.hero-content h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Intro Section */
+.intro {
+    background-color: var(--bg-color);
+}
+
+.lead-text {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    max-width: 900px;
+    margin: 0 auto 30px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.sub-text {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Services Section */
+.services {
+    background-color: var(--white);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background-color: var(--bg-color);
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid rgba(53, 128, 124, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(53, 128, 124, 0.1);
+    background-color: var(--primary-color);
+}
+
+.card h4 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.card:hover h4 {
+    color: var(--white);
+}
+
+/* Info Banner */
+.info-banner {
+    background-color: var(--bg-color);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.info-item .icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.info-item h4 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.info-item p {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-details p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.footer-link {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+.footer-brand h2 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+.footer-brand p {
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    .lead-text {
+        font-size: 1.4rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Add this to the very bottom of your style.css file */
+.footer-credit {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(247, 243, 237, 0.2);
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    width: 100%;
+}
+
+/* --- Carousel Dash Indicators --- */
+.carousel-indicators {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    height: 4px;
+    width: 25px; /* Dash style */
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.dot.active {
+    background-color: var(--white);
+    width: 40px; /* Expands when active */
+}
+
+/* --- Back to Top Button --- */
+/* Replace your existing #backToTop CSS block with this */
+#backToTop {
+    display: none; 
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    background-color: var(--primary-color);
+    color: var(--white);
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 4px 12px rgba(53, 128, 124, 0.3);
+    transition: var(--transition);
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #ffffff; /* Added white circle */
+    outline: none;
+}
+
+#backToTop:hover {
+    background-color: var(--primary-dark); /* Using the dark green */
+    transform: translateY(-5px);
+}
+</style>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            MANA-NA <span class="kannada-text"> ಮನ-ನ</span>
+        </div>
+        <a href="#contact" class="btn-primary">Book an Appointment</a>
+    </nav>
+
+    <header class="hero">
+        <div class="carousel-container">
+            <div class="slide active" style="background-image: linear-gradient(rgba(53, 128, 124, 0.6), rgba(53, 128, 124, 0.6)), url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=2000&auto=format&fit=crop');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(53, 128, 124, 0.6), rgba(53, 128, 124, 0.6)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2000&auto=format&fit=crop');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(53, 128, 124, 0.6), rgba(53, 128, 124, 0.6)), url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2000&auto=format&fit=crop');"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>MANA-NA</h1>
+            <h2>Counselling & Wellbeing Space</h2>
+            <p>Confidential • Professional • Non-judgmental</p>
+        </div>
+        <div class="carousel-indicators">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </header>
+
+    <section class="intro section-padding">
+        <div class="container text-center">
+            <p class="lead-text">
+                We offer a warm, confidential space where you can speak openly, feel understood, and move forward with greater clarity, confidence, and emotional strength.
+            </p>
+            <p class="sub-text">
+                Sessions at mana-na will be practical, evidence-based along with thoughtful conversation tailored to your individual needs.
+            </p>
+        </div>
+    </section>
+
+    <section class="services section-padding">
+        <div class="container">
+            <h3 class="section-title">Areas of Support</h3>
+            <p class="section-subtitle">Supporting teens and adults through life's challenges.</p>
+            
+            <div class="grid-container">
+                <div class="card">
+                    <h4>Anxiety & Stress</h4>
+                </div>
+                <div class="card">
+                    <h4>Academic Pressure</h4>
+                </div>
+                <div class="card">
+                    <h4>Work-Life Balance</h4>
+                </div>
+                <div class="card">
+                    <h4>Emotional Difficulties</h4>
+                </div>
+                <div class="card">
+                    <h4>Relationship Concerns</h4>
+                </div>
+                <div class="card">
+                    <h4>Life Transitions</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-banner section-padding">
+        <div class="container info-grid">
+            <div class="info-item">
+                <span class="icon">👥</span>
+                <h4>Who Can Reach Out</h4>
+                <p>Teens | Adults | Parents</p>
+            </div>
+            <div class="info-item">
+                <span class="icon">🗣️</span>
+                <h4>Languages</h4>
+                <p>English | Kannada | Hindi</p>
+            </div>
+            <div class="info-item">
+                <span class="icon">💻</span>
+                <h4>Sessions</h4>
+                <p>Online & In-Person<br><small>(By Appointment Only)</small></p>
+            </div>
+            <div class="info-item">
+                <span class="icon">📍</span>
+                <h4>Location</h4>
+                <p>Pride Vatika Layout, Bannerghatta Road</p>
+            </div>
+        </div>
+    </section>
+
+<footer id="contact" class="footer section-padding">
+    <div class="container">
+        <div class="footer-content">
+            <div class="contact-details">
+                <h3 class="" style="color: var(--bg-color); font-size: xx-large;">Meet the counsellor</h3>
+                <p>Take the first step towards emotional strength.</p>
+                <br>
+                    <p style="font-size: x-large;"><strong>Divya N</strong> </p>
+                    <p><strong> Masters in Counseling Psychology | <br>
+                        Former School Principal | <br>
+                        Certified in Counseling Skills and CBT</strong> </p>
+                    <!-- <p><strong>Pride Vatika Layout, Bannerghatta Road, Bengaluru</strong></p> -->
+                    <p><strong>Phone:</strong> <em><a href="tel:7349351920" class="footer-link">7349351920</a></em></p>
+                    <p><strong>Email:</strong> <a href="mailto:divyadixitn@gmail.com" class="footer-link">divyadixitn@gmail.com</a></p>
+            </div>
+            <div class="footer-brand">
+                <h2>MANA-NA</h2>
+                <p>Counselling & Wellbeing Space</p>
+            </div>
+        </div>
+        <div class="footer-credit">
+            <p>Designed by The 'D Team</p>
+        </div>
+    </div>
+</footer>
+
+<button id="backToTop" title="Go to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
+    <script>
+        // Cross-fade carousel logic
+document.addEventListener("DOMContentLoaded", function() {
+    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+    const slideInterval = 5000; // Change image every 5 seconds
+
+    function nextSlide() {
+        // Remove active class from current slide
+        slides[currentSlide].classList.remove("active");
+        
+        // Move to next slide, loop back to 0 if at the end
+        currentSlide = (currentSlide + 1) % slides.length;
+        
+        // Add active class to new slide
+        slides[currentSlide].classList.add("active");
+    }
+
+    // Start auto-sliding
+    setInterval(nextSlide, slideInterval);
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // --- Carousel Logic ---
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+    let currentSlideIdx = 0;
+    let slideInterval;
+
+    // Function to show a specific slide
+    function showSlide(index) {
+        // Remove active class from all
+        slides.forEach(slide => slide.classList.remove("active"));
+        dots.forEach(dot => dot.classList.remove("active"));
+        
+        // Handle looping
+        currentSlideIdx = index;
+        if (currentSlideIdx >= slides.length) currentSlideIdx = 0;
+        if (currentSlideIdx < 0) currentSlideIdx = slides.length - 1;
+        
+        // Add active class to current
+        slides[currentSlideIdx].classList.add("active");
+        dots[currentSlideIdx].classList.add("active");
+    }
+
+    // Function for auto-advance
+    function nextSlide() {
+        showSlide(currentSlideIdx + 1);
+    }
+
+    // Start timer
+    function startTimer() {
+        slideInterval = setInterval(nextSlide, 5000); // 5 seconds
+    }
+
+    // Reset timer when user manually clicks a dot
+    function resetTimer() {
+        clearInterval(slideInterval);
+        startTimer();
+    }
+
+    // Expose dot click function globally so HTML onclick can reach it
+    window.currentSlide = function(index) {
+        showSlide(index);
+        resetTimer();
+    }
+
+    // Initialize carousel
+    startTimer();
+
+
+    // --- Back to Top Logic ---
+    const backToTopBtn = document.getElementById("backToTop");
+
+    // Show or hide button based on scroll position
+    window.addEventListener("scroll", function() {
+        if (window.scrollY > 400) {
+            backToTopBtn.style.display = "flex"; // Using flex to center the SVG icon
+        } else {
+            backToTopBtn.style.display = "none";
+        }
+    });
+
+    // Scroll to top smoothly when clicked
+    backToTopBtn.addEventListener("click", function() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+});
+    </script>
+</body>
+</html>
