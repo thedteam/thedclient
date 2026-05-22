@@ -191,9 +191,35 @@
         .remove-btn:hover { background: #9b2c2c; }
 
         /* --- Footer --- */
-        footer { background-color: var(--card-bg); padding: 5rem 5% 2rem; border-top: 1px solid rgba(0, 103, 56, 0.1); }
-        .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(0, 103, 56, 0.1); text-align: center; }
-        .footer-credit { font-size: 0.85rem; margin-top: 1rem; opacity: 0.7; }
+        footer {
+            background-color: var(--card-bg);
+            padding: 5rem 5% 2rem;
+            border-top: 1px solid rgba(0, 103, 56, 0.1);
+            margin-top: 50px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 103, 56, 0.1);
+            text-align: center;
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            opacity: 0.7;
+        }
+
+        .footer-credit a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .footer-credit a:hover {
+            opacity: 1;
+        }
 
         @media (max-width: 768px) {
             .admin-container { grid-template-columns: 1fr; gap: 1.5rem; padding: 1rem 5% 3rem; }
