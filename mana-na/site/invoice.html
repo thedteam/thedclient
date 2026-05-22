@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice | Mana-na</title>
+    
+    <!-- html2canvas for image generation -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="https://www.mana-na.in/favicon.png" type="image/x-icon">
+
+    <style>
+        /* --- CSS Variables & Theme --- */
+        :root {
+            --bg-color: #e8f6e9; 
+            --text-main: #2c3e35;
+            --text-header: #006738; 
+            --btn-bg: #006738;      
+            --btn-text: #ffffff;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(232, 246, 233, 0.95);
+            --transition: all 0.3s ease;
+            --border-color: rgba(0, 103, 56, 0.1);
+            --edit-bg-hover: rgba(0, 103, 56, 0.05);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0d1710;
+            --text-main: #e8f6e9;
+            --text-header: #81c784; 
+            --btn-bg: #81c784;
+            --btn-text: #0d1710;
+            --card-bg: #152419;
+            --nav-bg: rgba(13, 23, 16, 0.95);
+            --border-color: rgba(129, 199, 132, 0.15);
+            --edit-bg-hover: rgba(129, 199, 132, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4 { color: var(--text-header); font-weight: 600; }
+        a { text-decoration: none; color: inherit; }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo { color: var(--text-header); display: flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none; }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .brand-name { font-size: 1.6rem; font-weight: 450; letter-spacing: 1px; display: flex; align-items: flex-end; }
+        .tagline { font-size: 0.75rem; font-weight: 500; opacity: 0.9; letter-spacing: 0.5px; }
+        .logo img { width: 60px; height: 60px; object-fit: contain; border-radius: 8px; }
+        .kannada-text { font-weight: 400; opacity: 0.9; }
+
+        .theme-toggle { background: none; border: none; cursor: pointer; color: var(--text-main); display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; }
+        .theme-toggle:hover { background-color: var(--edit-bg-hover); }
+        .theme-toggle svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+        /* --- Invoice Container --- */
+        .invoice-wrapper {
+            max-width: 900px;
+            margin: 110px auto 50px;
+            padding: 0 5%;
+        }
+
+        .invoice-card {
+            background-color: var(--card-bg);
+            padding: 3rem 4rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        /* --- Editable Fields --- */
+        .editable {
+            border: 1px dashed transparent;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: var(--transition);
+            min-width: 20px;
+            display: inline-block;
+            outline: none;
+        }
+        .editable:hover, .editable:focus {
+            border-color: var(--text-header);
+            background-color: var(--edit-bg-hover);
+        }
+        .editable[placeholder]:empty:before {
+            content: attr(placeholder);
+            color: var(--text-main);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* --- Invoice Header --- */
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .header-left {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+        .invoice-logo {
+            width: 80px; height: 80px; object-fit: contain; border-radius: 8px;
+        }
+
+        .invoice-title {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+
+        .invoice-meta { text-align: right; }
+        .meta-row { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 5px; }
+        .meta-label { font-weight: 600; color: var(--text-header); }
+
+        /* --- Addresses --- */
+        .invoice-addresses {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .address-block h3 { margin-bottom: 0.5rem; font-size: 1.1rem; text-transform: uppercase; opacity: 0.8; }
+        .address-content { display: flex; flex-direction: column; line-height: 1.5; }
+
+        /* --- Table --- */
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+        .invoice-table th, .invoice-table td {
+            padding: 1rem 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .invoice-table th {
+            color: var(--text-header);
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .invoice-table th:last-child, .invoice-table td:last-child { text-align: right; }
+        .invoice-table th.col-qty, .invoice-table td.col-qty { text-align: center; width: 10%; }
+        .invoice-table th.col-rate, .invoice-table td.col-rate { text-align: right; width: 20%; }
+        .invoice-table th.col-amount, .invoice-table td.col-amount { text-align: right; width: 20%; }
+        .invoice-table th.col-action, .invoice-table td.col-action { width: 5%; text-align: center; }
+
+        .remove-row-btn {
+            background: none; border: none; color: #c53030; cursor: pointer;
+            font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+            opacity: 0.5; transition: var(--transition);
+        }
+        [data-theme="dark"] .remove-row-btn { color: #fc8181; }
+        .remove-row-btn:hover { opacity: 1; transform: scale(1.1); }
+
+        .add-row-container { margin-bottom: 3rem; }
+        .btn-text { background: none; border: none; color: var(--text-header); font-weight: 600; cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 5px; }
+        .btn-text:hover { opacity: 0.8; }
+
+        /* --- Totals --- */
+        .totals-section { display: flex; justify-content: flex-end; margin-bottom: 3rem; }
+        .totals-grid { display: grid; grid-template-columns: 120px 120px; gap: 10px 20px; text-align: right; }
+        .totals-label { font-weight: 600; color: var(--text-main); }
+        .totals-value { font-family: monospace; font-size: 1.1rem; }
+        .grand-total { font-size: 1.3rem; color: var(--text-header); font-weight: bold; padding-top: 10px; border-top: 2px solid var(--border-color); }
+        .grand-total-val { font-size: 1.3rem; font-weight: bold; padding-top: 10px; border-top: 2px solid var(--border-color); font-family: monospace; }
+
+        /* --- Notes --- */
+        .invoice-notes { padding-top: 2rem; border-top: 1px solid var(--border-color); }
+        .invoice-notes h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+
+        /* --- Actions --- */
+        .invoice-actions {
+            display: flex; justify-content: center; gap: 15px; margin-top: 2rem;
+            display: flex; justify-content: center; gap: 15px; margin-top: 2rem; flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block; background-color: var(--btn-bg); color: var(--btn-text);
+            padding: 0.8rem 2rem; border-radius: 30px; font-weight: 600; border: none; cursor: pointer; transition: var(--transition);
+            white-space: nowrap;
+        }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 103, 56, 0.2); }
+
+
+        /* --- Login Overlay --- */
+        body.locked { overflow: hidden; }
+        .login-overlay {
+            position: fixed; inset: 0; background-color: var(--bg-color);
+            z-index: 10000; display: flex; justify-content: center; align-items: center; padding: 20px;
+        }
+        .login-card {
+            background-color: var(--card-bg); padding: 3rem 2rem; border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; max-width: 400px; width: 100%;
+            border: 1px solid rgba(0, 103, 56, 0.1);
+        }
+        .login-card h2 { margin-bottom: 0.5rem; }
+        .login-card p { opacity: 0.8; margin-bottom: 2rem; font-size: 0.95rem; }
+        .login-card input {
+            width: 100%; padding: 1rem; border: 2px solid rgba(0, 103, 56, 0.1); border-radius: 12px;
+            background-color: var(--bg-color); color: var(--text-main); font-size: 1rem; margin-bottom: 1rem;
+        }
+        .login-card input:focus { outline: none; border-color: var(--text-header); }
+        #loginError { color: #c53030; display: none; margin-top: 1rem; margin-bottom: 0; font-weight: 500; }
+        [data-theme="dark"] #loginError { color: #fc8181; }
+
+        /* --- Print Styles --- */
+        @media print {
+            @page { margin: 10mm; }
+            body { background-color: white !important; color: black !important; }
+            nav, .invoice-actions, .col-action, .add-row-container, .footer-bottom, .footer-credit, footer { display: none !important; }
+            .invoice-wrapper { margin: 0 !important; padding: 0 !important; max-width: 100% !important; }
+            .invoice-card { box-shadow: none !important; border: none !important; padding: 0 !important; border-radius: 0 !important; }
+            .editable { border: none !important; background: transparent !important; padding: 0; color: black !important; }
+            /* Ensure all text is black and backgrounds are white for print */
+            body, .invoice-card, .address-content, .totals-value, .invoice-notes div { background-color: white !important; color: black !important; }
+            .totals-label { color: black !important; } /* Ensure labels are black */
+            .editable[placeholder]:empty:before { display: none; }
+            * { -webkit-print-color-adjust: exact !important; color-adjust: exact !important; }
+            .invoice-title, .meta-label, .address-block h3, .invoice-table th, .grand-total { color: #006738 !important; }
+            
+            /* Force desktop layout in print to prevent wrapping */
+            .invoice-header { flex-direction: row !important; align-items: flex-start !important; }
+            .header-left { flex-direction: row !important; align-items: center !important; }
+            .invoice-meta { text-align: right !important; width: auto !important; }
+            .meta-row { justify-content: flex-end !important; }
+            .invoice-addresses { grid-template-columns: 1fr 1fr !important; display: grid !important; gap: 2rem !important; }
+            .invoice-table { font-size: 1rem !important; }
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--card-bg);
+            padding: 5rem 5% 2rem;
+            border-top: 1px solid rgba(0, 103, 56, 0.1);
+            margin-top: 50px; /* Add some space above the footer */
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 103, 56, 0.1);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .invoice-header { flex-direction: column; gap: 20px; }
+            .invoice-meta { text-align: left; width: 100%; }
+            .meta-row { justify-content: flex-start; }
+            .invoice-addresses { grid-template-columns: 1fr; }
+            .invoice-addresses { 
+                grid-template-columns: 1fr 1fr; /* Keep side-by-side on mobile */
+                gap: 1rem; /* Reduce gap on mobile */
+            }
+            .invoice-card { padding: 1.5rem; }
+            .invoice-table { font-size: 0.85rem; }
+            .invoice-table th, .invoice-table td { padding: 0.5rem 0.2rem; }
+            .invoice-table th { white-space: nowrap; } /* Prevent table headers from wrapping */
+        }
+    </style>
+    <!-- Global Protection: Disable Selection, Dragging, and Right-Click -->
+    <style>
+        body {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+        }
+        input, textarea, .editable {
+            -webkit-user-select: auto !important;
+            -moz-user-select: auto !important;
+            -ms-user-select: auto !important;
+            user-select: auto !important;
+        }
+        img {
+            -webkit-user-drag: none !important;
+            -khtml-user-drag: none !important;
+            -moz-user-drag: none !important;
+            -o-user-drag: none !important;
+            pointer-events: none;
+        }
+    </style>
+    <script>
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.isContentEditable || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return;
+            }
+            e.preventDefault();
+        });
+    </script>
+</head>
+<body class="locked">
+
+    <!-- Login Overlay -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-card">
+            <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo" style="width: 80px; margin-bottom: 1rem; border-radius: 8px;">
+            <h2>Secure Invoice Access</h2>
+            <p>Please enter the secure password to <br>view or create an invoice.</p>
+            <input type="password" id="adminPwd" placeholder="Enter password" onkeypress="if(event.key === 'Enter') checkPwd()">
+            <button class="btn" onclick="checkPwd()" style="margin-top: 0;">Unlock</button>
+            <p id="loginError">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+    
+    <nav>
+        <a href="invoice.html" class="logo">
+            <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo">
+            <div class="logo-text">
+                <span class="brand-name">Mana-na</span>
+                <span class="tagline">Invoice Generator</span>
+            </div>
+        </a>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme"></button>
+        </div>
+    </nav>
+
+    <div class="invoice-wrapper">
+        <div class="invoice-card" id="invoiceArea">
+            
+            <!-- Header -->
+            <div class="invoice-header">
+                <div class="header-left">
+                    <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo" class="invoice-logo">
+                    <h1 class="invoice-title">Invoice</h1>
+                </div>
+                <div class="invoice-meta">
+                    <div class="meta-row">
+                        <span class="meta-label">Invoice #:</span>
+                        <span id="invoiceNumber"></span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Date:</span>
+                        <span id="currentDate"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Addresses -->
+            <div class="invoice-addresses">
+                <div class="address-block">
+                    <h3>Billed From:</h3>
+                    <div class="address-content">
+                        <strong>Mana-na </strong>
+                        <span>Counselling & Wellbeing Space</span>
+                        <span>Bengaluru, Karnataka</span>
+                        <span><a href="tel:+917349351920">+91 73493 51920</a></span>
+                        <span><a href="mailto:info@mana-na.in">info@mana-na.in</a></span>
+                        <span><a href="https://www.mana-na.in" target="_blank">www.mana-na.in</a></span>
+                    </div>
+                </div>
+                <div class="address-block">
+                    <h3>Billed To:</h3>
+                    <div class="address-content">
+                        <strong class="editable" contenteditable="true" placeholder="Client Name">Client Name</strong>
+                        <span class="editable" contenteditable="true" placeholder="Client Address">Client Address</span>
+                        <span class="editable" contenteditable="true" placeholder="Client Phone">Client Phone</span>
+                        <span class="editable" contenteditable="true" placeholder="Client Email">Client Email</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items Table -->
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th class="col-qty">Qty</th>
+                        <th class="col-rate">Rate (₹)</th>
+                        <th class="col-amount">Amount (₹)</th>
+                        <th class="col-action"></th>
+                    </tr>
+                </thead>
+                <tbody id="invoiceItems">
+                    <tr>
+                        <td><span class="editable" contenteditable="true" placeholder="Service description">Counselling Session (50 mins)</span></td>
+                        <td class="col-qty"><span class="editable qty-field" contenteditable="true" oninput="calculateRow(this)">1</span></td>
+                        <td class="col-rate"><span class="editable rate-field" contenteditable="true" oninput="calculateRow(this)">1500</span></td>
+                        <td class="col-amount row-total">1500.00</td>
+                        <td class="col-action"><button class="remove-row-btn" onclick="removeRow(this)" aria-label="Remove Row">×</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="add-row-container">
+                <button class="btn-text" onclick="addRow()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    Add Item
+                </button>
+            </div>
+
+            <!-- Totals -->
+            <div class="totals-section">
+                <div class="totals-grid">
+                    <span class="totals-label">Subtotal:</span>
+                    <span class="totals-value" id="subtotalAmount">₹1500.00</span>
+                    
+                    <span class="totals-label">Discount:</span>
+                    <span class="totals-value"><span class="editable" contenteditable="true" id="discountField" oninput="calculateTotals()">0</span></span>
+                    
+                    <span class="totals-label grand-total">Total:</span>
+                    <span class="grand-total-val" id="grandTotal">₹1500.00</span>
+                </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="invoice-notes">
+                <h3></h3>
+                <div class="editable" contenteditable="true" style="width: 100%; min-height: 40px; text-align: center;" placeholder="Add payment instructions or thank you notes here...">Thank you for trusting Mana-na with your well-being journey.</div>
+            </div>
+
+        </div>
+
+        <div class="invoice-actions">
+            <button class="btn" onclick="downloadInvoiceAsImage()">Download as Image</button>
+            <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+            <button class="btn" onclick="shareInvoiceAsImage()">Share as Image</button>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mana-na <br>Counselling & Wellbeing Space</p>
+            <p class="footer-credit">Designed by <a href="https://bit.ly/thedteam" target="_blank"> The 'D Team</a></p>
+        </div>
+    </div>
+
+    <script>
+        const ENCODED_PWD = "TWFuYU5hU2VjdXJlMjAyNiE=";
+
+        let inactivityTimer;
+        const INACTIVITY_LIMIT = 5 * 60 * 1000; // 5 minutes in milliseconds
+
+        function checkPwd() {
+            const input = document.getElementById('adminPwd').value.trim();
+            
+            // Encode user input to compare with the hidden password
+            if (btoa(input) === ENCODED_PWD) {
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.body.classList.remove('locked');
+                resetInactivityTimer();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        function logout() {
+            document.getElementById('loginOverlay').style.display = 'flex';
+            document.body.classList.add('locked');
+            document.getElementById('adminPwd').value = '';
+            document.getElementById('loginError').style.display = 'none';
+            clearTimeout(inactivityTimer);
+        }
+
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            if (!document.body.classList.contains('locked')) {
+                inactivityTimer = setTimeout(logout, INACTIVITY_LIMIT);
+            }
+        }
+
+        // Monitor user activity to prevent timeout while actively using the panel
+        ['mousemove', 'mousedown', 'keypress', 'touchstart', 'scroll'].forEach(evt => {
+            document.addEventListener(evt, resetInactivityTimer, true);
+        });
+
+        // --- Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const rootElement = document.documentElement;
+        const svgMoon = `<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+        const svgSun = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+
+        function updateThemeIcon(theme) {
+            themeToggleBtn.innerHTML = theme === 'dark' ? svgSun : svgMoon;
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        rootElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = rootElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            rootElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        // --- Invoice Logic ---
+        
+        // Set Current Date
+        const dateField = document.getElementById('currentDate');
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+        dateField.innerText = formattedDate;
+        
+        // Auto-Generate Unique Invoice Number
+        const invField = document.getElementById('invoiceNumber');
+        const datePart = today.getFullYear().toString() + (today.getMonth()+1).toString().padStart(2, '0') + today.getDate().toString().padStart(2, '0');
+        const timePart = today.getHours().toString().padStart(2, '0') + today.getMinutes().toString().padStart(2, '0');
+        const rndPart = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+        
+        invField.innerText = `INV-${datePart}-${timePart}-${rndPart}`;
+
+        // Calculations
+        function getNumericValue(text) {
+            const num = parseFloat(text.replace(/[^0-9.-]+/g, ""));
+            return isNaN(num) ? 0 : num;
+        }
+
+        function calculateRow(element) {
+            const row = element.closest('tr');
+            const qty = getNumericValue(row.querySelector('.qty-field').innerText);
+            const rate = getNumericValue(row.querySelector('.rate-field').innerText);
+            const amount = qty * rate;
+            
+            row.querySelector('.row-total').innerText = amount.toFixed(2);
+            calculateTotals();
+        }
+
+        function calculateTotals() {
+            const rowTotals = document.querySelectorAll('.row-total');
+            let subtotal = 0;
+            
+            rowTotals.forEach(cell => {
+                subtotal += getNumericValue(cell.innerText);
+            });
+            
+            document.getElementById('subtotalAmount').innerText = '₹' + subtotal.toFixed(2);
+            
+            const discount = getNumericValue(document.getElementById('discountField').innerText);
+            const total = subtotal - discount;
+            
+            document.getElementById('grandTotal').innerText = '₹' + total.toFixed(2);
+        }
+
+        function addRow() {
+            const tbody = document.getElementById('invoiceItems');
+            const tr = document.createElement('tr');
+            
+            tr.innerHTML = `
+                <td><span class="editable" contenteditable="true" placeholder="Item description"></span></td>
+                <td class="col-qty"><span class="editable qty-field" contenteditable="true" oninput="calculateRow(this)">1</span></td>
+                <td class="col-rate"><span class="editable rate-field" contenteditable="true" oninput="calculateRow(this)">0</span></td>
+                <td class="col-amount row-total">0.00</td>
+                <td class="col-action"><button class="remove-row-btn" onclick="removeRow(this)" aria-label="Remove Row">×</button></td>
+            `;
+            
+            tbody.appendChild(tr);
+            calculateTotals();
+        }
+
+        function removeRow(btn) {
+            const row = btn.closest('tr');
+            row.remove();
+            calculateTotals();
+        }
+
+        async function downloadInvoiceAsImage() {
+            const invoiceElement = document.getElementById('invoiceArea');
+            const invoiceId = document.getElementById('invoiceNumber').innerText;
+            const downloadBtn = document.querySelector('.invoice-actions .btn:first-child');
+            const originalBtnText = downloadBtn.textContent;
+
+            downloadBtn.disabled = true;
+            downloadBtn.textContent = 'Generating...';
+
+            const hiddenElements = document.querySelectorAll('.col-action, .add-row-container, footer, .invoice-actions');
+            hiddenElements.forEach(el => el.style.display = 'none');
+
+            const originalTheme = document.documentElement.getAttribute('data-theme');
+            document.documentElement.setAttribute('data-theme', 'light');
+
+            try {
+                const canvas = await html2canvas(invoiceElement, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: 'white'
+                });
+
+                const downloadLink = document.createElement('a');
+                downloadLink.href = canvas.toDataURL('image/png');
+                downloadLink.download = `invoice-${invoiceId}.png`;
+                downloadLink.click();
+
+            } catch (error) {
+                console.error('Error generating invoice image:', error);
+                alert('Failed to generate invoice image. Please try again.');
+            } finally {
+                downloadBtn.disabled = false;
+                downloadBtn.textContent = originalBtnText;
+                hiddenElements.forEach(el => el.style.display = '');
+                document.documentElement.setAttribute('data-theme', originalTheme);
+            }
+        }
+
+        async function shareInvoiceAsImage() {
+            // 1. Check for HTTPS connection
+            if (location.protocol !== 'https:') {
+                alert('Sharing as image is only available on secure (HTTPS) connections. Please ensure the page is loaded via HTTPS.');
+                return;
+            }
+
+            const invoiceElement = document.getElementById('invoiceArea');
+            const invoiceId = document.getElementById('invoiceNumber').innerText;
+            const shareCaption = `Hello, please find invoice attached with the Invoice ID: ${invoiceId}`;
+            
+            const shareBtn = document.querySelector('.invoice-actions .btn:last-child');
+            const originalBtnText = shareBtn.textContent;
+            shareBtn.disabled = true;
+            shareBtn.textContent = 'Generating Image...';
+
+
+            // Temporarily hide elements that shouldn't be in the image
+            const hiddenElements = document.querySelectorAll('.col-action, .add-row-container, footer');
+            hiddenElements.forEach(el => el.style.display = 'none');
+
+            // Temporarily force light theme for image capture
+            const originalTheme = document.documentElement.getAttribute('data-theme');
+            document.documentElement.setAttribute('data-theme', 'light');
+
+            try {
+                const canvas = await html2canvas(invoiceElement, {
+                    scale: 2, // Increase scale for better resolution
+                    useCORS: true, // Important if you have external images/fonts
+                    logging: false, // Disable html2canvas logs
+                    backgroundColor: 'white' // Explicitly set background to white
+                });
+
+                // Restore hidden elements and original body background
+                document.documentElement.setAttribute('data-theme', originalTheme);
+                shareBtn.textContent = 'Sharing...';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                const file = new File([blob], `invoice-${invoiceId}.png`, { type: 'image/png' });
+
+                // Check for Web Share API support for files
+                if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+                    try {
+                        await navigator.share({
+                            files: [file],
+                            title: `Invoice from Mana-na (${invoiceId})`,
+                            text: shareCaption,
+                        });
+                        console.log('Invoice image shared successfully via Web Share API.');
+                    } catch (error) {
+                        if (error.name !== 'AbortError') {
+                            console.error('Web Share API failed:', error);
+                            alert('Could not share the image. Please try saving the PDF and sharing it manually.');
+                        } else {
+                            console.log('Share action cancelled by user.');
+                        }
+                    }
+                } else {
+                    // Fallback for desktop or unsupported browsers
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = URL.createObjectURL(blob);
+                    downloadLink.download = `invoice-${invoiceId}.png`;
+                    const whatsappText = encodeURIComponent(shareCaption + '\n\nPlease find the invoice image attached.');
+                    const whatsappUrl = `https://wa.me/?text=${whatsappText}`;
+                    alert('Your browser does not support direct sharing. The invoice image will be downloaded, and WhatsApp will open. Please attach the downloaded image to your message.');
+                    downloadLink.click();
+                    window.open(whatsappUrl, '_blank');
+                    URL.revokeObjectURL(downloadLink.href);
+                }
+
+            } catch (error) {
+                console.error('Error generating invoice image:', error);
+                alert('Failed to generate or share invoice image. Please try again or use "Print / Save as PDF".');
+            } finally {
+                // Restore button state and UI
+                shareBtn.disabled = false;
+                shareBtn.textContent = originalBtnText;
+                hiddenElements.forEach(el => el.style.display = '');
+                document.documentElement.setAttribute('data-theme', originalTheme);
+            }
+        }
+
+
+    </script>
+</body>
+</html>
