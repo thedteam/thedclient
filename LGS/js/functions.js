@@ -1141,7 +1141,7 @@ window.addEventListener('load', function() {
 		// Disable scrolling while the loader is active
 		document.body.classList.add('no-scroll');
 
-		const minDisplayTime = 3000; // Minimum display time in milliseconds (e.g., 1 second)
+		const minDisplayTime = 1000; // Minimum display time in milliseconds (e.g., 1 second)
 		const elapsedTime = performance.now() - loaderStartTime;
 		const delay = Math.max(0, minDisplayTime - elapsedTime);
 
