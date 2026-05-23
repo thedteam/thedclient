@@ -238,6 +238,7 @@
         .login-card input:focus { outline: none; border-color: var(--text-header); }
         .login-card .btn {
             width: 100%;
+            font-size: 1.1rem;
         }
         #loginError { color: #c53030; display: none; margin-top: 1rem; margin-bottom: 0; font-weight: 500; }
         [data-theme="dark"] #loginError { color: #fc8181; }
@@ -349,8 +350,8 @@
     <div id="loginOverlay" class="login-overlay">
         <div class="login-card">
             <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo" style="width: 80px; margin-bottom: 1rem; border-radius: 8px;">
-            <h2>Secure Invoice Access</h2>
-            <p>Please enter the secure password to <br>view or create an invoice.</p>
+            <h2>Invoice Access</h2>
+            <p>Please enter the secure password to <br>create an invoice.</p>
             <input type="password" id="adminPwd" placeholder="Enter password" onkeypress="if(event.key === 'Enter') checkPwd()">
             <button class="btn" onclick="checkPwd()" style="margin-top: 0;">Unlock</button>
             <p id="loginError">Incorrect password. Please try again.</p>
