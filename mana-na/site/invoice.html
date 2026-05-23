@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice | Mana-na</title>
-    
+
     <!-- html2canvas for image generation -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
@@ -18,10 +19,10 @@
     <style>
         /* --- CSS Variables & Theme --- */
         :root {
-            --bg-color: #e8f6e9; 
+            --bg-color: #e8f6e9;
             --text-main: #2c3e35;
-            --text-header: #006738; 
-            --btn-bg: #006738;      
+            --text-header: #006738;
+            --btn-bg: #006738;
             --btn-text: #ffffff;
             --card-bg: #ffffff;
             --nav-bg: rgba(232, 246, 233, 0.95);
@@ -33,7 +34,7 @@
         [data-theme="dark"] {
             --bg-color: #0d1710;
             --text-main: #e8f6e9;
-            --text-header: #81c784; 
+            --text-header: #81c784;
             --btn-bg: #81c784;
             --btn-text: #0d1710;
             --card-bg: #152419;
@@ -56,8 +57,18 @@
             transition: var(--transition);
         }
 
-        h1, h2, h3, h4 { color: var(--text-header); font-weight: 600; }
-        a { text-decoration: none; color: inherit; }
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--text-header);
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
         /* --- Navigation --- */
         nav {
@@ -75,16 +86,72 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
         }
 
-        .logo { color: var(--text-header); display: flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none; }
-        .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-        .brand-name { font-size: 1.6rem; font-weight: 450; letter-spacing: 1px; display: flex; align-items: flex-end; }
-        .tagline { font-size: 0.75rem; font-weight: 500; opacity: 0.9; letter-spacing: 0.5px; }
-        .logo img { width: 90px; height: 90px; object-fit: contain; border-radius: 8px; }
-        .kannada-text { font-weight: 400; opacity: 0.9; }
+        .logo {
+            color: var(--text-header);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-decoration: none;
+        }
 
-        .theme-toggle { background: none; border: none; cursor: pointer; color: var(--text-main); display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; }
-        .theme-toggle:hover { background-color: var(--edit-bg-hover); }
-        .theme-toggle svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 450;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            font-weight: 500;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        .logo img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .kannada-text {
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--edit-bg-hover);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
 
         /* --- Invoice Container --- */
         .invoice-wrapper {
@@ -97,7 +164,7 @@
             background-color: var(--card-bg);
             padding: 3rem 4rem;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border-color);
         }
 
@@ -111,10 +178,13 @@
             display: inline-block;
             outline: none;
         }
-        .editable:hover, .editable:focus {
+
+        .editable:hover,
+        .editable:focus {
             border-color: var(--text-header);
             background-color: var(--edit-bg-hover);
         }
+
         .editable[placeholder]:empty:before {
             content: attr(placeholder);
             color: var(--text-main);
@@ -138,8 +208,12 @@
             align-items: center;
             gap: 20px;
         }
+
         .invoice-logo {
-            width: 80px; height: 80px; object-fit: contain; border-radius: 8px;
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 8px;
         }
 
         .invoice-title {
@@ -149,9 +223,21 @@
             margin-bottom: 0;
         }
 
-        .invoice-meta { text-align: right; }
-        .meta-row { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 5px; }
-        .meta-label { font-weight: 600; color: var(--text-header); }
+        .invoice-meta {
+            text-align: right;
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .meta-label {
+            font-weight: 600;
+            color: var(--text-header);
+        }
 
         /* --- Addresses --- */
         .invoice-addresses {
@@ -160,8 +246,21 @@
             gap: 2rem;
             margin-bottom: 3rem;
         }
-        .address-block h3 { margin-bottom: 0.5rem; font-size: 1.1rem; text-transform: uppercase; opacity: 0.8; }
-        .address-content { display: flex; flex-direction: column; line-height: 1.5; }
+
+        .address-block h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .address-content {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
 
         /* --- Table --- */
         .invoice-table {
@@ -169,114 +268,379 @@
             border-collapse: collapse;
             margin-bottom: 1.5rem;
         }
-        .invoice-table th, .invoice-table td {
+
+        .invoice-table th,
+        .invoice-table td {
             padding: 1rem 0.5rem;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
         }
+
         .invoice-table th {
             color: var(--text-header);
             font-weight: 600;
             border-bottom: 2px solid var(--border-color);
         }
-        .invoice-table th:last-child, .invoice-table td:last-child { text-align: right; }
-        .invoice-table th.col-qty, .invoice-table td.col-qty { text-align: center; width: 10%; }
-        .invoice-table th.col-rate, .invoice-table td.col-rate { text-align: right; width: 20%; }
-        .invoice-table th.col-amount, .invoice-table td.col-amount { text-align: right; width: 20%; }
-        .invoice-table th.col-action, .invoice-table td.col-action { width: 5%; text-align: center; }
+
+        .invoice-table th:last-child,
+        .invoice-table td:last-child {
+            text-align: right;
+        }
+
+        .invoice-table th.col-qty,
+        .invoice-table td.col-qty {
+            text-align: center;
+            width: 10%;
+        }
+
+        .invoice-table th.col-rate,
+        .invoice-table td.col-rate {
+            text-align: right;
+            width: 20%;
+        }
+
+        .invoice-table th.col-amount,
+        .invoice-table td.col-amount {
+            text-align: right;
+            width: 20%;
+        }
+
+        .invoice-table th.col-action,
+        .invoice-table td.col-action {
+            width: 5%;
+            text-align: center;
+        }
 
         .remove-row-btn {
-            background: none; border: none; color: #c53030; cursor: pointer;
-            font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
-            opacity: 0.5; transition: var(--transition);
+            background: none;
+            border: none;
+            color: #c53030;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.5;
+            transition: var(--transition);
         }
-        [data-theme="dark"] .remove-row-btn { color: #fc8181; }
-        .remove-row-btn:hover { opacity: 1; transform: scale(1.1); }
 
-        .add-row-container { margin-bottom: 3rem; }
-        .btn-text { background: none; border: none; color: var(--text-header); font-weight: 600; cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 5px; }
-        .btn-text:hover { opacity: 0.8; }
+        [data-theme="dark"] .remove-row-btn {
+            color: #fc8181;
+        }
+
+        .remove-row-btn:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .add-row-container {
+            margin-bottom: 3rem;
+        }
+
+        .btn-text {
+            background: none;
+            border: none;
+            color: var(--text-header);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-text:hover {
+            opacity: 0.8;
+        }
 
         /* --- Totals --- */
-        .totals-section { display: flex; justify-content: flex-end; margin-bottom: 3rem; }
-        .totals-grid { display: grid; grid-template-columns: 120px 120px; gap: 10px 20px; text-align: right; }
-        .totals-label { font-weight: 600; color: var(--text-main); }
-        .totals-value { font-family: monospace; font-size: 1.1rem; }
-        .grand-total { font-size: 1.3rem; color: var(--text-header); font-weight: bold; }
-        .grand-total-val { font-size: 1.3rem; font-weight: bold; font-family: monospace; }
+        .totals-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 3rem;
+        }
+
+        .totals-grid {
+            display: grid;
+            grid-template-columns: 120px 120px;
+            gap: 10px 20px;
+            text-align: right;
+        }
+
+        .totals-label {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .totals-value {
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        .grand-total {
+            font-size: 1.3rem;
+            color: var(--text-header);
+            font-weight: bold;
+        }
+
+        .grand-total-val {
+            font-size: 1.3rem;
+            font-weight: bold;
+            font-family: monospace;
+        }
 
         /* --- Notes --- */
-        .invoice-notes { padding-top: 2rem; border-top: 1px solid var(--border-color); }
-        .invoice-notes h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .invoice-notes {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .invoice-notes h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
 
         /* --- Actions --- */
         .invoice-actions {
-            display: flex; justify-content: center; gap: 15px; margin-top: 2rem; flex-wrap: wrap;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 2rem;
+            flex-wrap: nowrap;
         }
+
         .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: var(--btn-bg); color: var(--btn-text);
-            padding: 0.8rem 2rem; border-radius: 30px; font-weight: 600; border: none; cursor: pointer; transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
             white-space: nowrap;
         }
-        .btn:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 103, 56, 0.2); }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 103, 56, 0.2);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
 
 
         /* --- Login Overlay --- */
-        body.locked { overflow: hidden; }
-        .login-overlay {
-            position: fixed; inset: 0; background-color: var(--bg-color);
-            z-index: 10000; display: flex; justify-content: center; align-items: center; padding: 20px;
+        body.locked {
+            overflow: hidden;
         }
+
+        .login-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: var(--bg-color);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
         .login-card {
-            background-color: var(--card-bg); padding: 3rem 2rem; border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; max-width: 400px; width: 100%;
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
             border: 1px solid rgba(0, 103, 56, 0.1);
         }
-        .login-card h2 { margin-bottom: 0.5rem; }
-        .login-card p { opacity: 0.8; margin-bottom: 2rem; font-size: 0.95rem; }
-        .login-card input {
-            width: 100%; padding: 1rem; border: 2px solid rgba(0, 103, 56, 0.1); border-radius: 12px;
-            background-color: var(--bg-color); color: var(--text-main); font-size: 1rem; margin-bottom: 1rem;
+
+        .login-card h2 {
+            margin-bottom: 0.5rem;
         }
-        .login-card input:focus { outline: none; border-color: var(--text-header); }
+
+        .login-card p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .login-card input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(0, 103, 56, 0.1);
+            border-radius: 12px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .login-card input:focus {
+            outline: none;
+            border-color: var(--text-header);
+        }
+
         .login-card .btn {
-            
+
             font-size: 1.1rem;
         }
-        #loginError { color: #c53030; display: none; margin-top: 1rem; margin-bottom: 0; font-weight: 500; }
-        [data-theme="dark"] #loginError { color: #fc8181; }
+
+        #loginError {
+            color: #c53030;
+            display: none;
+            margin-top: 1rem;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        [data-theme="dark"] #loginError {
+            color: #fc8181;
+        }
 
         /* --- History Modal --- */
-        .history-list-item {
-            border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; background: var(--bg-color);
+        #historyOverlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
+
+        .history-list-item {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-color);
+        }
+
         @media (max-width: 480px) {
-            .history-list-item { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .history-list-item .btn { align-self: flex-start; width: 100%; }
+            .history-list-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .history-list-item .btn {
+                align-self: flex-start;
+                width: 100%;
+            }
         }
 
         /* --- Print Styles --- */
         @media print {
-            @page { margin: 10mm; }
-            body { background-color: white !important; color: black !important; }
-            nav, .invoice-actions, .col-action, .add-row-container, .footer-bottom, .footer-credit, footer, .login-overlay { display: none !important; }
-            .invoice-wrapper { margin: 0 !important; padding: 0 !important; max-width: 100% !important; }
-            .invoice-card { box-shadow: none !important; border: none !important; padding: 0 !important; border-radius: 0 !important; }
-            .editable { border: none !important; background: transparent !important; padding: 0; color: black !important; }
+            @page {
+                margin: 10mm;
+            }
+
+            body {
+                background-color: white !important;
+                color: black !important;
+            }
+
+            nav,
+            .invoice-actions,
+            .col-action,
+            .add-row-container,
+            .footer-bottom,
+            .footer-credit,
+            footer,
+            .login-overlay {
+                display: none !important;
+            }
+
+            .invoice-wrapper {
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+
+            .invoice-card {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                border-radius: 0 !important;
+            }
+
+            .editable {
+                border: none !important;
+                background: transparent !important;
+                padding: 0;
+                color: black !important;
+            }
+
             /* Ensure all text is black and backgrounds are white for print */
-            body, .invoice-card, .address-content, .totals-value, .invoice-notes div { background-color: white !important; color: black !important; }
-            .totals-label { color: black !important; } /* Ensure labels are black */
-            .editable[placeholder]:empty:before { display: none; }
-            * { -webkit-print-color-adjust: exact !important; color-adjust: exact !important; }
-            .invoice-title, .meta-label, .address-block h3, .invoice-table th, .grand-total { color: #006738 !important; }
-            
+            body,
+            .invoice-card,
+            .address-content,
+            .totals-value,
+            .invoice-notes div {
+                background-color: white !important;
+                color: black !important;
+            }
+
+            .totals-label {
+                color: black !important;
+            }
+
+            /* Ensure labels are black */
+            .editable[placeholder]:empty:before {
+                display: none;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            .invoice-title,
+            .meta-label,
+            .address-block h3,
+            .invoice-table th,
+            .grand-total {
+                color: #006738 !important;
+            }
+
             /* Force desktop layout in print to prevent wrapping */
-            .invoice-header { flex-direction: row !important; align-items: flex-start !important; }
-            .header-left { flex-direction: row !important; align-items: center !important; }
-            .invoice-meta { text-align: right !important; width: auto !important; }
-            .meta-row { justify-content: flex-end !important; }
-            .invoice-addresses { grid-template-columns: 1fr 1fr !important; display: grid !important; gap: 2rem !important; }
-            .invoice-table { font-size: 1rem !important; }
+            .invoice-header {
+                flex-direction: row !important;
+                align-items: flex-start !important;
+            }
+
+            .header-left {
+                flex-direction: row !important;
+                align-items: center !important;
+            }
+
+            .invoice-meta {
+                text-align: right !important;
+                width: auto !important;
+            }
+
+            .meta-row {
+                justify-content: flex-end !important;
+            }
+
+            .invoice-addresses {
+                grid-template-columns: 1fr 1fr !important;
+                display: grid !important;
+                gap: 2rem !important;
+            }
+
+            .invoice-table {
+                font-size: 1rem !important;
+            }
         }
 
         /* --- Footer --- */
@@ -311,22 +675,48 @@
         }
 
         @media (max-width: 768px) {
-            .invoice-header { flex-direction: column; gap: 20px; }
-            .invoice-meta { text-align: left; width: 100%; }
-            .meta-row { justify-content: flex-start; }
-            .invoice-addresses { grid-template-columns: 1fr; }
-            .invoice-addresses { 
-                grid-template-columns: 1fr 1fr; /* Keep side-by-side on mobile */
-                gap: 1rem; /* Reduce gap on mobile */
+            .invoice-header {
+                flex-direction: column;
+                gap: 20px;
             }
-            .invoice-card { padding: 1.5rem; }
-            .invoice-table { font-size: 0.85rem; }
-            .invoice-table th, .invoice-table td { padding: 0.5rem 0.2rem; }
-            .invoice-table th { white-space: nowrap; } /* Prevent table headers from wrapping */
+
+            .invoice-meta {
+                text-align: left;
+                width: 100%;
+            }
+
+            .meta-row {
+                justify-content: flex-start;
+            }
+
+            .invoice-addresses {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                gap: 1rem;
+            }
+
+            .invoice-card {
+                padding: 1.5rem;
+            }
+
+            .invoice-table {
+                font-size: 0.85rem;
+            }
+
+            .invoice-table th,
+            .invoice-table td {
+                padding: 0.5rem 0.2rem;
+            }
+
+            .invoice-table th {
+                white-space: nowrap;
+            }
+
+            /* Prevent table headers from wrapping */
             .invoice-actions {
                 flex-wrap: nowrap;
                 gap: 8px;
             }
+
             .invoice-actions .btn {
                 flex-direction: column;
                 padding: 0.6rem 0.2rem;
@@ -347,12 +737,16 @@
             -ms-user-select: none !important;
             user-select: none !important;
         }
-        input, textarea, .editable {
+
+        input,
+        textarea,
+        .editable {
             -webkit-user-select: auto !important;
             -moz-user-select: auto !important;
             -ms-user-select: auto !important;
             user-select: auto !important;
         }
+
         img {
             -webkit-user-drag: none !important;
             -khtml-user-drag: none !important;
@@ -370,20 +764,23 @@
         });
     </script>
 </head>
+
 <body class="locked">
 
     <!-- Login Overlay -->
     <div id="loginOverlay" class="login-overlay">
         <div class="login-card">
-            <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo" style="width: 80px; margin-bottom: 1rem; border-radius: 8px;">
+            <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo"
+                style="width: 80px; margin-bottom: 1rem; border-radius: 8px;">
             <h2>Invoice Access</h2>
             <p>Please enter the secure password to <br>view or create an invoice.</p>
-            <input type="password" id="adminPwd" placeholder="Enter password" onkeypress="if(event.key === 'Enter') checkPwd()">
+            <input type="password" id="adminPwd" placeholder="Enter password"
+                onkeypress="if(event.key === 'Enter') checkPwd()">
             <button class="btn" onclick="checkPwd()" style="margin-top: 0; width: 100%;">Unlock</button>
             <p id="loginError">Incorrect password. Please try again.</p>
         </div>
     </div>
-    
+
     <nav>
         <a href="invoice.html" class="logo">
             <img src="https://www.mana-na.in/mana-na_logo.png" alt="Mana-na Logo">
@@ -399,7 +796,7 @@
 
     <div class="invoice-wrapper">
         <div class="invoice-card" id="invoiceArea">
-            
+
             <!-- Header -->
             <div class="invoice-header">
                 <div class="header-left">
@@ -434,10 +831,13 @@
                 <div class="address-block">
                     <h3>Billed To:</h3>
                     <div class="address-content">
-                        <strong class="editable" contenteditable="true" placeholder="Client Name">Client Name</strong>
+                        <strong class="editable" contenteditable="true" placeholder="Client Name" oninput="checkClientDetails()"></strong>
                         <!--span class="editable" contenteditable="true" placeholder="Client Address">Client Address</span-->
-                        <span class="editable" contenteditable="true" placeholder="Client Phone">Client Phone</span>
-                        <span class="editable" contenteditable="true" placeholder="Client Email">Client Email</span>
+                        <div style="display: flex; gap: 4px; align-items: baseline;">
+                            <span style="font-weight: 500;">+91</span>
+                            <span class="editable" contenteditable="true" placeholder="Client Phone" onkeydown="if(event.key === 'Enter') { event.preventDefault(); return; } if(['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(event.key) || event.ctrlKey || event.metaKey) return; if(!/^[0-9]$/.test(event.key) || this.innerText.replace(/[^0-9]/g, '').length >= 10) { if(window.getSelection().toString() === '') event.preventDefault(); }" onpaste="event.preventDefault(); let text = (event.originalEvent || event).clipboardData.getData('text/plain').replace(/[^0-9]/g, ''); document.execCommand('insertText', false, text);" oninput="enforcePhoneLimit(this)" style="flex: 1;"></span>
+                        </div>
+                        <span class="editable" contenteditable="true" placeholder="Client Email" oninput="checkClientDetails()"></span>
                     </div>
                 </div>
             </div>
@@ -455,18 +855,24 @@
                 </thead>
                 <tbody id="invoiceItems">
                     <tr>
-                        <td><span class="editable" contenteditable="true" placeholder="Service description">Counselling Session (50 mins)</span></td>
-                        <td class="col-qty"><span class="editable qty-field" contenteditable="true" oninput="calculateRow(this)">1</span></td>
-                        <td class="col-rate"><span class="editable rate-field" contenteditable="true" oninput="calculateRow(this)">1500</span></td>
+                        <td><span class="editable" contenteditable="true" placeholder="Service description">Counselling
+                                Session (50 mins)</span></td>
+                        <td class="col-qty"><span class="editable qty-field" contenteditable="true"
+                                oninput="calculateRow(this)">1</span></td>
+                        <td class="col-rate"><span class="editable rate-field" contenteditable="true"
+                                oninput="calculateRow(this)">1500</span></td>
                         <td class="col-amount row-total">1500.00</td>
-                        <td class="col-action"><button class="remove-row-btn" onclick="removeRow(this)" aria-label="Remove Row">×</button></td>
+                        <td class="col-action"><button class="remove-row-btn" onclick="removeRow(this)"
+                                aria-label="Remove Row">×</button></td>
                     </tr>
                 </tbody>
             </table>
 
             <div class="add-row-container">
                 <button class="btn-text" onclick="addRow()">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                    </svg>
                     Add Item
                 </button>
             </div>
@@ -482,29 +888,46 @@
             <!-- Notes -->
             <div class="invoice-notes">
                 <h3></h3>
-                <div class="editable" contenteditable="true" style="width: 100%; min-height: 40px; text-align: center;" placeholder="Add payment instructions or thank you notes here...">Thank you for trusting Mana-na with your well-being journey.</div>
+                <div class="editable" contenteditable="true" style="width: 100%; min-height: 40px; text-align: center;"
+                    placeholder="Add payment instructions or thank you notes here...">Thank you for trusting Mana-na
+                    with your well-being journey.</div>
             </div>
 
-    <!-- History Modal -->
-    <div id="historyOverlay" class="login-overlay" style="display: none;">
-        <div class="login-card" style="max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; text-align: left;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                <h2 style="margin: 0; font-size: 1.5rem;">Invoice History</h2>
-                <button onclick="closeHistoryModal()" style="background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--text-main); line-height: 1;">&times;</button>
+            <!-- History Modal -->
+            <div id="historyOverlay" class="login-overlay" style="display: none;">
+                <div class="login-card"
+                    style="position: relative; max-width: 750px; width: 100%; max-height: 80vh; overflow-y: auto; text-align: left;">
+                    <button onclick="closeHistoryModal()"
+                        style="position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 2.2rem; cursor: pointer; color: var(--text-main); line-height: 1;">&times;</button>
+                    <h2 style="margin: 0 0 1.5rem 0; font-size: 1.5rem;">Invoice History</h2>
+                    <div id="historyList">
+                        <p>Loading history...</p>
+                    </div>
+                </div>
             </div>
-            <div id="historyList">
-                <p>Loading history...</p>
-            </div>
-        </div>
-    </div>
-    
+
         </div>
 
         <div class="invoice-actions">
-            <button class="btn" id="downloadImgBtn" onclick="downloadInvoiceAsImage()"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> <span class="btn-label">Download as Image</span></button>
-            <button class="btn" id="printPdfBtn" onclick="printInvoice()"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg> <span class="btn-label">Print / Save as PDF</span></button>
-            <button class="btn" id="shareWaBtn" onclick="shareInvoiceAsImage()"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> <span class="btn-label">Share via WA</span></button>
-            <button class="btn" onclick="showHistoryModal()"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg> <span class="btn-label">View History</span></button>
+            <button class="btn" id="downloadImgBtn" onclick="downloadInvoiceAsImage()" disabled><svg viewBox="0 0 24 24"
+                    width="18" height="18" fill="currentColor">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                </svg> <span class="btn-label">Download as Image</span></button>
+            <button class="btn" id="printPdfBtn" onclick="printInvoice()" disabled><svg viewBox="0 0 24 24" width="18"
+                    height="18" fill="currentColor">
+                    <path
+                        d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" />
+                </svg> <span class="btn-label">Print / Save as PDF</span></button>
+            <button class="btn" id="shareWaBtn" onclick="shareInvoiceAsImage()" disabled><svg viewBox="0 0 24 24" width="18"
+                    height="18" fill="currentColor">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+                </svg> <span class="btn-label">Share via WA</span></button>
+            <button class="btn" onclick="showHistoryModal()"><svg viewBox="0 0 24 24" width="18" height="18"
+                    fill="currentColor">
+                    <path
+                        d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z" />
+                </svg> <span class="btn-label">View History</span></button>
         </div>
 
     </div>
@@ -514,200 +937,248 @@
             <p>&copy; 2026 Mana-na <br>Counselling & Wellbeing Space</p>
             <p class="footer-credit">Designed by <a href="https://bit.ly/thedteam" target="_blank"> The 'D Team</a></p>
         </div>
-    </div>
+        </div>
 
-    <script>
-        const ENCODED_PWD = "TWFuYU5hU2VjdXJlMjAyNiE=";
+        <script>
+            const ENCODED_PWD = "TWFuYU5hU2VjdXJlMjAyNiE=";
 
-        let inactivityTimer;
-        const INACTIVITY_LIMIT = 5 * 60 * 1000; // 5 minutes in milliseconds
+            let inactivityTimer;
+            const INACTIVITY_LIMIT = 5 * 60 * 1000; // 5 minutes in milliseconds
 
-        function checkPwd() {
-            const input = document.getElementById('adminPwd').value.trim();
-            
-            // Encode user input to compare with the hidden password
-            if (btoa(input) === ENCODED_PWD) {
-                document.getElementById('loginOverlay').style.display = 'none';
-                document.body.classList.remove('locked');
-                resetInactivityTimer();
-            } else {
-                document.getElementById('loginError').style.display = 'block';
+            function checkPwd() {
+                const input = document.getElementById('adminPwd').value.trim();
+
+                // Encode user input to compare with the hidden password
+                if (btoa(input) === ENCODED_PWD) {
+                    document.getElementById('loginOverlay').style.display = 'none';
+                    document.body.classList.remove('locked');
+                    resetInactivityTimer();
+                } else {
+                    document.getElementById('loginError').style.display = 'block';
+                }
             }
-        }
 
-        function logout() {
-            document.getElementById('loginOverlay').style.display = 'flex';
-            document.body.classList.add('locked');
-            document.getElementById('adminPwd').value = '';
-            document.getElementById('loginError').style.display = 'none';
-            clearTimeout(inactivityTimer);
-        }
-
-        function resetInactivityTimer() {
-            clearTimeout(inactivityTimer);
-            if (!document.body.classList.contains('locked')) {
-                inactivityTimer = setTimeout(logout, INACTIVITY_LIMIT);
+            function logout() {
+                document.getElementById('loginOverlay').style.display = 'flex';
+                document.body.classList.add('locked');
+                document.getElementById('adminPwd').value = '';
+                document.getElementById('loginError').style.display = 'none';
+                clearTimeout(inactivityTimer);
             }
-        }
 
-        // Monitor user activity to prevent timeout while actively using the panel
-        ['mousemove', 'mousedown', 'keypress', 'touchstart', 'scroll'].forEach(evt => {
-            document.addEventListener(evt, resetInactivityTimer, true);
-        });
+            function resetInactivityTimer() {
+                clearTimeout(inactivityTimer);
+                if (!document.body.classList.contains('locked')) {
+                    inactivityTimer = setTimeout(logout, INACTIVITY_LIMIT);
+                }
+            }
 
-        // --- Theme Toggle Logic ---
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const rootElement = document.documentElement;
-        const svgMoon = `<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
-        const svgSun = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
-
-        function updateThemeIcon(theme) {
-            themeToggleBtn.innerHTML = theme === 'dark' ? svgSun : svgMoon;
-        }
-
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        rootElement.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = rootElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            rootElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-
-        // --- Invoice Logic ---
-        
-        // Set Current Date
-        const dateField = document.getElementById('currentDate');
-        const today = new Date();
-        const formattedDate = today.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
-        dateField.innerText = formattedDate;
-        
-        // Auto-Generate Unique Invoice Number
-        const invField = document.getElementById('invoiceNumber');
-        const datePart = today.getFullYear().toString() + (today.getMonth()+1).toString().padStart(2, '0') + today.getDate().toString().padStart(2, '0');
-        const timePart = today.getHours().toString().padStart(2, '0') + today.getMinutes().toString().padStart(2, '0');
-        const rndPart = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-        
-        invField.innerText = `INV-${datePart}-${timePart}-${rndPart}`;
-
-        // Calculations
-        function getNumericValue(text) {
-            const num = parseFloat(text.replace(/[^0-9.-]+/g, ""));
-            return isNaN(num) ? 0 : num;
-        }
-
-        function calculateRow(element) {
-            const row = element.closest('tr');
-            const qty = getNumericValue(row.querySelector('.qty-field').innerText);
-            const rate = getNumericValue(row.querySelector('.rate-field').innerText);
-            const amount = qty * rate;
-            
-            row.querySelector('.row-total').innerText = amount.toFixed(2);
-            calculateTotals();
-        }
-
-        function calculateTotals() {
-            const rowTotals = document.querySelectorAll('.row-total');
-            let total = 0;
-            
-            rowTotals.forEach(cell => {
-                total += getNumericValue(cell.innerText);
+            // Monitor user activity to prevent timeout while actively using the panel
+            ['mousemove', 'mousedown', 'keypress', 'touchstart', 'scroll'].forEach(evt => {
+                document.addEventListener(evt, resetInactivityTimer, true);
             });
-            
-            document.getElementById('grandTotal').innerText = '₹' + total.toFixed(2);
-        }
 
-        function addRow() {
-            const tbody = document.getElementById('invoiceItems');
-            const tr = document.createElement('tr');
-            
-            tr.innerHTML = `
+            // --- Theme Toggle Logic ---
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const rootElement = document.documentElement;
+            const svgMoon = `<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+            const svgSun = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+
+            function updateThemeIcon(theme) {
+                themeToggleBtn.innerHTML = theme === 'dark' ? svgSun : svgMoon;
+            }
+
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            rootElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = rootElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                rootElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+
+            // --- Invoice Logic ---
+
+            // Set Current Date
+            const dateField = document.getElementById('currentDate');
+            const today = new Date();
+            const formattedDate = today.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+            dateField.innerText = formattedDate;
+
+            // Auto-Generate Unique Invoice Number
+            const invField = document.getElementById('invoiceNumber');
+            const datePart = today.getFullYear().toString() + (today.getMonth() + 1).toString().padStart(2, '0') + today.getDate().toString().padStart(2, '0');
+            const timePart = today.getHours().toString().padStart(2, '0') + today.getMinutes().toString().padStart(2, '0');
+            const rndPart = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+
+            invField.innerText = `INV-${datePart}-${timePart}-${rndPart}`;
+
+            // Calculations
+            function getNumericValue(text) {
+                const num = parseFloat(text.replace(/[^0-9.-]+/g, ""));
+                return isNaN(num) ? 0 : num;
+            }
+
+            function calculateRow(element) {
+                const row = element.closest('tr');
+                const qty = getNumericValue(row.querySelector('.qty-field').innerText);
+                const rate = getNumericValue(row.querySelector('.rate-field').innerText);
+                const amount = qty * rate;
+
+                row.querySelector('.row-total').innerText = amount.toFixed(2);
+                calculateTotals();
+            }
+
+            function calculateTotals() {
+                const rowTotals = document.querySelectorAll('.row-total');
+                let total = 0;
+
+                rowTotals.forEach(cell => {
+                    total += getNumericValue(cell.innerText);
+                });
+
+                document.getElementById('grandTotal').innerText = '₹' + total.toFixed(2);
+            }
+
+            function addRow() {
+                const tbody = document.getElementById('invoiceItems');
+                const tr = document.createElement('tr');
+
+                tr.innerHTML = `
                 <td><span class="editable" contenteditable="true" placeholder="Item description"></span></td>
                 <td class="col-qty"><span class="editable qty-field" contenteditable="true" oninput="calculateRow(this)">1</span></td>
                 <td class="col-rate"><span class="editable rate-field" contenteditable="true" oninput="calculateRow(this)">0</span></td>
                 <td class="col-amount row-total">0.00</td>
                 <td class="col-action"><button class="remove-row-btn" onclick="removeRow(this)" aria-label="Remove Row">×</button></td>
             `;
-            
-            tbody.appendChild(tr);
-            calculateTotals();
-        }
 
-        function removeRow(btn) {
-            const row = btn.closest('tr');
-            row.remove();
-            calculateTotals();
-        }
+                tbody.appendChild(tr);
+                calculateTotals();
+            }
 
-        // --- Invoice History Logic (Firebase Firestore) ---
-        const firebaseConfig = {
-            apiKey: "AIzaSyDVkAh59skdwU7TNBDSbV_g7oIMUNO1kgw",
-            authDomain: "mana-na-slots.firebaseapp.com",
-            projectId: "mana-na-slots",
-            storageBucket: "mana-na-slots.appspot.com",
-            messagingSenderId: "970996854292",
-            appId: "1:970996854292:web:ce5adcc4a1c4b21c4b4101"
-        };
+            function removeRow(btn) {
+                const row = btn.closest('tr');
+                row.remove();
+                calculateTotals();
+            }
 
-        // Initialize Firebase
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
-        }
-        const db = firebase.firestore();
+            function enforcePhoneLimit(el) {
+                let cleanText = el.innerText.replace(/[^0-9]/g, '');
+                
+                if (cleanText.length > 10) {
+                    cleanText = cleanText.substring(0, 10);
+                }
+                
+                if (el.innerText !== cleanText) {
+                    el.innerText = cleanText;
+                    // Restore cursor to end
+                    const range = document.createRange();
+                    const sel = window.getSelection();
+                    range.selectNodeContents(el);
+                    range.collapse(false);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+                checkClientDetails();
+            }
 
-        let invoiceHistoryCache = [];
+            function checkClientDetails() {
+                const clientFields = document.querySelectorAll('.address-block:last-child .editable');
+                if (clientFields.length < 3) return;
 
-        async function saveInvoiceHistory() {
-            const clientFields = document.querySelectorAll('.address-block:last-child .editable');
-            const invoiceNumber = document.getElementById('invoiceNumber').innerText;
+                const name = clientFields[0].innerText.trim();
+                const phone = clientFields[1].innerText.trim();
+                const email = clientFields[2].innerText.trim();
 
-            const invoiceData = {
-                invoiceNumber: invoiceNumber,
-                date: document.getElementById('currentDate').innerText,
-                clientName: clientFields[0] ? clientFields[0].innerText : '',
-                clientPhone: clientFields[1] ? clientFields[1].innerText : '',
-                clientEmail: clientFields[2] ? clientFields[2].innerText : '',
-                total: document.getElementById('grandTotal').innerText,
-                items: Array.from(document.querySelectorAll('#invoiceItems tr')).map(row => ({
-                    description: row.querySelector('.editable').innerText,
-                    qty: row.querySelector('.qty-field').innerText,
-                    rate: row.querySelector('.rate-field').innerText
-                })),
-                notes: document.querySelector('.invoice-notes .editable').innerText,
-                timestamp: new Date().toISOString()
+                const isValid = name && name !== 'Client Name' &&
+                                phone && phone !== 'Client Phone' && phone.length === 10 && /^\d+$/.test(phone) &&
+                                email && email !== 'Client Email';
+
+                if (document.getElementById('downloadImgBtn')) document.getElementById('downloadImgBtn').disabled = !isValid;
+                if (document.getElementById('printPdfBtn')) document.getElementById('printPdfBtn').disabled = !isValid;
+                if (document.getElementById('shareWaBtn')) document.getElementById('shareWaBtn').disabled = !isValid;
+            }
+
+            // --- Invoice History Logic (Firebase Firestore) ---
+            const firebaseConfig = {
+                apiKey: "AIzaSyDVkAh59skdwU7TNBDSbV_g7oIMUNO1kgw",
+                authDomain: "mana-na-slots.firebaseapp.com",
+                projectId: "mana-na-slots",
+                storageBucket: "mana-na-slots.appspot.com",
+                messagingSenderId: "970996854292",
+                appId: "1:970996854292:web:ce5adcc4a1c4b21c4b4101"
             };
 
-            try {
-                // Save to Firestore 'invoices' collection
-                await db.collection("invoices").doc(invoiceNumber).set(invoiceData);
-                console.log("Invoice saved to cloud history.");
-            } catch (error) {
-                console.error("Failed to save invoice to history", error);
+            // Initialize Firebase
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
             }
-        }
+            const db = firebase.firestore();
 
-        async function showHistoryModal() {
-            document.getElementById('historyOverlay').style.display = 'flex';
-            const listDiv = document.getElementById('historyList');
-            
-            listDiv.innerHTML = '<p>Loading history from cloud...</p>';
+            let invoiceHistoryCache = [];
 
-            try {
-                const querySnapshot = await db.collection("invoices").get();
-                let history = [];
-                querySnapshot.forEach((doc) => {
-                    history.push(doc.data());
-                });
+            async function saveInvoiceHistory() {
+                const clientFields = document.querySelectorAll('.address-block:last-child .editable');
+                const invoiceNumber = document.getElementById('invoiceNumber').innerText;
+                const clientNameStr = clientFields[0] ? clientFields[0].innerText.trim() : '';
+            const clientPhoneStr = clientFields[1] ? clientFields[1].innerText.trim() : '';
+            const clientEmailStr = clientFields[2] ? clientFields[2].innerText.trim() : '';
 
-                if (history.length > 0) {
-                    invoiceHistoryCache = history.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-                    
-                    let html = '<div style="display: flex; flex-direction: column; gap: 10px;">';
-                    invoiceHistoryCache.forEach((inv, index) => {
-                        html += `
+            // Only save if the "Billed To" name, phone, and email have been updated
+            if (!clientNameStr || clientNameStr === 'Client Name' || 
+                !clientPhoneStr || clientPhoneStr === 'Client Phone' || clientPhoneStr.length !== 10 ||
+                !clientEmailStr || clientEmailStr === 'Client Email') {
+                console.log('Invoice history not saved: Client details (Name, Phone, or Email) have not been fully updated or phone is not 10 digits.');
+                    return;
+                }
+
+                const invoiceData = {
+                    invoiceNumber: invoiceNumber,
+                    date: document.getElementById('currentDate').innerText,
+                    clientName: clientNameStr,
+                clientPhone: '+91 ' + clientPhoneStr,
+                clientEmail: clientEmailStr,
+                    total: document.getElementById('grandTotal').innerText,
+                    items: Array.from(document.querySelectorAll('#invoiceItems tr')).map(row => ({
+                        description: row.querySelector('.editable').innerText,
+                        qty: row.querySelector('.qty-field').innerText,
+                        rate: row.querySelector('.rate-field').innerText
+                    })),
+                    notes: document.querySelector('.invoice-notes .editable').innerText,
+                    timestamp: new Date().toISOString()
+                };
+
+                try {
+                    // Save to Firestore 'invoices' collection
+                    await db.collection("invoices").doc(invoiceNumber).set(invoiceData);
+                    console.log("Invoice saved to cloud history.");
+                } catch (error) {
+                    console.error("Failed to save invoice to history", error);
+                }
+            }
+
+            async function showHistoryModal() {
+                document.getElementById('historyOverlay').style.display = 'flex';
+                const listDiv = document.getElementById('historyList');
+
+                listDiv.innerHTML = '<p>Loading history from cloud...</p>';
+
+                try {
+                    const querySnapshot = await db.collection("invoices").get();
+                    let history = [];
+                    querySnapshot.forEach((doc) => {
+                        history.push(doc.data());
+                    });
+
+                    if (history.length > 0) {
+                        invoiceHistoryCache = history.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+                        let html = '<div style="display: flex; flex-direction: column; gap: 10px;">';
+                        invoiceHistoryCache.forEach((inv, index) => {
+                            html += `
                             <div class="history-list-item">
                                 <div>
                                     <strong>${inv.invoiceNumber}</strong><br>
@@ -716,201 +1187,214 @@
                                 <button class="btn" style="padding: 0.5rem 1.5rem; margin: 0;" onclick="loadInvoice(${index})">Load Invoice</button>
                             </div>
                         `;
-                    });
-                    html += '</div>';
-                    listDiv.innerHTML = html;
-                } else {
-                    listDiv.innerHTML = '<p>No invoice history found in the database.</p>';
+                        });
+                        html += '</div>';
+                        listDiv.innerHTML = html;
+                    } else {
+                        listDiv.innerHTML = '<p>No invoice history found in the database.</p>';
+                    }
+                } catch (error) {
+                    console.error("Error loading history", error);
+                    listDiv.innerHTML = '<p>Error loading history.</p>';
                 }
-            } catch (error) {
-                console.error("Error loading history", error);
-                listDiv.innerHTML = '<p>Error loading history.</p>';
-            }
-        }
-
-        function closeHistoryModal() {
-            document.getElementById('historyOverlay').style.display = 'none';
-        }
-
-        function loadInvoice(index) {
-            const inv = invoiceHistoryCache[index];
-            if (!inv) return;
-
-            document.getElementById('invoiceNumber').innerText = inv.invoiceNumber;
-            document.getElementById('currentDate').innerText = inv.date;
-            
-            const clientFields = document.querySelectorAll('.address-block:last-child .editable');
-            if (clientFields.length >= 3) {
-                clientFields[0].innerText = inv.clientName || '';
-                clientFields[1].innerText = inv.clientPhone || '';
-                clientFields[2].innerText = inv.clientEmail || '';
             }
 
-            const tbody = document.getElementById('invoiceItems');
-            tbody.innerHTML = '';
-            
-            if (inv.items && Array.isArray(inv.items)) {
-                inv.items.forEach(item => {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
+            function closeHistoryModal() {
+                document.getElementById('historyOverlay').style.display = 'none';
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    const historyOverlay = document.getElementById('historyOverlay');
+                    if (historyOverlay && historyOverlay.style.display === 'flex') {
+                        closeHistoryModal();
+                    }
+                }
+            });
+
+            function loadInvoice(index) {
+                const inv = invoiceHistoryCache[index];
+                if (!inv) return;
+
+                document.getElementById('invoiceNumber').innerText = inv.invoiceNumber;
+                document.getElementById('currentDate').innerText = inv.date;
+
+                const clientFields = document.querySelectorAll('.address-block:last-child .editable');
+                if (clientFields.length >= 3) {
+                    clientFields[0].innerText = inv.clientName || '';
+                    let loadedPhone = inv.clientPhone || '';
+                    loadedPhone = loadedPhone.replace('+91 ', '').replace('+91', '').trim();
+                    clientFields[1].innerText = loadedPhone;
+                    clientFields[2].innerText = inv.clientEmail || '';
+                }
+
+                const tbody = document.getElementById('invoiceItems');
+                tbody.innerHTML = '';
+
+                if (inv.items && Array.isArray(inv.items)) {
+                    inv.items.forEach(item => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
                         <td><span class="editable" contenteditable="true" placeholder="Item description">${item.description}</span></td>
                         <td class="col-qty"><span class="editable qty-field" contenteditable="true" oninput="calculateRow(this)">${item.qty}</span></td>
                         <td class="col-rate"><span class="editable rate-field" contenteditable="true" oninput="calculateRow(this)">${item.rate}</span></td>
                         <td class="col-amount row-total">0.00</td>
                         <td class="col-action"><button class="remove-row-btn" onclick="removeRow(this)" aria-label="Remove Row">×</button></td>
                     `;
-                    tbody.appendChild(tr);
-                    calculateRow(tr.querySelector('.qty-field'));
-                });
-            }
-
-            if (inv.notes) {
-                document.querySelector('.invoice-notes .editable').innerText = inv.notes;
-            }
-
-            calculateTotals();
-            closeHistoryModal();
-        }
-
-        function printInvoice() {
-            const originalTitle = document.title;
-            const invoiceId = document.getElementById('invoiceNumber').innerText;
-            document.title = `Mana-na_Invoice-${invoiceId}`;
-
-            saveInvoiceHistory(); // Save to database
-
-            window.print();
-            document.title = originalTitle;
-        }
-
-        async function downloadInvoiceAsImage() {
-            const invoiceElement = document.getElementById('invoiceArea');
-            const invoiceId = document.getElementById('invoiceNumber').innerText;
-            const downloadBtn = document.getElementById('downloadImgBtn');
-            const btnLabel = downloadBtn.querySelector('.btn-label');
-            const originalBtnText = btnLabel.textContent;
-
-            downloadBtn.disabled = true;
-            btnLabel.textContent = 'Generating...';
-
-            saveInvoiceHistory(); // Save to database
-
-            const hiddenElements = document.querySelectorAll('.col-action, .add-row-container, footer, .invoice-actions');
-            hiddenElements.forEach(el => el.style.display = 'none');
-
-            const originalTheme = document.documentElement.getAttribute('data-theme');
-            document.documentElement.setAttribute('data-theme', 'light');
-
-            try {
-                const canvas = await html2canvas(invoiceElement, {
-                    scale: 2,
-                    useCORS: true,
-                    logging: false,
-                    backgroundColor: 'white'
-                });
-
-                const downloadLink = document.createElement('a');
-                downloadLink.href = canvas.toDataURL('image/png');
-                downloadLink.download = `Mana-na_Invoice-${invoiceId}.png`;
-                downloadLink.click();
-
-            } catch (error) {
-                console.error('Error generating invoice image:', error);
-                alert('Failed to generate invoice image. Please try again.');
-            } finally {
-                downloadBtn.disabled = false;
-                btnLabel.textContent = originalBtnText;
-                hiddenElements.forEach(el => el.style.display = '');
-                document.documentElement.setAttribute('data-theme', originalTheme);
-            }
-        }
-
-        async function shareInvoiceAsImage() {
-            // 1. Check for HTTPS connection
-            if (location.protocol !== 'https:') {
-                alert('Sharing as image is only available on secure (HTTPS) connections. Please ensure the page is loaded via HTTPS.');
-                return;
-            }
-
-            const invoiceElement = document.getElementById('invoiceArea');
-            const invoiceId = document.getElementById('invoiceNumber').innerText;
-            const shareCaption = `Hello, please find invoice attached with the Invoice ID: Mana-na ${invoiceId}`;
-            
-            const shareBtn = document.getElementById('shareWaBtn');
-            const btnLabel = shareBtn.querySelector('.btn-label');
-            const originalBtnText = btnLabel.textContent;
-            shareBtn.disabled = true;
-            btnLabel.textContent = 'Generating Image...';
-
-
-            saveInvoiceHistory(); // Save to database
-
-            // Temporarily hide elements that shouldn't be in the image
-            const hiddenElements = document.querySelectorAll('.col-action, .add-row-container, footer');
-            hiddenElements.forEach(el => el.style.display = 'none');
-
-            // Temporarily force light theme for image capture
-            const originalTheme = document.documentElement.getAttribute('data-theme');
-            document.documentElement.setAttribute('data-theme', 'light');
-
-            try {
-                const canvas = await html2canvas(invoiceElement, {
-                    scale: 2, // Increase scale for better resolution
-                    useCORS: true, // Important if you have external images/fonts
-                    logging: false, // Disable html2canvas logs
-                    backgroundColor: 'white' // Explicitly set background to white
-                });
-
-                // Restore hidden elements and original body background
-                document.documentElement.setAttribute('data-theme', originalTheme);
-                btnLabel.textContent = 'Sharing...';
-
-                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-                const file = new File([blob], `invoice-${invoiceId}.png`, { type: 'image/png' });
-
-                // Check for Web Share API support for files
-                if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-                    try {
-                        await navigator.share({
-                            files: [file],
-                            title: `Invoice from Mana-na (${invoiceId})`,
-                            text: shareCaption,
-                        });
-                        console.log('Invoice image shared successfully via Web Share API.');
-                    } catch (error) {
-                        if (error.name !== 'AbortError') {
-                            console.error('Web Share API failed:', error);
-                            alert('Could not share the image. Please try saving the PDF and sharing it manually.');
-                        } else {
-                            console.log('Share action cancelled by user.');
-                        }
-                    }
-                } else {
-                    // Fallback for desktop or unsupported browsers
-                    const downloadLink = document.createElement('a');
-                    downloadLink.href = URL.createObjectURL(blob);
-                    downloadLink.download = `invoice-${invoiceId}.png`;
-                    const whatsappText = encodeURIComponent(shareCaption + '\n\nPlease find the invoice image attached.');
-                    const whatsappUrl = `https://wa.me/?text=${whatsappText}`;
-                    alert('Your browser does not support direct sharing. The invoice image will be downloaded, and WhatsApp will open. Please attach the downloaded image to your message.');
-                    downloadLink.click();
-                    window.open(whatsappUrl, '_blank');
-                    URL.revokeObjectURL(downloadLink.href);
+                        tbody.appendChild(tr);
+                        calculateRow(tr.querySelector('.qty-field'));
+                    });
                 }
 
-            } catch (error) {
-                console.error('Error generating invoice image:', error);
-                alert('Failed to generate or share invoice image. Please try again or use "Print / Save as PDF".');
-            } finally {
-                // Restore button state and UI
-                shareBtn.disabled = false;
-                btnLabel.textContent = originalBtnText;
-                hiddenElements.forEach(el => el.style.display = '');
-                document.documentElement.setAttribute('data-theme', originalTheme);
+                if (inv.notes) {
+                    document.querySelector('.invoice-notes .editable').innerText = inv.notes;
+                }
+
+                calculateTotals();
+                closeHistoryModal();
+                checkClientDetails();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-        }
+
+            function printInvoice() {
+                const originalTitle = document.title;
+                const invoiceId = document.getElementById('invoiceNumber').innerText;
+                document.title = `Mana-na_Invoice-${invoiceId}`;
+
+                saveInvoiceHistory(); // Save to database
+
+                window.print();
+                document.title = originalTitle;
+            }
+
+            async function downloadInvoiceAsImage() {
+                const invoiceElement = document.getElementById('invoiceArea');
+                const invoiceId = document.getElementById('invoiceNumber').innerText;
+                const downloadBtn = document.getElementById('downloadImgBtn');
+                const btnLabel = downloadBtn.querySelector('.btn-label');
+                const originalBtnText = btnLabel.textContent;
+
+                downloadBtn.disabled = true;
+                btnLabel.textContent = 'Generating...';
+
+                saveInvoiceHistory(); // Save to database
+
+                const hiddenElements = document.querySelectorAll('.col-action, .add-row-container, footer, .invoice-actions');
+                hiddenElements.forEach(el => el.style.display = 'none');
+
+                const originalTheme = document.documentElement.getAttribute('data-theme');
+                document.documentElement.setAttribute('data-theme', 'light');
+
+                try {
+                    const canvas = await html2canvas(invoiceElement, {
+                        scale: 2,
+                        useCORS: true,
+                        logging: false,
+                        backgroundColor: 'white'
+                    });
+
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = canvas.toDataURL('image/png');
+                    downloadLink.download = `Mana-na_Invoice-${invoiceId}.png`;
+                    downloadLink.click();
+
+                } catch (error) {
+                    console.error('Error generating invoice image:', error);
+                    alert('Failed to generate invoice image. Please try again.');
+                } finally {
+                    downloadBtn.disabled = false;
+                    btnLabel.textContent = originalBtnText;
+                    hiddenElements.forEach(el => el.style.display = '');
+                    document.documentElement.setAttribute('data-theme', originalTheme);
+                }
+            }
+
+            async function shareInvoiceAsImage() {
+                // 1. Check for HTTPS connection
+                if (location.protocol !== 'https:') {
+                    alert('Sharing as image is only available on secure (HTTPS) connections. Please ensure the page is loaded via HTTPS.');
+                    return;
+                }
+
+                const invoiceElement = document.getElementById('invoiceArea');
+                const invoiceId = document.getElementById('invoiceNumber').innerText;
+                const shareCaption = `Hello, please find invoice attached with the Invoice ID: Mana-na ${invoiceId}`;
+
+                const shareBtn = document.getElementById('shareWaBtn');
+                const btnLabel = shareBtn.querySelector('.btn-label');
+                const originalBtnText = btnLabel.textContent;
+                shareBtn.disabled = true;
+                btnLabel.textContent = 'Generating Image...';
 
 
-    </script>
+                saveInvoiceHistory(); // Save to database
+
+                // Temporarily hide elements that shouldn't be in the image
+                const hiddenElements = document.querySelectorAll('.col-action, .add-row-container, footer');
+                hiddenElements.forEach(el => el.style.display = 'none');
+
+                // Temporarily force light theme for image capture
+                const originalTheme = document.documentElement.getAttribute('data-theme');
+                document.documentElement.setAttribute('data-theme', 'light');
+
+                try {
+                    const canvas = await html2canvas(invoiceElement, {
+                        scale: 2, // Increase scale for better resolution
+                        useCORS: true, // Important if you have external images/fonts
+                        logging: false, // Disable html2canvas logs
+                        backgroundColor: 'white' // Explicitly set background to white
+                    });
+
+                    // Restore hidden elements and original body background
+                    document.documentElement.setAttribute('data-theme', originalTheme);
+                    btnLabel.textContent = 'Sharing...';
+
+                    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                    const file = new File([blob], `invoice-${invoiceId}.png`, { type: 'image/png' });
+
+                    // Check for Web Share API support for files
+                    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+                        try {
+                            await navigator.share({
+                                files: [file],
+                                title: `Invoice from Mana-na (${invoiceId})`,
+                                text: shareCaption,
+                            });
+                            console.log('Invoice image shared successfully via Web Share API.');
+                        } catch (error) {
+                            if (error.name !== 'AbortError') {
+                                console.error('Web Share API failed:', error);
+                                alert('Could not share the image. Please try saving the PDF and sharing it manually.');
+                            } else {
+                                console.log('Share action cancelled by user.');
+                            }
+                        }
+                    } else {
+                        // Fallback for desktop or unsupported browsers
+                        const downloadLink = document.createElement('a');
+                        downloadLink.href = URL.createObjectURL(blob);
+                        downloadLink.download = `invoice-${invoiceId}.png`;
+                        const whatsappText = encodeURIComponent(shareCaption + '\n\nPlease find the invoice image attached.');
+                        const whatsappUrl = `https://wa.me/?text=${whatsappText}`;
+                        alert('Your browser does not support direct sharing. The invoice image will be downloaded, and WhatsApp will open. Please attach the downloaded image to your message.');
+                        downloadLink.click();
+                        window.open(whatsappUrl, '_blank');
+                        URL.revokeObjectURL(downloadLink.href);
+                    }
+
+                } catch (error) {
+                    console.error('Error generating invoice image:', error);
+                    alert('Failed to generate or share invoice image. Please try again or use "Print / Save as PDF".');
+                } finally {
+                    // Restore button state and UI
+                    shareBtn.disabled = false;
+                    btnLabel.textContent = originalBtnText;
+                    hiddenElements.forEach(el => el.style.display = '');
+                    document.documentElement.setAttribute('data-theme', originalTheme);
+                }
+            }
+
+
+        </script>
 </body>
 </html>
