@@ -237,21 +237,6 @@ header {
     width: 100%;
 }
 
-/* Editable Rate Styles */
-.editable-rate {
-    outline: none;
-    cursor: text;
-    display: inline-block;
-    min-width: 60px;
-    padding: 0 4px;
-    margin: 0 -4px;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-}
-.editable-rate:hover, .editable-rate:focus {
-    background-color: rgba(255, 255, 255, 0.15);
-}
-
 .trend-arrow {
     display: inline-block;
     width: 0;

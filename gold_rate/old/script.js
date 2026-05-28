@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 4. Extract numeric value from rate string (e.g., "₹14,995" -> 14995)
     function extractNumericRate(rateString) {
-        return parseInt(String(rateString).replace(/₹|,/g, ''), 10);
+        return parseInt(rateString.replace(/₹|,/g, ''), 10);
     }
 
     // 5. Determine trend by comparing rates
@@ -140,95 +140,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const trend22k = determineTrend(rates.k22_1g, previousRates?.k22_1g);
             const trend24k = determineTrend(rates.k24_1g, previousRates?.k24_1g);
 
-            const formatRateForEdit = (rateStr) => String(rateStr).replace('₹', '');
-
             // Update content with rate values and trend arrows
-            k22_1g_Element.innerHTML = `₹<span contenteditable="true" id="edit-22k-1g" class="editable-rate">${formatRateForEdit(rates.k22_1g)}</span><span id="trend-22k-1g" class="trend-arrow ${trend22k}"></span>`;
-            k22_10g_Element.innerHTML = `₹<span id="display-22k-10g">${formatRateForEdit(rates.k22_10g)}</span><span id="trend-22k-10g" class="trend-arrow ${trend22k}"></span>`;
-            k24_1g_Element.innerHTML = `₹<span contenteditable="true" id="edit-24k-1g" class="editable-rate">${formatRateForEdit(rates.k24_1g)}</span><span id="trend-24k-1g" class="trend-arrow ${trend24k}"></span>`;
-            k24_10g_Element.innerHTML = `₹<span id="display-24k-10g">${formatRateForEdit(rates.k24_10g)}</span><span id="trend-24k-10g" class="trend-arrow ${trend24k}"></span>`;
+            k22_1g_Element.innerHTML = `${rates.k22_1g}<span class="trend-arrow ${trend22k}"></span>`;
+            k22_10g_Element.innerHTML = `${rates.k22_10g}<span class="trend-arrow ${trend22k}"></span>`;
+            k24_1g_Element.innerHTML = `${rates.k24_1g}<span class="trend-arrow ${trend24k}"></span>`;
+            k24_10g_Element.innerHTML = `${rates.k24_10g}<span class="trend-arrow ${trend24k}"></span>`;
             
-            setupAutoCalculate(previousRates);
-
             console.log("DOM updated with gold rates and dynamic trends");
             console.log("22K Trend:", trend22k, "| 24K Trend:", trend24k);
         } else {
             console.error("One or more gold rate display elements not found in index.html.");
-        }
-    }
-
-    function setupAutoCalculate(previousRates) {
-        const edit22k1g = document.getElementById('edit-22k-1g');
-        const display22k10g = document.getElementById('display-22k-10g');
-        const edit24k1g = document.getElementById('edit-24k-1g');
-        const display24k10g = document.getElementById('display-24k-10g');
-
-        const trend22k1g = document.getElementById('trend-22k-1g');
-        const trend22k10g = document.getElementById('trend-22k-10g');
-        const trend24k1g = document.getElementById('trend-24k-1g');
-        const trend24k10g = document.getElementById('trend-24k-10g');
-
-        const baseline22k = previousRates?.k22_1g || (edit22k1g ? extractNumericRate(edit22k1g.innerText) : 0);
-        const baseline24k = previousRates?.k24_1g || (edit24k1g ? extractNumericRate(edit24k1g.innerText) : 0);
-
-        const calculate10g = (inputElement, displayElement, baselineRate, trends) => {
-            let text = inputElement.innerText || inputElement.textContent;
-            let numericVal = extractNumericRate(text);
-            if (!isNaN(numericVal)) {
-                let formattedText = numericVal.toLocaleString('en-IN');
-                
-                if (text !== formattedText) {
-                    let hasFocus = document.activeElement === inputElement;
-                    let selection = window.getSelection();
-                    let caretOffsetFromEnd = 0;
-                    
-                    if (hasFocus && selection.rangeCount > 0) {
-                        let range = selection.getRangeAt(0);
-                        caretOffsetFromEnd = text.length - range.startOffset;
-                    }
-                    
-                    inputElement.innerText = formattedText;
-                    
-                    if (hasFocus && inputElement.childNodes.length > 0) {
-                        let newRange = document.createRange();
-                        let newOffset = Math.max(0, formattedText.length - caretOffsetFromEnd);
-                        newOffset = Math.min(newOffset, formattedText.length);
-                        
-                        try {
-                            newRange.setStart(inputElement.childNodes[0], newOffset);
-                            newRange.collapse(true);
-                            selection.removeAllRanges();
-                            selection.addRange(newRange);
-                        } catch (e) {}
-                    }
-                }
-
-                let val10g = numericVal * 10;
-                displayElement.innerText = val10g.toLocaleString('en-IN');
-                
-                const newTrend = determineTrend(numericVal, baselineRate);
-                trends.forEach(trendEl => {
-                    if (trendEl) trendEl.className = `trend-arrow ${newTrend}`;
-                });
-            } else {
-                displayElement.innerText = '0';
-            }
-        };
-
-        const preventEnter = (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                e.target.blur(); // Remove focus on enter key to prevent new lines
-            }
-        };
-
-        if (edit22k1g && display22k10g) {
-            edit22k1g.addEventListener('input', () => calculate10g(edit22k1g, display22k10g, baseline22k, [trend22k1g, trend22k10g]));
-            edit22k1g.addEventListener('keydown', preventEnter);
-        }
-        if (edit24k1g && display24k10g) {
-            edit24k1g.addEventListener('input', () => calculate10g(edit24k1g, display24k10g, baseline24k, [trend24k1g, trend24k10g]));
-            edit24k1g.addEventListener('keydown', preventEnter);
         }
     }
 
