@@ -1,0 +1,375 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif; /* Modern sans-serif for main content */
+    background-color: #f0f0f0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 0;
+}
+
+.poster-wrapper {
+    width: 380px; /* Adjust width as needed, maintain aspect ratio */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    background: linear-gradient(to right, #b08d57, #d4af37, #b08d57); /* Replaces border-image for better html2canvas support */
+    padding: 15px; /* Creates the border thickness */
+    box-sizing: border-box; /* Ensures the wrapper remains 380px wide */
+    user-select: none; /* Disables text selection */
+    -webkit-user-select: none; /* Safari compatibility */
+    -webkit-user-drag: none; /* Prevents dragging of the element */
+    z-index: 10; /* Ensures poster is above falling coins */
+}
+
+/* Falling Gold Coins Animation */
+.coin-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicking through the coins */
+    z-index: 1; /* Behind the poster, above the body background */
+    overflow: hidden;
+}
+
+.coin {
+    position: absolute;
+    background: radial-gradient(circle at 30% 30%, #ffd700, #d4af37, #b8860b);
+    border-radius: 50%;
+    border: 1px solid #c59b27;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5), inset 0 0 4px #ffe55c;
+    top: -50px;
+    opacity: 0.7;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0) rotateY(0deg) rotateZ(0deg); }
+    100% { transform: translateY(115vh) rotateY(720deg) rotateZ(360deg); }
+}
+
+.poster-frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, #702030, #501020); /* Deep red background */
+    padding: 15px;
+    color: #e0c090; /* Soft gold text color for header */
+    border-bottom: 2px solid #b08d57;
+    position: relative;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Space out elements */
+    align-items: center;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-area {
+    margin-right: 15px;
+}
+
+.logo-g {
+    font-family: 'Playfair Display', serif; /* More ornate font for logo letter */
+    font-size: 3.5rem;
+    color: #d4af37; /* Rich gold */
+    font-weight: 700;
+    line-height: 1;
+}
+
+.company-info {
+    text-align: center;
+    width: 100%;
+}
+
+.company-name {
+    font-family: 'Crimson Pro', serif; /* Approximate ornate serif font */
+    font-size: 2.2rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.city {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Header filigree is complex; for simplicity, maybe use simplified decorative elements later or just keep clear for now. The original had specific items. Removed tea for simplicity in structure. We could add abstract filigree. Let's aim for structural simplicity here. We *can* add background patterns using pseudo-elements later if desired.  */
+
+/* Poster Content Styles */
+.poster-content {
+    background-color: #f8f8e8; /* Off-white background */
+    /* Add subtle pattern approximation - e.g., slightly transparent dots or texture */
+    background-image: 
+        radial-gradient(#e0c090 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.8;
+    padding: 20px 15px 15px 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.poster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #501020; /* Dark red/brown */
+    margin: 0 0 15px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.date-box-outer {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.date-box {
+    background: linear-gradient(to bottom, #fdf8e8, #f8f0d8);
+    border: 2px solid #b08d57;
+    border-radius: 4px;
+    padding: 8px 15px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#poster-date {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.2rem;
+    color: #501020;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Price Section Styles */
+.price-section {
+    width: 100%;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: #fdf8e8; /* Light text for sections with dark backgrounds */
+    position: relative;
+    overflow: hidden; /* Ensure pattern stays within bounds */
+}
+
+/* Approximate green backgrounds */
+.k22-section {
+    background: linear-gradient(to right, #004d30, #003320); 
+}
+
+.k24-section {
+    background: linear-gradient(to right, #003d20, #002210);
+}
+
+.gold-type {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.3rem;
+    color: #d4af37; /* Rich gold for type headers */
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.price-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.price-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 8px 12px;
+    flex: 1; /* Expand each box equally */
+    max-width: 140px; /* Limit box width */
+    text-align: center;
+}
+
+.unit {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin: 0 0 4px 0;
+    font-weight: 600;
+    color: #fdf8e8;
+}
+
+.rate {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.8rem;
+    color: #fdf8e8;
+    margin: 0;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.trend-arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    /* Basic arrow - you can use SVG or advanced CSS for more detail */
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #999; /* Default gray arrow */
+    position: relative;
+    top: -2px; /* Adjust vertical alignment */
+}
+
+.trend-arrow.up {
+    border-bottom-color: #4CAF50; /* Green up arrow */
+}
+
+.trend-arrow.down {
+    border-bottom: none;
+    border-top: 8px solid #f44336; /* Red down arrow */
+    top: 2px; /* Adjust vertical alignment for down arrow */
+}
+
+.trend-arrow.neutral {
+    border-bottom-color: #999; /* Gray arrow for neutral/no data */
+}
+
+.making-charges {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 600;
+    color: #d4af37; /* Gold */
+    text-transform: uppercase;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #400510; /* Darker deep red for footer */
+    padding: 15px;
+    color: #e0c090; /* Gold text */
+    text-align: center;
+    margin-top: auto; /* Push to bottom within flex container */
+    border-top: 1px solid #b08d57;
+}
+
+.footer-content {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.footer-note {
+    margin: 0 0 10px 0;
+    font-weight: 600;
+}
+
+.footer-extra {
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 400;
+}
+
+.footer-credits {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    margin: 15px 0 0 0;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+/* Action Buttons Styles */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn {
+    background: linear-gradient(to right, #b08d57, #d4af37);
+    color: #501020;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Media Queries for different screen sizes (optional, basic adjustment) */
+@media screen and (max-width: 420px) {
+    .poster-wrapper {
+        width: 100%;
+        margin: 10px;
+    }
+    .company-name { font-size: 1.8rem; }
+    .rate { font-size: 1.6rem; }
+}
+
+/* Visitor Counter Style */
+.visitor-counter {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(64, 5, 16, 0.95); /* Deep red background to match footer */
+    color: #e0c090; /* Gold text */
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #b08d57;
+}
