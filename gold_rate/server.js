@@ -3,7 +3,6 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const cors = require('cors');
 const path = require('path');
-const fs = require('fs');
 
 const app = express();
 const PORT = 3000;
@@ -11,20 +10,6 @@ const PORT = 3000;
 // Middleware
 app.use(cors());
 app.use(express.static(__dirname));
-
-// Initialize persistent visitor count
-const VISITOR_FILE = path.join(__dirname, 'visitors.json');
-let visitorCount = 0;
-try {
-    if (fs.existsSync(VISITOR_FILE)) {
-        const data = fs.readFileSync(VISITOR_FILE, 'utf8');
-        visitorCount = JSON.parse(data).count || 0;
-    } else {
-        fs.writeFileSync(VISITOR_FILE, JSON.stringify({ count: 0 }));
-    }
-} catch (error) {
-    console.error('Error reading visitor file:', error.message);
-}
 
 // Store rates in memory with timestamp
 let cachedRates = null;
@@ -141,17 +126,6 @@ app.get('/api/gold-rates', async (req, res) => {
             message: error.message
         });
     }
-});
-
-// API Endpoint for tracking and fetching visitors
-app.get('/api/visitor', (req, res) => {
-    visitorCount++; // Increment count on every load
-    try {
-        fs.writeFileSync(VISITOR_FILE, JSON.stringify({ count: visitorCount }));
-    } catch (error) {
-        console.error('Error saving visitor count:', error.message);
-    }
-    res.json({ success: true, count: visitorCount });
 });
 
 // Serve main page

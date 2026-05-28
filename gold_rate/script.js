@@ -292,29 +292,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
-    // 8. Real Visitor Count Tracker
-    function trackVisitor() {
-        // Extract base URL from API_ENDPOINT to connect to the right backend automatically
-        const baseUrl = API_ENDPOINT.replace('/api/gold-rates', '');
-        const visitorUrl = `${baseUrl}/api/visitor`;
-        
-        // Create visitor badge element dynamically
-        const visitorDiv = document.createElement('div');
-        visitorDiv.className = 'visitor-counter';
-        visitorDiv.innerHTML = `<span id="v-count">...</span> Visitors`;
-        document.body.appendChild(visitorDiv);
-
-        // Fetch and update visitor count
-        fetch(visitorUrl)
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    document.getElementById('v-count').innerText = data.count.toLocaleString();
-                }
-            })
-            .catch(err => console.error('Error fetching visitor count:', err));
-    }
-
-    trackVisitor();
 });
