@@ -12,10 +12,13 @@ body {
     box-sizing: border-box;
     position: relative;
     z-index: 0;
+    overflow-x: hidden; /* Prevents horizontal scroll from scaled elements */
 }
 
 .poster-wrapper {
-    width: 380px; /* Adjust width as needed, maintain aspect ratio */
+    width: 550px; /* Slightly wider to give more breathing room for the square */
+    /* max-width: 100%; Removed so the layout never squishes */
+    aspect-ratio: 1 / 1.08; /* WhatsApp square format */
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     overflow: hidden;
     position: relative;
@@ -27,6 +30,7 @@ body {
     -webkit-user-select: none; /* Safari compatibility */
     -webkit-user-drag: none; /* Prevents dragging of the element */
     z-index: 10; /* Ensures poster is above falling coins */
+    transform-origin: top center; /* Keeps scaling anchored to the top */
 }
 
 /* Falling Gold Coins Animation */
@@ -69,7 +73,7 @@ body {
 /* Header Styles */
 header {
     background: linear-gradient(135deg, #702030, #501020); /* Deep red background */
-    padding: 15px;
+    padding: 8px 15px;
     color: #e0c090; /* Soft gold text color for header */
     border-bottom: 2px solid #b08d57;
     position: relative;
@@ -129,27 +133,32 @@ header {
         radial-gradient(#e0c090 1px, transparent 1px);
     background-size: 20px 20px;
     opacity: 0.8;
-    padding: 20px 15px 15px 15px;
+    padding: 12px 10px 10px 10px;
     flex-grow: 1;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: start;
     text-align: center;
+
 }
 
 .poster-title {
+    flex-basis: 100%;
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
     color: #501020; /* Dark red/brown */
-    margin: 0 0 15px 0;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin: 0;
 }
 
 .date-box-outer {
+    grid-column: 1 / -1;
+    flex-basis: 100%;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: center;
 }
@@ -173,13 +182,15 @@ header {
 
 /* Price Section Styles */
 .price-section {
-    width: 100%;
     border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 15px 10px;
+    margin-bottom: 0;
     color: #fdf8e8; /* Light text for sections with dark backgrounds */
     position: relative;
     overflow: hidden; /* Ensure pattern stays within bounds */
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow sections to grow and fill space */
 }
 
 /* Approximate green backgrounds */
@@ -193,32 +204,34 @@ header {
 
 .gold-type {
     font-family: 'Crimson Pro', serif;
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     color: #d4af37; /* Rich gold for type headers */
-    margin: 0 0 10px 0;
+    margin: 0 0 6px 0;
     font-weight: 700;
+    min-height: auto;
 }
 
 .price-boxes {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 6px;
+    margin-bottom: 6px;
+    flex-grow: 1;
 }
 
 .price-box {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
-    padding: 8px 12px;
+    padding: 8px 4px;
     flex: 1; /* Expand each box equally */
-    max-width: 140px; /* Limit box width */
     text-align: center;
 }
 
 .unit {
     font-family: 'Poppins', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     margin: 0 0 4px 0;
     font-weight: 600;
@@ -227,7 +240,7 @@ header {
 
 .rate {
     font-family: 'Crimson Pro', serif;
-    font-size: 1.8rem;
+    font-size: 1.35rem; /* Slightly smaller to fit side-by-side */
     color: #fdf8e8;
     margin: 0;
     font-weight: 700;
@@ -242,7 +255,7 @@ header {
     outline: none;
     cursor: text;
     display: inline-block;
-    min-width: 60px;
+    min-width: 40px;
     padding: 0 4px;
     margin: 0 -4px;
     border-radius: 4px;
@@ -280,18 +293,19 @@ header {
 }
 
 .making-charges {
+    flex-basis: 100%; /* Make it take the full width in the flex container */
     font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
-    margin: 0;
+    font-size: 0.8rem;
     font-weight: 600;
     color: #d4af37; /* Gold */
     text-transform: uppercase;
+    margin: 5px 0 0 0;
 }
 
 /* Footer Styles */
 footer {
     background-color: #400510; /* Darker deep red for footer */
-    padding: 15px;
+    padding: 10px 15px;
     color: #e0c090; /* Gold text */
     text-align: center;
     margin-top: auto; /* Push to bottom within flex container */
@@ -305,7 +319,7 @@ footer {
 }
 
 .footer-note {
-    margin: 0 0 10px 0;
+    margin: 0 0 5px 0;
     font-weight: 600;
 }
 
@@ -318,7 +332,7 @@ footer {
 .footer-credits {
     font-family: 'Poppins', sans-serif;
     font-size: 0.75rem;
-    margin: 15px 0 0 0;
+    margin: 4px 0 0 0;
     font-weight: 400;
     opacity: 0.7;
 }
@@ -359,14 +373,27 @@ footer {
     transform: translateY(0);
 }
 
-/* Media Queries for different screen sizes (optional, basic adjustment) */
-@media screen and (max-width: 420px) {
-    .poster-wrapper {
-        width: 100%;
-        margin: 10px;
-    }
-    .company-name { font-size: 1.8rem; }
-    .rate { font-size: 1.6rem; }
+/* Media Queries - Visual Scaling for Mobile */
+/* Instead of breaking the layout by shrinking the container width, 
+   we visually zoom out the entire fixed-size poster. 
+   This guarantees identical alignment and high-resolution WhatsApp downloads! */
+@media screen and (max-width: 600px) {
+    .poster-wrapper { transform: scale(0.9); margin-bottom: -60px; }
+}
+@media screen and (max-width: 520px) {
+    .poster-wrapper { transform: scale(0.8); margin-bottom: -120px; }
+}
+@media screen and (max-width: 460px) {
+    .poster-wrapper { transform: scale(0.7); margin-bottom: -180px; }
+}
+@media screen and (max-width: 400px) {
+    .poster-wrapper { transform: scale(0.6); margin-bottom: -240px; }
+}
+@media screen and (max-width: 360px) {
+    .poster-wrapper { transform: scale(0.55); margin-bottom: -270px; }
+}
+@media screen and (max-width: 320px) {
+    .poster-wrapper { transform: scale(0.5); margin-bottom: -300px; }
 }
 
 /* Visitor Counter Style */
