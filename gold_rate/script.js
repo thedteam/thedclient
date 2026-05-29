@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (downloadBtn) {
         downloadBtn.addEventListener('click', () => {
             if (typeof html2canvas !== 'undefined') {
-                html2canvas(posterNode, { scale: 2 }).then(canvas => {
+                html2canvas(posterNode, { scale: 4, useCORS: true }).then(canvas => {
                     // Get today's date for filename
                     const today = new Date();
                     const day = String(today.getDate()).padStart(2, '0');
@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const dateStr = `${day}-${month}-${year}`;
                     
                     const link = document.createElement('a');
-                    link.download = `Gleestar-Gold-Rate-${dateStr}.png`;
+                    link.download = `GleeStar-Gold-Rate-${dateStr}.png`;
                     link.href = canvas.toDataURL('image/png');
                     link.click();
                 });
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 // Generate canvas
-                const canvas = await html2canvas(posterNode, { scale: 2 });
+                const canvas = await html2canvas(posterNode, { scale: 4, useCORS: true });
                 
                 // Convert canvas to blob
                 canvas.toBlob(async (blob) => {
@@ -330,13 +330,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             return;
                         }
 
-                        const file = new File([blob], 'Gleestar-Gold-Rate.png', { type: 'image/png' });
-                        
-                        // Get today's date for caption
+                        // Get today's date for caption and filename
                         const today = new Date();
                         const options = { day: 'numeric', month: 'long', year: 'numeric' };
                         const formattedDate = today.toLocaleDateString('en-GB', options).toUpperCase();
-                        const shareCaption = `Gleestar Gold Rates - ${formattedDate}\n\nCheck out today's gold rates at Gleestar Bengaluru!`;
+                        
+                        const file = new File([blob], `GleeStar-Gold-Rate-${formattedDate.replace(/ /g, '-')}.png`, { type: 'image/png' });
+                        const shareCaption = `GleeStar Gold Rates - ${formattedDate}\n\nCheck out today's gold rates at GleeStar!`;
                         
                         if (!navigator.share) {
                             throw new Error('Web Share API not supported on this connection/device');
@@ -345,14 +345,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         // Check if device can share files
                         if (navigator.canShare && navigator.canShare({ files: [file] })) {
                             await navigator.share({
-                                title: 'Gleestar Gold Rate',
+                                title: 'GleeStar Gold Rate',
                                 text: shareCaption,
                                 files: [file]
                             });
                         } else {
                             // Fallback: share without file (text only)
                             await navigator.share({
-                                title: 'Gleestar Gold Rate',
+                                title: 'GleeStar Gold Rate',
                                 text: shareCaption
                             });
                         }
