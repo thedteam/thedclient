@@ -1,4 +1,4 @@
-// Page Loader dynamic injection
+/*// Page Loader dynamic injection
 (function() {
     var loaderHtml = '<div class="page-loader"><img src="images/logo.png" class="loader-logo" alt="Loading..." oncontextmenu="return false;"></div>';
     var injectLoader = setInterval(function() {
@@ -24,7 +24,7 @@
             }, 400);
         }
     }, 2000);
-})();
+})();*/
 
 var hoverColour = "#000000";
 

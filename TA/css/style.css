@@ -8,7 +8,7 @@ body {
 	font-size: 12px;
 	overflow-x: hidden;
 	background: #d8ecff url(../images/bg1.png) repeat-x left top;
-	visibility: hidden;
+	/*visibility: hidden;*/
 }
 
 span.reference {
@@ -216,6 +216,16 @@ ul.ldd_menu ul li a:hover {
 	color: #000;
 	font-weight: bold;
 	font-size: 12px;
+}
+
+.page-header {
+    font-size: 2rem;
+    color: #0f243f;
+    border-bottom: 2px solid #d8ecff;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .header_w {
